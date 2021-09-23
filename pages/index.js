@@ -8,7 +8,7 @@ export default function Home() {
         <title>Training Grounds | MMA Gym Finder</title>
         <meta
           name="description"
-          content="MMA Gym finder application: Training Grounds."
+          content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

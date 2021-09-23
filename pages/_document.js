@@ -11,20 +11,23 @@ export default class MyDocument extends Document {
           />
 
           <link rel="icon" href="/favicon.ico" />
-          {/* <meta name="application-name" content="William Wilder Portfolio" />
+          <meta name="application-name" content="Training Grounds MMA" />
 
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <meta name="apple-mobile-web-app-title" content="William Wilder" />
+          <meta
+            name="apple-mobile-web-app-title"
+            content="Training Grounds MMA"
+          />
           <meta
             name="description"
-            content="Portfolio website for William Wilder - Software Developer - NextJS && React Specialist."
+            content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA."
           />
           <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" /> */}
+          <meta name="mobile-web-app-capable" content="yes" />
           {/* TSK */}
           {/* <meta
             name="msapplication-config"
@@ -34,7 +37,7 @@ export default class MyDocument extends Document {
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#10b981" /> */}
 
-          {/* <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+          <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -63,41 +66,35 @@ export default class MyDocument extends Document {
           <link
             rel="mask-icon"
             href="/icons/maskable_icon.png"
-            color="#222222"
-          /> */}
+            color="#212121"
+          />
 
           <link rel="shortcut icon" href="/favicon.ico" />
 
-          {/* <meta name="twitter:card" content="summary" />
-          <meta name="twitter:url" content="https://willwilder.com" />
-          <meta
-            name="twitter:title"
-            content="William Wilder Developer Portfolio"
-          />
+          <meta name="twitter:card" content="summary" />
+          {/* <meta name="twitter:url" content="https://willwilder.com" /> */}
+          <meta name="twitter:title" content="Training Grounds MMA" />
           <meta
             name="twitter:description"
-            content="Portfolio website for William Wilder - Software Developer - NextJS && React Specialist."
+            content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA."
           />
           <meta
             name="twitter:image"
             content="https://willwilder.com/icons/android-chrome-192x192.png"
           />
-          <meta name="twitter:creator" content="@WilderDev" />
+          <meta name="twitter:creator" content="@TrainingGroundsMMA" />
           <meta property="og:type" content="website" />
-          <meta
-            property="og:title"
-            content="William Wilder Developer Portfolio"
-          />
+          <meta property="og:title" content="Training Grounds MMA" />
           <meta
             property="og:description"
-            content="Portfolio website for William Wilder - Software Developer - NextJS && React Specialist."
+            content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA."
           />
-          <meta property="og:site_name" content="Will Wilder" />
-          <meta property="og:url" content="https://willwilder.com" />
+          <meta property="og:site_name" content="Training Grounds MMA" />
+          {/* <meta property="og:url" content="https://willwilder.com" /> */}
           <meta
             property="og:image"
             content="https://willwilder.com/icons/apple-touch-icon.png"
-          /> */}
+          />
         </Head>
         <body>
           <Main />
