@@ -4,7 +4,7 @@ import HeroBg from "../../public/images/hero-bg.jpg";
 const Hero = () => {
   return (
     <section className="relative h-[50vh] flex items-center justify-center">
-      <div className="absolute top-0 left-0 w-full h-full bg-grayblue-600" />
+      <div className="absolute top-0 left-0 w-full h-full bg-grayblue-900" />
       <Image
         src={HeroBg}
         alt="Hero background tsk"
@@ -14,7 +14,7 @@ const Hero = () => {
         quality={100}
         priority={true}
         placeholder="blur"
-        className="brightness-0 opacity-70"
+        className="brightness-0 opacity-30"
       />
 
       <div className="relative text-center">
@@ -31,8 +31,8 @@ const Hero = () => {
           Professional Fighter? We got you too.
         </p>
         {/* TSK: routing */}
-        <button className="text-red-600 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150">
-          Let's Go
+        <button className="text-red-600 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl hover:scale-105 active:scale-90 transition duration-150">
+          Let&apos;s Go
         </button>
       </div>
     </section>

@@ -35,7 +35,7 @@ const Header = () => {
           placeholder="Start your search"
           className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
         />
-        <SearchIcon className="hidden md:inline-flex h-8 bg-red-600 text-white rounded-full p-2 cursor-pointer md:mx-2" />
+        <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
       </div>
 
       {/* Right - Links */}
