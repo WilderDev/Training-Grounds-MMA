@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Hero from "../components/home/Hero";
+import LocationGrid from "../components/home/LocationGrid";
 import Layout from "../components/layout/Layout";
+import { fetcher } from "../utils/http.helpers";
 
-export default function Home() {
+export default function Home({ locationGridData }) {
   return (
     <Layout>
       <Head>
@@ -15,6 +17,21 @@ export default function Home() {
       </Head>
 
       <Hero />
+
+      <LocationGrid data={locationGridData} />
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  {
+    /* TSK: Look for Martial Arts API's */
+  }
+  const locationGridData = await fetcher("https://links.papareact.com/pyp");
+
+  return {
+    props: {
+      locationGridData,
+    },
+  };
 }

@@ -62,7 +62,7 @@ export default class MyDocument extends Document {
             sizes="512x512"
             href="/icons/android-chrome-512x512.png"
           />
-          <link rel="manifest" href="/manifest.json" />
+          {/* <link rel="manifest" href="/manifest.json" /> */}
           <link
             rel="mask-icon"
             href="/icons/maskable_icon.png"
