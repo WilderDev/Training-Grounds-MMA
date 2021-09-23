@@ -3,7 +3,7 @@ import HeroBg from "../../public/images/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <div className="relative h-[50vh] flex items-center justify-center">
+    <section className="relative h-[50vh] flex items-center justify-center">
       <div className="absolute top-0 left-0 w-full h-full bg-grayblue-600" />
       <Image
         src={HeroBg}
@@ -35,7 +35,7 @@ const Hero = () => {
           Let's Go
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

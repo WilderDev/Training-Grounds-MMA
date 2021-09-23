@@ -1,5 +1,6 @@
 import Head from "next/head";
 import CategoryCards from "../components/home/CategoryCards";
+import CTABox from "../components/home/CTABox";
 import Hero from "../components/home/Hero";
 import LocationGrid from "../components/home/LocationGrid";
 import Layout from "../components/layout/Layout";
@@ -22,6 +23,13 @@ export default function Home({ locationGridData, categoryCardsData }) {
       <LocationGrid data={locationGridData} />
 
       <CategoryCards data={categoryCardsData} />
+
+      <CTABox
+        image="/images/hero-bg-alt.jpg"
+        title="Put Your Gym on the Map"
+        description="Attract top talent to your gym and grow your members by sharing your gym."
+        buttonText="Learn More"
+      />
     </Layout>
   );
 }
