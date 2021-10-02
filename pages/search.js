@@ -6,6 +6,7 @@ import { fetcher } from "../utils/http.helpers";
 import { getAllGyms } from "../utils/gym-data.helpers";
 import GymInfoCard from "../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
+import Map from "../components/map/Map";
 
 const Search = ({ searchResults }) => {
   const router = useRouter();
@@ -76,6 +77,10 @@ const Search = ({ searchResults }) => {
             )}
           </div>
         </div>
+      </section>
+
+      <section className="hidden xl:inline-flex">
+        <Map />
       </section>
     </Layout>
   );
