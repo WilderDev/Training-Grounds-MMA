@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import Layout from "../components/layout/Layout";
-import { fetcher } from "../utils/http.helpers";
 import { getAllGyms } from "../utils/gym-data.helpers";
 import GymInfoCard from "../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
@@ -77,10 +76,12 @@ const Search = ({ searchResults }) => {
             )}
           </div>
         </div>
-      </section>
 
-      <section className="hidden xl:inline-flex">
-        <Map />
+        {/* MAP */}
+        {/* TSK: move it below everything on small */}
+        <div className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map searchResults={searchResults} />
+        </div>
       </section>
     </Layout>
   );

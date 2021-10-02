@@ -7,8 +7,8 @@
     "star": 4.73,
     "price": "£30 / night",
     "total": "£117 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 101.50144,
+    "lat": 13.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?gym",
@@ -18,8 +18,8 @@
     "star": 4.3,
     "price": "£40 / night",
     "total": "£157 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 101.50144,
+    "lat": 14.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?gym,martial-arts",
@@ -29,8 +29,8 @@
     "star": 3.8,
     "price": "£35 / night",
     "total": "£207 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 100.50144,
+    "lat": 15.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?fighting",
@@ -40,8 +40,8 @@
     "star": 4.1,
     "price": "£55 / night",
     "total": "£320 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 105.50144,
+    "lat": 13.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?martial-arts",
@@ -51,8 +51,8 @@
     "star": 5.0,
     "price": "£60 / night",
     "total": "£450 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 100.54144,
+    "lat": 13.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?gym,training,mma",
@@ -62,8 +62,8 @@
     "star": 4.23,
     "price": "£65 / night",
     "total": "£480 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 100.40144,
+    "lat": 13.75398
   },
   {
     "img": "https://source.unsplash.com/500x500/?mma,training",
@@ -73,7 +73,7 @@
     "star": 3.85,
     "price": "£90 / night",
     "total": "£650 total",
-    "long": 13.75398,
-    "lat": 100.50144
+    "long": 103.50144,
+    "lat": 13.75398
   }
 ]
