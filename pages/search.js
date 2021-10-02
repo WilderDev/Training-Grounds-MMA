@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import { fetcher } from "../utils/http.helpers";
 import { getAllGyms } from "../utils/gym-data.helpers";
 import GymInfoCard from "../components/gyms/GymInfoCard";
+import { v4 } from "uuid";
 
 const Search = ({ searchResults }) => {
   const router = useRouter();
@@ -48,31 +49,34 @@ const Search = ({ searchResults }) => {
           </div>
 
           {/* RESULTS */}
-          {searchResults.map(
-            ({
-              title,
-              description,
-              img,
-              location,
-              lat,
-              long,
-              price,
-              total,
-              star,
-            }) => (
-              <GymInfoCard
-                title={title}
-                desc={description}
-                img={img}
-                location={location}
-                lat={lat}
-                long={long}
-                price={price}
-                total={total}
-                star={star}
-              />
-            )
-          )}
+          <div className="flex flex-col">
+            {searchResults.map(
+              ({
+                title,
+                description,
+                img,
+                location,
+                lat,
+                long,
+                price,
+                total,
+                star,
+              }) => (
+                <GymInfoCard
+                  key={v4()}
+                  title={title}
+                  desc={description}
+                  img={img}
+                  location={location}
+                  lat={lat}
+                  long={long}
+                  price={price}
+                  total={total}
+                  star={star}
+                />
+              )
+            )}
+          </div>
         </div>
       </section>
     </Layout>

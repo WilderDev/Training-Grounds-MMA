@@ -4,7 +4,9 @@ import CTABox from "../components/home/CTABox";
 import Hero from "../components/home/Hero";
 import LocationGrid from "../components/home/LocationGrid";
 import Layout from "../components/layout/Layout";
+import { getAllCategories } from "../utils/category.helpers";
 import { fetcher } from "../utils/http.helpers";
+import { getAllLocations } from "../utils/location.helpers";
 
 export default function Home({ locationGridData, categoryCardsData }) {
   return (
@@ -37,8 +39,8 @@ export async function getStaticProps() {
   {
     /* TSK: Look for Martial Arts API's */
   }
-  const locationGridData = await fetcher("https://links.papareact.com/pyp");
-  const categoryCardsData = await fetcher("https://links.papareact.com/zp1");
+  const locationGridData = getAllLocations();
+  const categoryCardsData = getAllCategories();
 
   return {
     props: {
