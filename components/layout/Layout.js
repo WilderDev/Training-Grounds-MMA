@@ -1,10 +1,10 @@
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, placeholder }) => {
   return (
     <>
-      <Header />
+      <Header placeholder={placeholder} />
       <main>{children}</main>
       <Footer />
     </>

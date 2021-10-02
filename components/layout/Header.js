@@ -15,7 +15,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 // TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
 
-const Header = () => {
+const Header = ({ placeholder }) => {
   const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
   const [numFighters, setNumFighters] = useState(1);
@@ -70,7 +70,7 @@ const Header = () => {
       <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
         <input
           type="text"
-          placeholder="Start your search"
+          placeholder={placeholder || "Start your search"}
           className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
