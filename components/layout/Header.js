@@ -33,12 +33,25 @@ const Header = () => {
     setEndDate(ranges.selection.endDate);
   };
 
-  const onSearch = () => {};
+  const onSearch = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numFighters: numFighters,
+      },
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
       {/* Left - Logo */}
-      <div className="hidden relative sm:flex items-center h-10 cursor-pointer my-auto">
+      <div
+        className="hidden relative sm:flex items-center h-10 cursor-pointer my-auto"
+        onClick={() => router.push("/")}
+      >
         <Image
           src="/icons/Training-Grounds_Logo-Icon.png"
           alt="Training Grounds Logo Triangle Arrow with open space."
@@ -73,7 +86,7 @@ const Header = () => {
         </Link>
         <GlobeAltIcon className="h-6 cursor-pointer" />
         {/* TSK should open a dropdown */}
-        <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
+        <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
           <MenuIcon className="h-6" />
           <UserCircleIcon className="h-6" />
         </div>
