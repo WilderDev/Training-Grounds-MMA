@@ -1,11 +1,13 @@
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import {
   GlobeAltIcon,
   MenuIcon,
   SearchIcon,
   UserCircleIcon,
+  UsersIcon,
 } from "@heroicons/react/solid";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
@@ -14,7 +16,9 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 // TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
 
 const Header = () => {
+  const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
+  const [numFighters, setNumFighters] = useState(1);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -28,6 +32,8 @@ const Header = () => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
+
+  const onSearch = () => {};
 
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
@@ -75,13 +81,38 @@ const Header = () => {
 
       {/* Bot - Calendar */}
       {searchInput && (
-        <div className="">
+        <div className="flex flex-col col-span-3 mx-auto mt-4">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}
             rangeColors={["#ef4444"]}
             onChange={handleSelectDates}
           />
+          <div className="flex items-center border-b mb-4">
+            <h2 className="text-2xl flex-grow font-semibold">
+              Number of Fighters
+            </h2>
+
+            <UsersIcon className="h-5" />
+            <input
+              type="number"
+              className="w-12 pl-2 text-lg outline-none text-red-400"
+              min={1}
+              value={numFighters}
+              onChange={(e) => setNumFighters(e.target.value)}
+            />
+          </div>
+          <div className="flex">
+            <button
+              className="flex-grow text-gray-500"
+              onClick={() => setSearchInput("")}
+            >
+              Cancel
+            </button>
+            <button className="flex-grow text-red-400" onClick={onSearch}>
+              Search
+            </button>
+          </div>
         </div>
       )}
     </header>

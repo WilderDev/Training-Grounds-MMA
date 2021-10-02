@@ -15,7 +15,6 @@ export default function Home({ locationGridData, categoryCardsData }) {
           name="description"
           content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA."
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Hero />
