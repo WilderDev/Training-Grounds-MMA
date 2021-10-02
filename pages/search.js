@@ -16,8 +16,6 @@ const Search = ({ searchResults }) => {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-  console.log("searchResults:", searchResults);
-
   return (
     <Layout placeholder={`${location} | ${range} | ${formattedNumFighters}`}>
       <Head>

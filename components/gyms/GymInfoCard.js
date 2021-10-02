@@ -18,7 +18,13 @@ const GymInfoCard = ({
     <div className="flex py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
       {/* Image */}
       <div className="relative h-24 w-40 flex-shrink-0 md:h-52 md:w-80">
-        <Image src={img} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={img}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-2xl"
+        />
       </div>
 
       {/* Info */}

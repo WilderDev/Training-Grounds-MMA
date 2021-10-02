@@ -43,6 +43,7 @@ const Header = ({ placeholder }) => {
         numFighters: numFighters,
       },
     });
+    setSearchInput("");
   };
 
   return (
@@ -75,7 +76,10 @@ const Header = ({ placeholder }) => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
+        <SearchIcon
+          className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"
+          onClick={onSearch}
+        />
       </div>
 
       {/* Right - Links */}
