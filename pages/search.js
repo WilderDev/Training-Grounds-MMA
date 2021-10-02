@@ -2,8 +2,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import Layout from "../components/layout/Layout";
+import { fetcher } from "../utils/http.helpers";
+import { getAllGyms } from "../utils/gym-data.helpers";
+import GymInfoCard from "../components/gyms/GymInfoCard";
 
-const Search = () => {
+const Search = ({ searchResults }) => {
   const router = useRouter();
   const { location, startDate, endDate, numFighters } = router.query;
   const formattedNumFighters =
@@ -12,7 +15,7 @@ const Search = () => {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-  console.log("numFighters:", numFighters);
+  console.log("searchResults:", searchResults);
 
   return (
     <Layout placeholder={`${location} | ${range} | ${formattedNumFighters}`}>
@@ -29,6 +32,7 @@ const Search = () => {
 
       <section className="flex">
         <div className="flex-grow pt-14 px-6">
+          {/* TOP */}
           <p className="text-xs">
             300+ Gyms ~ {range} ~{formattedNumFighters}
           </p>
@@ -42,6 +46,33 @@ const Search = () => {
             <p className="button">Location</p>
             <p className="button">More Filters</p>
           </div>
+
+          {/* RESULTS */}
+          {searchResults.map(
+            ({
+              title,
+              description,
+              img,
+              location,
+              lat,
+              long,
+              price,
+              total,
+              star,
+            }) => (
+              <GymInfoCard
+                title={title}
+                desc={description}
+                img={img}
+                location={location}
+                lat={lat}
+                long={long}
+                price={price}
+                total={total}
+                star={star}
+              />
+            )
+          )}
         </div>
       </section>
     </Layout>
@@ -49,3 +80,14 @@ const Search = () => {
 };
 
 export default Search;
+
+export async function getServerSideProps({ params }) {
+  //   TSK: const searchResults = await fetcher("someMongoDB Dtabase");
+  const searchResults = getAllGyms();
+
+  return {
+    props: {
+      searchResults,
+    },
+  };
+}
