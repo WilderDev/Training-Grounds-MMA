@@ -19,7 +19,7 @@ const Hero = () => {
 
       <div className="relative text-center">
         <h1 className="text-red-500 text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-          Find Your New Training Grounds
+          Find Your Next Training Grounds
         </h1>
         <p className="text-sm font-medium text-white sm:text-lg">
           Never trained before? No worries.
