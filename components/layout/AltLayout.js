@@ -11,7 +11,7 @@ const AltLayout = ({ children }) => {
         >
           {/* TSK change to light logo */}
           <Image
-            src="/icons/Training-Grounds_Logo-Icon.png"
+            src="/icons/Training-Grounds_Logo-Icon-light.png"
             alt="Training Grounds Logo Triangle Arrow with open space."
             layout="fill"
             objectFit="contain"
