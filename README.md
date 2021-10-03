@@ -35,6 +35,8 @@
 
 - [Customize Colors on MAP](https://studio.mapbox.com/styles/wilderdev/ckuaavva26k8f19qj6etlivy2/edit/#9/40.72/-73.97)
 
-- Search bar Enter and search bar open on select
+- Search bar Enter functionality
 
 - Authentication page transitions
+
+- Forgot Password functionality

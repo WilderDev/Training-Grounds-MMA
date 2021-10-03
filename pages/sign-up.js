@@ -3,6 +3,10 @@ import Layout from "../components/layout/Layout";
 import Auth from "../components/minor/authentication";
 
 const SignUp = () => {
+  const handleSignUp = (method) => {
+    console.log("method:", method);
+  };
+
   return (
     <Layout>
       <Head>
@@ -13,7 +17,7 @@ const SignUp = () => {
         />
       </Head>
 
-      <Auth type="sign-up" />
+      <Auth type="sign-up" onSignUp={handleSignUp} />
     </Layout>
   );
 };

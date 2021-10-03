@@ -6,8 +6,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Auth = ({ type }) => {
-  const [isSignIn, setIsSignIn] = useState(type === "sign-in");
+const Auth = ({ type, onSignUp, onSignIn }) => {
+  const isSignIn = type === "sign-in";
 
   return (
     <div className="min-h-screen bg-white flex">
@@ -52,11 +52,15 @@ const Auth = ({ type }) => {
 
                 <div className="mt-1 grid grid-cols-3 gap-3">
                   <div>
-                    <a
-                      href="#"
+                    <button
+                      onClick={() => {
+                        isSignIn ? onSignIn("facebook") : onSignUp("facebook");
+                      }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Facebook</span>
+                      <span className="sr-only">
+                        {isSignIn ? "Sign in to" : "Sign up with"} Facebook
+                      </span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -69,15 +73,19 @@ const Auth = ({ type }) => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </button>
                   </div>
 
                   <div>
-                    <a
-                      href="#"
+                    <button
+                      onClick={() => {
+                        isSignIn ? onSignIn("twitter") : onSignUp("twitter");
+                      }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Twitter</span>
+                      <span className="sr-only">
+                        {isSignIn ? "Sign in to" : "Sign up with"} Twitter
+                      </span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -86,15 +94,19 @@ const Auth = ({ type }) => {
                       >
                         <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
                       </svg>
-                    </a>
+                    </button>
                   </div>
 
                   <div>
-                    <a
-                      href="#"
+                    <button
+                      onClick={() => {
+                        isSignIn ? onSignIn("github") : onSignUp("github");
+                      }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with GitHub</span>
+                      <span className="sr-only">
+                        {isSignIn ? "Sign in to" : "Sign up with"} GitHub
+                      </span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -107,7 +119,7 @@ const Auth = ({ type }) => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -128,7 +140,16 @@ const Auth = ({ type }) => {
             </div>
 
             <div className="mt-6">
-              <form action="#" method="POST" className="space-y-6">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  isSignIn
+                    ? onSignIn("email", email.value, password.value)
+                    : onSignUp("email", email.value, password.value);
+                }}
+                method="POST"
+                className="space-y-6"
+              >
                 <div>
                   <label
                     htmlFor="email"
@@ -175,6 +196,7 @@ const Auth = ({ type }) => {
                       type="checkbox"
                       className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                     />
+                    {/* TSK */}
                     <label
                       htmlFor="remember-me"
                       className="ml-2 block text-sm text-gray-900"
@@ -198,7 +220,7 @@ const Auth = ({ type }) => {
                     type="submit"
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Sign in
+                    {isSignIn ? "Sign in" : "Sign up"}
                   </button>
                 </div>
               </form>
@@ -207,11 +229,16 @@ const Auth = ({ type }) => {
         </div>
       </div>
       <div className="hidden lg:block relative w-0 flex-1 order-1">
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          src="https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-          alt=""
-        />
+        <div className="relative inset-0 h-full w-full">
+          <Image
+            src={isSignIn ? `/images/sign-in_bg.jpg` : "/images/sign-up_bg.jpg"}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            priority={true}
+            quality={95}
+          />
+        </div>
       </div>
     </div>
   );

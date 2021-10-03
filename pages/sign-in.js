@@ -3,6 +3,11 @@ import Layout from "../components/layout/Layout";
 import Auth from "../components/minor/authentication";
 
 const SignIn = () => {
+  const handleSignIn = (method, email, password) => {
+    console.log("method:", method);
+    console.log("email, password::", email, password);
+  };
+
   return (
     <Layout>
       <Head>
@@ -13,7 +18,7 @@ const SignIn = () => {
         />
       </Head>
 
-      <Auth type="sign-in" />
+      <Auth type="sign-in" onSignIn={handleSignIn} />
     </Layout>
   );
 };

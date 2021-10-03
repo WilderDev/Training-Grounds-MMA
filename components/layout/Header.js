@@ -96,9 +96,9 @@ const Header = ({ placeholder }) => {
       {/* Center - Search */}
       <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
         <input
-          type="text"
+          type="search"
           placeholder={placeholder || "Where do you want to go?"}
-          className="flex-grow pl-5 bg-transparent outline-none border-none text-sm text-gray-600 placeholder-gray-400"
+          className="flex-grow pl-5 bg-transparent outline-none border-none focus:ring-transparent text-sm text-gray-600 placeholder-gray-400"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
@@ -111,7 +111,7 @@ const Header = ({ placeholder }) => {
       {/* Right - Links */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
         {/* TSK */}
-        <Link href="/">
+        <Link href="/add-gym">
           <a className="hidden md:inline cursor-pointer">Add your gym</a>
         </Link>
         {/* <GlobeAltIcon className="h-6 cursor-pointer" /> */}
