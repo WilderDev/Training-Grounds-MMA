@@ -29,7 +29,7 @@ const Search = ({ searchResults }) => {
         />
       </Head>
 
-      <section className="flex">
+      <section className="flex mb-24">
         <div className="flex-grow pt-14 px-6">
           {/* TOP */}
           <p className="text-xs">
@@ -79,7 +79,7 @@ const Search = ({ searchResults }) => {
 
         {/* MAP */}
         {/* TSK: move it below everything on small */}
-        <div className="hidden xl:inline-flex xl:min-w-[600px]">
+        <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
           <Map searchResults={searchResults} />
         </div>
       </section>

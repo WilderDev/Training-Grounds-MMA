@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import {
   GlobeAltIcon,
   MenuIcon,
@@ -12,8 +14,38 @@ import {
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { v4 } from "uuid";
 
 // TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
+
+const dropdownLinks = [
+  {
+    name: "Sign up",
+    description: "Create an account as a fighter or gym owner.",
+    href: "#",
+  },
+  {
+    name: "Sign in",
+    description: "Log in to your account to access all site features.",
+    href: "#",
+  },
+  {
+    name: "Add your gym",
+    description:
+      "Are you a gym owner? Make your training camp known to the world!",
+    href: "#",
+  },
+  {
+    name: "Help",
+    description:
+      "Check out our FAQ to learn more about how Training Grounds operates.",
+    href: "#",
+  },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const Header = ({ placeholder }) => {
   const router = useRouter();
@@ -71,7 +103,7 @@ const Header = ({ placeholder }) => {
       <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
         <input
           type="text"
-          placeholder={placeholder || "Start your search"}
+          placeholder={placeholder || "Where do you want to go?"}
           className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
@@ -90,10 +122,52 @@ const Header = ({ placeholder }) => {
         </Link>
         <GlobeAltIcon className="h-6 cursor-pointer" />
         {/* TSK should open a dropdown */}
-        <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
-          <MenuIcon className="h-6" />
-          <UserCircleIcon className="h-6" />
-        </div>
+
+        <Popover className="relative">
+          {({ open }) => (
+            <>
+              <Popover.Button
+                className={classNames(
+                  open ? "text-gray-900" : "text-gray-500",
+                  "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                )}
+              >
+                <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
+                  <MenuIcon className="h-6" />
+                  <UserCircleIcon className="h-6" />
+                </div>
+              </Popover.Button>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0 translate-y-1"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 translate-y-1"
+              >
+                <Popover.Panel className="absolute z-10 left-full transform -translate-x-full mt-3 px-2 w-screen max-w-xs sm:px-0">
+                  <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      {dropdownLinks.map((link) => (
+                        <Link href={link.href} key={v4()}>
+                          <a className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                            <p className="text-base font-medium text-gray-900">
+                              {link.name}
+                            </p>
+                            <p className="mt-1 text-sm text-gray-500">
+                              {link.description}
+                            </p>
+                          </a>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </>
+          )}
+        </Popover>
       </div>
 
       {/* Bot - Calendar */}

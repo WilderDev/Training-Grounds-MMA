@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { v4 } from "uuid";
 
 const navigation = {
@@ -6,18 +7,10 @@ const navigation = {
     { name: "Blog", href: "#" },
     { name: "About Us", href: "#" },
   ],
-  community: [
-    { name: "People", href: "#" },
-    { name: "People", href: "#" },
-    { name: "People", href: "#" },
-    { name: "People", href: "#" },
-  ],
+  community: [{ name: "People", href: "#" }],
   hosting: [
     { name: "Adding Your Gym", href: "#" },
     { name: "Add Known Gyms", href: "#" },
-    { name: "Info", href: "#" },
-    { name: "Info", href: "#" },
-    { name: "Info", href: "#" },
   ],
   support: [
     { name: "Contact", href: "#" },
@@ -98,11 +91,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 pb-8 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <img
-              className="h-10"
-              src="https://tailwindui.com/img/logos/workflow-mark-gray-300.svg"
-              alt="Company name"
-            />
+            <div className="relative h-10 w-10 opacity-60">
+              <Image
+                src="/icons/Training-Grounds_Logo-Icon.png"
+                alt="Training Grounds Logo Triangle Arrow with open space."
+                layout="fill"
+              />
+            </div>
             <p className="text-gray-500 text-base">
               Bringing fighters and trainers together. TSK.
             </p>
