@@ -28,7 +28,7 @@ const dropdownLinks = [
     name: "Add your gym",
     description:
       "Are you a gym owner? Make your training camp known to the world!",
-    href: "/add-gym",
+    href: "/gym-owners-join-us",
   },
   {
     name: "Help",
@@ -108,7 +108,7 @@ const Header = ({ placeholder }) => {
       {/* Right - Links */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
         {/* TSK */}
-        <Link href="/add-gym">
+        <Link href="/gym-owners-join-us">
           <a className="hidden md:inline cursor-pointer">Add your gym</a>
         </Link>
         {/* <GlobeAltIcon className="h-6 cursor-pointer" /> */}

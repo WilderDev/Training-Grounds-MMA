@@ -2,7 +2,7 @@ import Head from "next/head";
 import AltLayout from "../components/layout/AltLayout";
 import GymPromoHero from "../components/gyms/GymPromoHero";
 
-const AddGym = () => {
+const GymOwnersJoinUs = () => {
   return (
     <AltLayout>
       <Head>
@@ -20,4 +20,4 @@ const AddGym = () => {
   );
 };
 
-export default AddGym;
+export default GymOwnersJoinUs;
