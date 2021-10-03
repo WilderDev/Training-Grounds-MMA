@@ -1,15 +1,15 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
-import Layout from "../components/layout/Layout";
-import { getAllGyms } from "../utils/gym-data.helpers";
-import GymInfoCard from "../components/gyms/GymInfoCard";
+import Layout from "../../components/layout/Layout";
+import { getAllGyms } from "../../utils/gym-data.helpers";
+import GymInfoCard from "../../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
-import Map from "../components/map/Map";
+import Map from "../../components/map/Map";
 
-const Search = ({ searchResults }) => {
+const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
-  const { location, startDate, endDate, numFighters } = router.query;
+  const { location, startDate, endDate, numFighters, type } = router.query;
   const formattedNumFighters =
     numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
@@ -86,7 +86,7 @@ const Search = ({ searchResults }) => {
   );
 };
 
-export default Search;
+export default LocationSearch;
 
 export async function getServerSideProps({ params }) {
   //   TSK: const searchResults = await fetcher("someMongoDB Dtabase");
