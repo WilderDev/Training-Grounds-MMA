@@ -1,7 +1,10 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { v4 } from "uuid";
 import GymInfoCard from "../../components/gyms/GymInfoCard";
 import Layout from "../../components/layout/Layout";
+import Map from "../../components/map/Map";
+import { getAllGyms } from "../../utils/gym-data.helpers";
 
 const CategorySearch = ({ searchResults }) => {
   const router = useRouter();
