@@ -9,6 +9,7 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { v4 } from "uuid";
+import { classNames } from "../../utils/misc.helpers";
 
 // TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
 
@@ -36,10 +37,6 @@ const dropdownLinks = [
     href: "/faq",
   },
 ];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const Header = ({ placeholder }) => {
   const router = useRouter();

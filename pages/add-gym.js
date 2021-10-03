@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../components/layout/Layout";
+import AltLayout from "../components/layout/AltLayout";
 
 const AddGym = () => {
   return (
-    <Layout>
+    <AltLayout>
       <Head>
         <title>
           Add Your Gym or Training Camp | Training Grounds | MMA Gym Finder
@@ -19,7 +19,7 @@ const AddGym = () => {
       <section>
         <h1>Add Your Gym</h1>
       </section>
-    </Layout>
+    </AltLayout>
   );
 };
 

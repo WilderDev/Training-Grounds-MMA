@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "../../utils/misc.helpers";
 
 const Auth = ({ type, onSignUp, onSignIn }) => {
   const isSignIn = type === "sign-in";

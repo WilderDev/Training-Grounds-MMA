@@ -8,11 +8,14 @@
 
 ## MVP TODO
 
-- Find a real API or create some dummy ones
+- [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
+
+- [Add Gym Page](https://www.airbnb.com/host/homes)
 
 - MongoDB Database
 
-- User Authentication (Users and Owners)
+  - User Authentication (Users and Owners)
+  - Dummy Training Camps
 
 - Footer links and pages
 
