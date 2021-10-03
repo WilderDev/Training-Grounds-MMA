@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import AltLayout from "../components/layout/AltLayout";
+import GymPromoHero from "../components/gyms/GymPromoHero";
 
 const AddGym = () => {
   return (
@@ -16,9 +15,7 @@ const AddGym = () => {
         />
       </Head>
 
-      <section>
-        <h1>Add Your Gym</h1>
-      </section>
+      <GymPromoHero />
     </AltLayout>
   );
 };
