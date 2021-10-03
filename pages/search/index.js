@@ -9,18 +9,36 @@ import Map from "../../components/map/Map";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
-  const { location, startDate, endDate, numFighters, type } = router.query;
+  const {
+    location,
+    startDate,
+    endDate,
+    numFighters,
+    type,
+    minPrice,
+    maxPrice,
+    saved,
+    minRating,
+    accommodation,
+    isFeatured,
+  } = router.query;
+
   const formattedNumFighters =
     numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
-  const range = `${formattedStartDate} - ${formattedEndDate}`;
+  const dateRange = `${formattedStartDate} - ${formattedEndDate}`;
 
   return (
-    <Layout placeholder={`${location} | ${range} | ${formattedNumFighters}`}>
+    <Layout
+      placeholder={`${location && location} | ${type && type} | ${
+        dateRange && dateRange
+      } | ${formattedNumFighters && `${formattedNumFighters} Fighters`}`}
+    >
       <Head>
         <title>
-          {location} Training Camps | Training Grounds | MMA Gym Finder
+          {location && location} | {type && type} Training Camps | Training
+          Grounds | Training Camp Finder
         </title>
         <meta
           name="description"
@@ -29,25 +47,27 @@ const LocationSearch = ({ searchResults }) => {
       </Head>
 
       <section className="flex mb-24">
+        {/* Left side - Title && Cards */}
         <div className="flex-grow pt-14 px-6">
-          {/* TOP */}
+          {/* Top Info (Title) */}
           <p className="text-xs">
-            300+ Gyms ~ {range} ~{formattedNumFighters}
+            {searchResults.length} Gyms {}
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
-            Gyms in {location}
+            {type && type} Gyms {location && `in ${location}`}
           </h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
-            <p className="button">Cancellation Flexibility</p>
+            {/* TSK: These should filter the searchResults */}
+            <p className="button">Accommodation</p>
             <p className="button">Type of Gym</p>
             <p className="button">Price</p>
             <p className="button">Location</p>
             <p className="button">More Filters</p>
           </div>
 
-          {/* RESULTS */}
+          {/* Results (Cards) */}
           <div className="flex flex-col">
-            {searchResults.map(
+            {searchResults?.map(
               ({
                 title,
                 description,
@@ -58,6 +78,8 @@ const LocationSearch = ({ searchResults }) => {
                 price,
                 total,
                 star,
+                accommodation,
+                isFeatured,
               }) => (
                 <GymInfoCard
                   key={v4()}
@@ -74,12 +96,13 @@ const LocationSearch = ({ searchResults }) => {
               )
             )}
           </div>
-        </div>
 
-        {/* MAP */}
-        {/* TSK: move it below everything on small */}
-        <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-          <Map searchResults={searchResults} />
+          {/* Right Side - Map */}
+          {location && (
+            <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
+              <Map searchResults={searchResults} />
+            </div>
+          )}
         </div>
       </section>
     </Layout>
