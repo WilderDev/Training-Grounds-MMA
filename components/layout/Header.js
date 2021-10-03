@@ -4,13 +4,7 @@ import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import {
-  GlobeAltIcon,
-  MenuIcon,
-  SearchIcon,
-  UserCircleIcon,
-  UsersIcon,
-} from "@heroicons/react/solid";
+import { SearchIcon, UserCircleIcon, UsersIcon } from "@heroicons/react/solid";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -22,24 +16,24 @@ const dropdownLinks = [
   {
     name: "Sign up",
     description: "Create an account as a fighter or gym owner.",
-    href: "#",
+    href: "/sign-up",
   },
   {
     name: "Sign in",
     description: "Log in to your account to access all site features.",
-    href: "#",
+    href: "/sign-in",
   },
   {
     name: "Add your gym",
     description:
       "Are you a gym owner? Make your training camp known to the world!",
-    href: "#",
+    href: "/add-gym",
   },
   {
     name: "Help",
     description:
       "Check out our FAQ to learn more about how Training Grounds operates.",
-    href: "#",
+    href: "/faq",
   },
 ];
 
@@ -104,7 +98,7 @@ const Header = ({ placeholder }) => {
         <input
           type="text"
           placeholder={placeholder || "Where do you want to go?"}
-          className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
+          className="flex-grow pl-5 bg-transparent outline-none border-none text-sm text-gray-600 placeholder-gray-400"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
@@ -120,8 +114,7 @@ const Header = ({ placeholder }) => {
         <Link href="/">
           <a className="hidden md:inline cursor-pointer">Add your gym</a>
         </Link>
-        <GlobeAltIcon className="h-6 cursor-pointer" />
-        {/* TSK should open a dropdown */}
+        {/* <GlobeAltIcon className="h-6 cursor-pointer" /> */}
 
         <Popover className="relative">
           {({ open }) => (
@@ -133,8 +126,8 @@ const Header = ({ placeholder }) => {
                 )}
               >
                 <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
-                  <MenuIcon className="h-6" />
                   <UserCircleIcon className="h-6" />
+                  <ChevronDownIcon className="h-6" />
                 </div>
               </Popover.Button>
               <Transition

@@ -19,7 +19,6 @@ const Search = ({ searchResults }) => {
   return (
     <Layout placeholder={`${location} | ${range} | ${formattedNumFighters}`}>
       <Head>
-        {/* TSK change to the search term */}
         <title>
           {location} Training Camps | Training Grounds | MMA Gym Finder
         </title>
