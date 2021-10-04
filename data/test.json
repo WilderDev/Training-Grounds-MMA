@@ -1,0 +1,79 @@
+{
+  "_id": {
+    "$oid": "615a1882c6dfa2ed7dc4ff01"
+  },
+  "name": "Master Martial Arts Gym",
+  "title": "Train with the best martial artists in Thailand",
+  "description": "Deluxe training camp in the heart of Bankok",
+  "features": "1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+  "latitude": 13.75398,
+  "longitude": 101.50144,
+  "rating": 4.73,
+  "skill_levels": ["Beginners", "Professionals"],
+  "styles_offered": ["Muay Thai", "MMA", "BJJ"],
+  "isFeatured": true,
+  "imageURL": "https://source.unsplash.com/500x500/?gym,fighting",
+  "comments": [
+    {
+      "name": "Jane Goodall",
+      "comment": "Bunch of baboons and monkeys. Gotta love it!",
+      "rating": 5
+    }
+  ],
+  "pricing": {
+    "currency": "USD"
+  },
+  "training_options": [
+    {
+      "name": "MMA Mastery",
+      "description": "Learn from our top tier staff",
+      "trainers": ["Joe Jackson", "Jean Woodland"],
+      "prices": {
+        "perDay": 50,
+        "perWeek": 200,
+        "perMonth": 500
+      }
+    }
+  ],
+  "accommodation_options": [
+    {
+      "name": "Basic Single",
+      "description": "Single room with no tv or desk",
+      "best_for": "Budget conscious solo travelers",
+      "prices": {
+        "perNight": 30,
+        "perWeek": 100,
+        "perMonth": 250
+      }
+    }
+  ],
+  "offer_options": [
+    {
+      "name": "The Dabbler - MMA",
+      "description": "Stay one week in our basic accommodations to learn MMA.",
+      "prices": {
+        "perDay": 10,
+        "perWeek": 50,
+        "perMonth": 200
+      }
+    },
+    {
+      "name": "The Couples Courage - MMA",
+      "description": "Stay with your loved one and get skilled in MMA",
+      "prices": {
+        "perDay": 10,
+        "perWeek": 50,
+        "perMonth": 200
+      }
+    },
+    {
+      "name": "Full Send",
+      "description": "MMA, Muay Thai, and BJJ with our premium accomodation",
+      "prices": {
+        "perDay": 10,
+        "perWeek": 50,
+        "perMonth": 200
+      }
+    }
+  ]
+}

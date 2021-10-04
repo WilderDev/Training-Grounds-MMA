@@ -17,6 +17,8 @@
 
 - Footer links and pages
 
+- Fix that calendar to not show last week/or anything in the past
+
 ---
 
 ---

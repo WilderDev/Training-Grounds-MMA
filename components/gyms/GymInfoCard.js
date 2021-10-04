@@ -3,17 +3,21 @@ import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 
-const GymInfoCard = ({
-  title,
-  desc,
-  img,
-  location,
-  lat,
-  long,
-  price,
-  total,
-  star,
-}) => {
+const GymInfoCard = ({ info }) => {
+  const {
+    title,
+    description,
+    img,
+    location,
+    lat,
+    long,
+    price,
+    total,
+    star,
+    accommodation,
+    isFeatured,
+  } = info;
+
   return (
     <div className="flex py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
       {/* Image */}
@@ -43,7 +47,7 @@ const GymInfoCard = ({
 
         {/* Description */}
         <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
-          {desc}
+          {description}
         </p>
 
         {/* Bottom Row */}

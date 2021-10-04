@@ -9,6 +9,7 @@ import Map from "../../components/map/Map";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
+  // TSK:Use these for filters and sorts
   const {
     location,
     startDate,
@@ -22,6 +23,8 @@ const LocationSearch = ({ searchResults }) => {
     accommodation,
     isFeatured,
   } = router.query;
+  // const lengthOfStay = TSK
+  // Skill level
 
   const formattedNumFighters =
     numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
@@ -51,7 +54,9 @@ const LocationSearch = ({ searchResults }) => {
         <div className="flex-grow pt-14 px-6">
           {/* Top Info (Title) */}
           <p className="text-xs">
-            {searchResults.length} Gyms {}
+            {searchResults.length} Gyms {location && `~ ${location}`}{" "}
+            {numFighters && `~ ${formattedNumFighters}`} {type && `~ ${type}`}{" "}
+            {accommodation && `${accommodation} ~`}
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
             {type && type} Gyms {location && `in ${location}`}
@@ -67,43 +72,18 @@ const LocationSearch = ({ searchResults }) => {
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
-            {searchResults?.map(
-              ({
-                title,
-                description,
-                img,
-                location,
-                lat,
-                long,
-                price,
-                total,
-                star,
-                accommodation,
-                isFeatured,
-              }) => (
-                <GymInfoCard
-                  key={v4()}
-                  title={title}
-                  desc={description}
-                  img={img}
-                  location={location}
-                  lat={lat}
-                  long={long}
-                  price={price}
-                  total={total}
-                  star={star}
-                />
-              )
-            )}
+            {searchResults?.map((gym) => (
+              <GymInfoCard key={v4()} info={gym} />
+            ))}
           </div>
-
-          {/* Right Side - Map */}
-          {location && (
-            <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-              <Map searchResults={searchResults} />
-            </div>
-          )}
         </div>
+
+        {/* Right Side - Map */}
+        {location && (
+          <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
+            <Map searchResults={searchResults} />
+          </div>
+        )}
       </section>
     </Layout>
   );
