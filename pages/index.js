@@ -5,7 +5,7 @@ import Hero from "../components/home/Hero";
 import LocationGrid from "../components/home/LocationGrid";
 import Layout from "../components/layout/Layout";
 import { getAllCategories } from "../utils/category.helpers";
-import { fetcher } from "../utils/http.helpers";
+import { getAllActiveGyms } from "../data/gyms.db";
 import { getAllLocations } from "../utils/location.helpers";
 
 export default function Home({ locationGridData, categoryCardsData }) {
@@ -41,6 +41,9 @@ export async function getStaticProps() {
   }
   const locationGridData = getAllLocations();
   const categoryCardsData = getAllCategories();
+  const allGyms = await getAllActiveGyms();
+
+  console.log("allGyms:", allGyms);
 
   return {
     props: {
