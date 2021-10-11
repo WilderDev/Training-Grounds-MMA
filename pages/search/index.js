@@ -2,10 +2,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import Layout from "../../components/layout/Layout";
-import { getAllGyms } from "../../utils/gym-data.helpers";
 import GymInfoCard from "../../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
 import Map from "../../components/map/Map";
+import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
@@ -26,6 +26,10 @@ const LocationSearch = ({ searchResults }) => {
   // const lengthOfStay = TSK
   // Skill level
 
+  console.log("searchResults:", searchResults);
+
+  const formattedNumGyms =
+    searchResults.length === 1 ? "1 Gym" : `${searchResults.length} Gyms`;
   const formattedNumFighters =
     numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
@@ -54,7 +58,7 @@ const LocationSearch = ({ searchResults }) => {
         <div className="flex-grow pt-14 px-6">
           {/* Top Info (Title) */}
           <p className="text-xs">
-            {searchResults.length} Gyms {location && `~ ${location}`}{" "}
+            {formattedNumGyms} {location && `~ ${location}`}{" "}
             {numFighters && `~ ${formattedNumFighters}`} {type && `~ ${type}`}{" "}
             {accommodation && `${accommodation} ~`}
           </p>
@@ -72,16 +76,16 @@ const LocationSearch = ({ searchResults }) => {
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
-            {searchResults?.map((gym) => (
+            {/* {searchResults?.map((gym) => (
               <GymInfoCard key={v4()} info={gym} />
-            ))}
+            ))} */}
           </div>
         </div>
 
         {/* Right Side - Map */}
         {location && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-            <Map searchResults={searchResults} />
+            {/* <Map searchResults={searchResults} /> */}
           </div>
         )}
       </section>
@@ -91,9 +95,8 @@ const LocationSearch = ({ searchResults }) => {
 
 export default LocationSearch;
 
-export async function getServerSideProps({ params }) {
-  //   TSK: const searchResults = await fetcher("someMongoDB Dtabase");
-  const searchResults = getAllGyms();
+export async function getServerSideProps({ query }) {
+  const searchResults = await getAllActiveGymsByQuery(query);
 
   return {
     props: {
