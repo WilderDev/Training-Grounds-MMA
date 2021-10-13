@@ -201,7 +201,10 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
                     </label>
                   </div>
 
+                  {/* TSK: Create a checkbox for user to select Fighter or Gym Owner */}
+
                   <div className="text-sm">
+                    {/* TSK */}
                     <a
                       href="#"
                       className="font-medium text-indigo-600 hover:text-indigo-500"

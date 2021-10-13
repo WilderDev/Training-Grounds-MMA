@@ -7,6 +7,7 @@ import { v4 } from "uuid";
 import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo } from "../../utils/search.helpers";
+import { toTitleCase, toTitleCases } from "../../utils/string.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
@@ -43,7 +44,8 @@ const LocationSearch = ({ searchResults }) => {
           {/* Top Info (Title) */}
           <p className="text-xs">{smallQuery}</p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
-            {type && type.toUpperCase()} Gyms {location && `in ${location}`}
+            {type && toTitleCase(type)} Gyms{" "}
+            {location && `in ${toTitleCases(location)}`}
           </h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
             {/* TSK: These should filter the searchResults */}

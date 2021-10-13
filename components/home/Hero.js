@@ -1,7 +1,10 @@
+import { useRouter } from "next/router";
 import Image from "next/image";
 import HeroBg from "../../public/images/hero-bg.jpg";
 
 const Hero = () => {
+  const router = useRouter();
+
   return (
     <section className="relative h-[50vh] flex items-center justify-center">
       <div className="absolute top-0 left-0 w-full h-full bg-grayblue-900" />
@@ -30,8 +33,11 @@ const Hero = () => {
         <p className="text-sm font-medium text-white sm:text-lg">
           Professional Fighter? We got you too.
         </p>
-        {/* TSK: routing */}
-        <button className="text-red-600 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl hover:scale-105 active:scale-90 transition duration-150">
+        {/* TSK: If we have the users location, use that as a query param */}
+        <button
+          onClick={() => router.push("search/?numFighters=1")}
+          className="text-red-600 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl hover:scale-105 active:scale-90 transition duration-150"
+        >
           Let&apos;s Go
         </button>
       </div>

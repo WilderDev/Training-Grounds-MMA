@@ -1,9 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const CTABox = ({ title, description, image, buttonText }) => {
+  const router = useRouter();
   return (
-    <section className="relative py-16 cursor-pointer">
+    <section className="relative py-16">
       <div className="relative h-96 min-w-[300px]">
         <Image
           src={image}
@@ -18,7 +19,10 @@ const CTABox = ({ title, description, image, buttonText }) => {
       <div className="absolute top-32 left-28 text-white">
         <h3 className="text-4xl mb-3 w-64">{title}</h3>
         <p>{description}</p>
-        <button className="text-sm bg-red-800 px-5 py-3 rounded-lg mt-5">
+        <button
+          onClick={() => router.push("gym-owners-join-us")}
+          className="text-sm bg-red-800 px-5 py-3 rounded-lg mt-5"
+        >
           {buttonText}
         </button>
       </div>

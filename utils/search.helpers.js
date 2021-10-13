@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { toTitleCase, toTitleCases } from "./string.helpers";
 
 // TSK: Pull out  minPrice, maxPrice, saved, minRating, accommodation, isFeatured. . .
 export function formatSearchInfo(queryParams, numSearchResults) {
@@ -15,18 +16,18 @@ export function formatSearchInfo(queryParams, numSearchResults) {
     dateRangeText = `${formattedStartDate} - ${formattedEndDate}`;
   }
 
-  const placeholderText = `${(!!location && location) || "Anywhere"} | ${
-    (!!type && type.toUpperCase()) || "Training Camps"
-  } | ${(!!dateRangeText && dateRangeText) || "Soon"} | ${
-    numFightersText && `${numFightersText} Fighters`
-  }`;
+  const placeholderText = `${
+    (!!location && toTitleCases(location)) || "Anywhere"
+  } | ${(!!type && toTitleCase(type)) || "Training Camps"} | ${
+    (!!dateRangeText && dateRangeText) || "Soon"
+  } | ${numFightersText && `${numFightersText} Fighters`}`;
 
   const titleText = `${(!!location && location) || "Search"} | ${
-    (!!type && type.toUpperCase()) || "Martial Arts"
+    (!!type && toTitleCase(type)) || "Martial Arts"
   } Training Camps | Training Grounds | Training Camp Finder`;
 
   const smallQueryText = `${numGymsText} Found ~ ${
-    (!!location && location) || "Anywhere"
+    (!!location && toTitleCases(location)) || "Anywhere"
   } ~ ${numFightersText}`;
 
   const queryInfo = {
