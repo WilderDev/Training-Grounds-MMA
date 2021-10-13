@@ -17,6 +17,8 @@
 
 - Fix that calendar to not show last week/or anything in the past
 
+- Responsive shit
+
 ---
 
 ---
@@ -47,3 +49,5 @@
 - Alt name: GoJuGyms
 
 - SEO Head tags description
+
+- Search as the user moves the map

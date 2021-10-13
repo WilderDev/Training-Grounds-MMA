@@ -7,20 +7,31 @@ const GymInfoCard = ({ info }) => {
   const {
     title,
     description,
-    location,
+    city,
+    country,
     pricing,
     rating,
     imageURL,
     features,
     training_options,
+    href,
   } = info;
 
   console.log("info:", info);
 
   return (
-    <div className="flex py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
+    <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
+      <Link href={`training-camps/${href}`}>
+        <a
+          target={title}
+          rel="noopener noreferrer"
+          aria-labelledby={title}
+          className="w-full h-full absolute z-40"
+        ></a>
+      </Link>
+
       {/* Image */}
-      <div className="relative h-24 w-40 flex-shrink-0 md:h-60 md:w-80 self-center">
+      <div className="relative h-24 w-full flex-shrink-0 md:h-60 md:w-80 self-center">
         <Image
           src={imageURL}
           alt={title}
@@ -33,9 +44,15 @@ const GymInfoCard = ({ info }) => {
       {/* Info */}
       <div className="flex flex-col flex-grow pl-5">
         {/* Location and Heart */}
-        <div className="flex justify-between">
-          <p className="">{location}</p>
-          <HeartIcon className="h-7 cursor-pointer" />
+        <div className="flex justify-between items-center text-sm pb-2 ">
+          <p className="">
+            {city},{country}
+          </p>
+          <HeartIcon
+            type="button"
+            aria-label="Add training camp to favorites"
+            className="h-7 cursor-pointer z-50 hover:text-red-500"
+          />
         </div>
 
         {/* Title */}

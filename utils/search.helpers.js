@@ -1,12 +1,9 @@
-// TSK: Pull out location, startDate, endDate, numFighters, type, minPrice, maxPrice,
-
 import { format } from "date-fns";
 
-// saved, minRating, accommodation, isFeatured. Skill level, etc from router.query,
+// TSK: Pull out  minPrice, maxPrice, saved, minRating, accommodation, isFeatured. . .
 export function formatSearchInfo(queryParams, numSearchResults) {
   console.log("queryParams:", queryParams);
-  const { startDate, endDate, numFighters, type, accommodation, location } =
-    queryParams;
+  const { startDate, endDate, numFighters, type, location } = queryParams;
 
   let numGymsText =
     numSearchResults === 1 ? "1 Gym" : `${numSearchResults} Gyms`;
@@ -30,7 +27,7 @@ export function formatSearchInfo(queryParams, numSearchResults) {
 
   const smallQueryText = `${numGymsText} Found ~ ${
     (!!location && location) || "Anywhere"
-  } ~ ${numFightersText} ~ ${(!!type && type) || "All"}`;
+  } ~ ${numFightersText}`;
 
   const queryInfo = {
     formattedNumGyms: numGymsText,
@@ -42,18 +39,6 @@ export function formatSearchInfo(queryParams, numSearchResults) {
   };
 
   return queryInfo;
-}
-
-export function getQueryBooleans(queryParams) {
-  const { type, location, startDate, endDate } = queryParams;
-  const routerBooleans = {
-    hasType: !!type,
-    hasLocation: !!location,
-    hasStartDate: !!startDate,
-    hasEndDate: !!endDate,
-  };
-
-  return routerBooleans;
 }
 
 // * FILTERS * \\

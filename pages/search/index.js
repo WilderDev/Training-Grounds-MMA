@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/Layout";
@@ -5,23 +6,26 @@ import GymInfoCard from "../../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
 import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
-import { formatSearchInfo, getQueryBooleans } from "../../utils/search.helpers";
-import { toTitleCase } from "../../utils/string.helpers";
+import { formatSearchInfo } from "../../utils/search.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
 
   console.log("searchResults:", searchResults);
   const { location, type, numFighters, accommodation } = router.query;
-  // TSK: Call inside useEffect
-  const {
-    formattedNumFighters,
-    formattedNumGyms,
-    dateRange,
-    placeholder,
-    title,
-    smallQuery,
-  } = formatSearchInfo(router.query, searchResults.length);
+  const [placeholder, setPlaceholder] = useState("");
+  const [title, setTitle] = useState("");
+  const [smallQuery, setSmallQuery] = useState("");
+
+  useEffect(() => {
+    let { placeholder, title, smallQuery } = formatSearchInfo(
+      router.query,
+      searchResults.length
+    );
+    setPlaceholder(placeholder);
+    setTitle(title);
+    setSmallQuery(smallQuery);
+  }, [router.query]);
 
   return (
     <Layout placeholder={placeholder}>
@@ -35,7 +39,7 @@ const LocationSearch = ({ searchResults }) => {
 
       <section className="flex mb-24">
         {/* Left side - Title && Cards */}
-        <div className="flex-grow pt-14 px-6">
+        <div className="flex-grow mx-auto md:mx-0 pt-14 md:px-6">
           {/* Top Info (Title) */}
           <p className="text-xs">{smallQuery}</p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
@@ -52,18 +56,16 @@ const LocationSearch = ({ searchResults }) => {
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
-            {searchResults?.map((gym) => (
-              <GymInfoCard key={v4()} info={gym} />
-            ))}
-
-            {searchResults.length === 0 && (
+            {searchResults?.length > 0 ? (
+              searchResults.map((gym) => <GymInfoCard key={v4()} info={gym} />)
+            ) : (
               <p>No camps found matching that description.</p>
             )}
           </div>
         </div>
 
         {/* Right Side - Map */}
-        {location && (
+        {searchResults.length && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
             <Map searchResults={searchResults} />
           </div>

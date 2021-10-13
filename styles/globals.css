@@ -4,7 +4,7 @@
 
 @layer base {
   section {
-    @apply max-w-7xl mx-auto px-8 sm:px-16;
+    @apply max-w-[1600px] mx-auto px-4 sm:px-16;
   }
 }
 
