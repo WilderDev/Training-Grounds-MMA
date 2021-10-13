@@ -6,22 +6,22 @@ import { v4 } from "uuid";
 import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo, getQueryBooleans } from "../../utils/search.helpers";
+import { toTitleCase } from "../../utils/string.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
 
   console.log("searchResults:", searchResults);
   const { location, type, numFighters, accommodation } = router.query;
+  // TSK: Call inside useEffect
   const {
     formattedNumFighters,
     formattedNumGyms,
     dateRange,
     placeholder,
     title,
+    smallQuery,
   } = formatSearchInfo(router.query, searchResults.length);
-  const { hasType, hasLocation, hasStartDate, hasEndDate } = getQueryBooleans(
-    router.query
-  );
 
   return (
     <Layout placeholder={placeholder}>
@@ -37,13 +37,9 @@ const LocationSearch = ({ searchResults }) => {
         {/* Left side - Title && Cards */}
         <div className="flex-grow pt-14 px-6">
           {/* Top Info (Title) */}
-          <p className="text-xs">
-            {formattedNumGyms} {location && `~ ${location}`}{" "}
-            {numFighters && `~ ${formattedNumFighters}`} {type && `~ ${type}`}{" "}
-            {accommodation && `${accommodation} ~`}
-          </p>
+          <p className="text-xs">{smallQuery}</p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
-            {type && type} Gyms {location && `in ${location}`}
+            {type && type.toUpperCase()} Gyms {location && `in ${location}`}
           </h1>
           <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
             {/* TSK: These should filter the searchResults */}

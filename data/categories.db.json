@@ -12,7 +12,7 @@
   {
     "img": "https://source.unsplash.com/500x500/?muay-thai",
     "title": "Muay Thai",
-    "href": "/search?type=muay&numFighters=1-thai"
+    "href": "/search?type=muay-thai&numFighters=1-thai"
   },
   {
     "img": "https://source.unsplash.com/500x500/?bjj",

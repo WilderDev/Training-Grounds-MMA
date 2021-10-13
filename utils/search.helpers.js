@@ -1,8 +1,12 @@
 // TSK: Pull out location, startDate, endDate, numFighters, type, minPrice, maxPrice,
+
+import { format } from "date-fns";
+
 // saved, minRating, accommodation, isFeatured. Skill level, etc from router.query,
 export function formatSearchInfo(queryParams, numSearchResults) {
   console.log("queryParams:", queryParams);
-  const { startDate, endDate, numFighters, type, accommodation } = queryParams;
+  const { startDate, endDate, numFighters, type, accommodation, location } =
+    queryParams;
 
   let numGymsText =
     numSearchResults === 1 ? "1 Gym" : `${numSearchResults} Gyms`;
@@ -14,18 +18,19 @@ export function formatSearchInfo(queryParams, numSearchResults) {
     dateRangeText = `${formattedStartDate} - ${formattedEndDate}`;
   }
 
-  const placeholderText = null;
-  const titleText = null;
+  const placeholderText = `${(!!location && location) || "Anywhere"} | ${
+    (!!type && type.toUpperCase()) || "Training Camps"
+  } | ${(!!dateRangeText && dateRangeText) || "Soon"} | ${
+    numFightersText && `${numFightersText} Fighters`
+  }`;
 
-  //   placeholder={`${(hasLocation && location) || "Anywhere"} | ${
-  //         (hasType && type) || "Training Camps"
-  //       } | ${(dateRange && dateRange) || "Soon"} | ${
-  //         formattedNumFighters && `${formattedNumFighters} Fighters`
-  //       }`}
+  const titleText = `${(!!location && location) || "Search"} | ${
+    (!!type && type.toUpperCase()) || "Martial Arts"
+  } Training Camps | Training Grounds | Training Camp Finder`;
 
-  // Title
-  // {hasLocation && location} | {hasType && type} Training Camps |
-  //           Training Grounds | Training Camp Finder
+  const smallQueryText = `${numGymsText} Found ~ ${
+    (!!location && location) || "Anywhere"
+  } ~ ${numFightersText} ~ ${(!!type && type) || "All"}`;
 
   const queryInfo = {
     formattedNumGyms: numGymsText,
@@ -33,6 +38,7 @@ export function formatSearchInfo(queryParams, numSearchResults) {
     dateRange: dateRangeText,
     placeholder: placeholderText,
     title: titleText,
+    smallQuery: smallQueryText,
   };
 
   return queryInfo;
