@@ -12,7 +12,7 @@ const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
 
   console.log("searchResults:", searchResults);
-  const { location, type, numFighters, accommodation } = router.query;
+  const { location, type } = router.query;
   const [placeholder, setPlaceholder] = useState("");
   const [title, setTitle] = useState("");
   const [smallQuery, setSmallQuery] = useState("");

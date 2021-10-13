@@ -6,18 +6,13 @@
 
 ## MVP TODO
 
-- [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
-
-- [MongoDB Database](https://cloud.mongodb.com/v2/6158f53bdd38a621f8c8c54c#clusters)
-
-  - User Authentication (Users and Owners)
-  - Dummy Training Camps
-
-- Footer links and pages
-
-- Fix that calendar to not show last week/or anything in the past
-
-- Responsive shit
+1. Filter Click UI
+2. Filter Click Logic
+3. Calendar Sidebar Options Removed/Replaced
+4. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
+5. User Authentication
+6. Footer Links & Pages
+7. Responsive every page
 
 ---
 
@@ -45,8 +40,6 @@
 - Authentication page transitions
 
 - Forgot Password functionality
-
-- Alt name: GoJuGyms
 
 - SEO Head tags description
 
