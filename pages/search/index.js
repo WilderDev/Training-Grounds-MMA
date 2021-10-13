@@ -1,48 +1,32 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { format } from "date-fns";
 import Layout from "../../components/layout/Layout";
 import GymInfoCard from "../../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
 import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
+import { formatSearchInfo, getQueryBooleans } from "../../utils/search.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
-  // TSK:Use these for filters and sorts
-  // TSK: Pull out location, startDate, endDate, numFighters, type, minPrice, maxPrice, saved, minRating, accommodation, isFeatured. Skill level, etc from router.query,
-  const { location, startDate, endDate, numFighters, type, accommodation } =
-    router.query;
 
   console.log("searchResults:", searchResults);
-
-  // TSK: abstract these to a new helper file
-  const formattedNumGyms =
-    searchResults.length === 1 ? "1 Gym" : `${searchResults.length} Gyms`;
-  const formattedNumFighters =
-    numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
-  let formattedStartDate;
-  let formattedEndDate;
-  let dateRange;
-  if (startDate && endDate) {
-    formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-    formattedEndDate = format(new Date(endDate), "dd MMMM yy");
-    dateRange = `${formattedStartDate} - ${formattedEndDate}`;
-  }
+  const { location, type, numFighters, accommodation } = router.query;
+  const {
+    formattedNumFighters,
+    formattedNumGyms,
+    dateRange,
+    placeholder,
+    title,
+  } = formatSearchInfo(router.query, searchResults.length);
+  const { hasType, hasLocation, hasStartDate, hasEndDate } = getQueryBooleans(
+    router.query
+  );
 
   return (
-    <Layout
-      placeholder={`${(location && location) || "Anywhere"} | ${
-        (type && type) || "Training Camps"
-      } | ${(dateRange && dateRange) || "Soon"} | ${
-        formattedNumFighters && `${formattedNumFighters} Fighters`
-      }`}
-    >
+    <Layout placeholder={placeholder}>
       <Head>
-        <title>
-          {location && location} | {type && type} Training Camps | Training
-          Grounds | Training Camp Finder
-        </title>
+        <title>{title}</title>
         <meta
           name="description"
           content="Find MMA gyms, groups, instructors, masters, and fighters around the world - all made possible by hosts on Training Grounds MMA. Search page."
