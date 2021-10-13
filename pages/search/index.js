@@ -78,7 +78,7 @@ const LocationSearch = ({ searchResults }) => {
         {/* Right Side - Map */}
         {location && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-            {/* <Map searchResults={searchResults} /> */}
+            <Map searchResults={searchResults} />
           </div>
         )}
       </section>
