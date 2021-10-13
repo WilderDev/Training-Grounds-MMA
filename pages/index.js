@@ -35,9 +35,6 @@ export default function Home({ locationGridData, categoryCardsData }) {
 }
 
 export async function getStaticProps() {
-  {
-    /* TSK: Look for Martial Arts API's */
-  }
   const locationGridData = getAllLocations();
   const categoryCardsData = getAllCategories();
 

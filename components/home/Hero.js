@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-grayblue-900" />
       <Image
         src={HeroBg}
-        alt="Hero background tsk"
+        alt="Hero Background Muay Thai fighter kicking a heavy bag in a gym with a mirror."
         layout="fill"
         objectFit="cover"
         objectPosition="center"

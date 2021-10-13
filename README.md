@@ -44,3 +44,5 @@
 - SEO Head tags description
 
 - Search as the user moves the map
+
+- Internationalization

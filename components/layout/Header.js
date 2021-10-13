@@ -10,6 +10,10 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { v4 } from "uuid";
 import { classNames } from "../../utils/misc.helpers";
+import {
+  defaultInputRanges,
+  defaultStaticRanges,
+} from "../../utils/calendar.helpers";
 
 // TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
 
@@ -40,6 +44,7 @@ const dropdownLinks = [
 
 const Header = ({ placeholder }) => {
   const router = useRouter();
+
   const [searchInput, setSearchInput] = useState("");
   const [numFighters, setNumFighters] = useState(1);
   const [startDate, setStartDate] = useState(new Date());
@@ -90,7 +95,6 @@ const Header = ({ placeholder }) => {
         </p>
       </div>
 
-      {/* TSK: Create this as own component */}
       {/* TSK: Search should have training options instead of the Last Week... etc */}
       {/* Center - Search */}
       <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
@@ -109,7 +113,6 @@ const Header = ({ placeholder }) => {
 
       {/* Right - Links */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
-        {/* TSK */}
         <Link href="/gym-owners-join-us">
           <a className="hidden md:inline cursor-pointer">Add your gym</a>
         </Link>
@@ -162,15 +165,17 @@ const Header = ({ placeholder }) => {
         </Popover>
       </div>
 
-      {/* TSK: Abstract this to own components */}
       {/* Bot - Calendar */}
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-4">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}
+            disabledDates={[new Date().getDate() - 1]}
             rangeColors={["#ef4444"]}
             onChange={handleSelectDates}
+            staticRanges={defaultStaticRanges}
+            inputRanges={defaultInputRanges}
           />
           <div className="flex items-center border-b mb-4">
             <h2 className="text-2xl flex-grow font-semibold">
