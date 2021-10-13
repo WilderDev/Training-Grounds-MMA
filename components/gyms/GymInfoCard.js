@@ -7,23 +7,22 @@ const GymInfoCard = ({ info }) => {
   const {
     title,
     description,
-    img,
     location,
-    lat,
-    long,
-    price,
-    total,
-    star,
-    accommodation,
-    isFeatured,
+    pricing,
+    rating,
+    imageURL,
+    features,
+    training_options,
   } = info;
+
+  console.log("info:", info);
 
   return (
     <div className="flex py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
       {/* Image */}
-      <div className="relative h-24 w-40 flex-shrink-0 md:h-52 md:w-80">
+      <div className="relative h-24 w-40 flex-shrink-0 md:h-60 md:w-80 self-center">
         <Image
-          src={img}
+          src={imageURL}
           alt={title}
           layout="fill"
           objectFit="cover"
@@ -49,19 +48,27 @@ const GymInfoCard = ({ info }) => {
         <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
           {description}
         </p>
+        {/* Features */}
+        <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
+          {features}
+        </p>
 
         {/* Bottom Row */}
         <div className="flex justify-between pt-5">
           {/* Star */}
           <p className="flex items-center">
             <StarIcon className="h-5 text-red-400" />
-            {star}
+            {rating}
           </p>
 
           {/* Price */}
           <div className="">
-            <p className="text-lg font-semibold pb-2 lg:text-2xl">{price}</p>
-            <p className="text-right font-extralight">{total}</p>
+            <p className="text-right font-extralight">Starting at</p>
+            <p className="text-lg font-semibold pb-2 lg:text-2xl">
+              {/* TSK: use currency package */}
+              {pricing.currency === "USD" && "$"}
+              {training_options[0].prices.perDay}/day
+            </p>
           </div>
         </div>
       </div>

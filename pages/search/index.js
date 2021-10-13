@@ -10,24 +10,13 @@ import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
   // TSK:Use these for filters and sorts
-  const {
-    location,
-    startDate,
-    endDate,
-    numFighters,
-    type,
-    minPrice,
-    maxPrice,
-    saved,
-    minRating,
-    accommodation,
-    isFeatured,
-  } = router.query;
-  // const lengthOfStay = TSK
-  // Skill level
+  // TSK: Pull out location, startDate, endDate, numFighters, type, minPrice, maxPrice, saved, minRating, accommodation, isFeatured. Skill level, etc from router.query,
+  const { location, startDate, endDate, numFighters, type, accommodation } =
+    router.query;
 
   console.log("searchResults:", searchResults);
 
+  // TSK: abstract these to a new helper file
   const formattedNumGyms =
     searchResults.length === 1 ? "1 Gym" : `${searchResults.length} Gyms`;
   const formattedNumFighters =
@@ -76,9 +65,13 @@ const LocationSearch = ({ searchResults }) => {
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
-            {/* {searchResults?.map((gym) => (
+            {searchResults?.map((gym) => (
               <GymInfoCard key={v4()} info={gym} />
-            ))} */}
+            ))}
+
+            {searchResults.length === 0 && (
+              <p>No camps found matching that description.</p>
+            )}
           </div>
         </div>
 
