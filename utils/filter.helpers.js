@@ -9,7 +9,10 @@ export function buildFilterByQuery({
   endDate,
   numFighters,
 }) {
-  let lengthOfStay = getDaysBetweenDates(endDate, startDate);
+  let lengthOfStay;
+
+  if (startDate && endDate)
+    lengthOfStay = getDaysBetweenDates(endDate, startDate);
 
   let filter = {
     ...(location && {

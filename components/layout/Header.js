@@ -90,6 +90,8 @@ const Header = ({ placeholder }) => {
         </p>
       </div>
 
+      {/* TSK: Create this as own component */}
+      {/* TSK: Search should have training options instead of the Last Week... etc */}
       {/* Center - Search */}
       <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
         <input
@@ -160,6 +162,7 @@ const Header = ({ placeholder }) => {
         </Popover>
       </div>
 
+      {/* TSK: Abstract this to own components */}
       {/* Bot - Calendar */}
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-4">

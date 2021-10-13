@@ -21,15 +21,22 @@ const LocationSearch = ({ searchResults }) => {
     searchResults.length === 1 ? "1 Gym" : `${searchResults.length} Gyms`;
   const formattedNumFighters =
     numFighters === "1" ? "1 Fighter" : `${numFighters} Fighters`;
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
-  const dateRange = `${formattedStartDate} - ${formattedEndDate}`;
+  let formattedStartDate;
+  let formattedEndDate;
+  let dateRange;
+  if (startDate && endDate) {
+    formattedStartDate = format(new Date(startDate), "dd MMMM yy");
+    formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+    dateRange = `${formattedStartDate} - ${formattedEndDate}`;
+  }
 
   return (
     <Layout
-      placeholder={`${location && location} | ${type && type} | ${
-        dateRange && dateRange
-      } | ${formattedNumFighters && `${formattedNumFighters} Fighters`}`}
+      placeholder={`${(location && location) || "Anywhere"} | ${
+        (type && type) || "Training Camps"
+      } | ${(dateRange && dateRange) || "Soon"} | ${
+        formattedNumFighters && `${formattedNumFighters} Fighters`
+      }`}
     >
       <Head>
         <title>

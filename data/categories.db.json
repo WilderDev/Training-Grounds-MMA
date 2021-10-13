@@ -2,21 +2,21 @@
   {
     "img": "https://source.unsplash.com/500x500/?mma",
     "title": "MMA",
-    "href": "/search/category?type=mma"
+    "href": "/search?type=mma&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/500x500/?boxing",
     "title": "Boxing",
-    "href": "/search/category?type=boxing"
+    "href": "/search?type=boxing&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/500x500/?muay-thai",
     "title": "Muay Thai",
-    "href": "/search/category?type=muay-thai"
+    "href": "/search?type=muay&numFighters=1-thai"
   },
   {
     "img": "https://source.unsplash.com/500x500/?bjj",
     "title": "Brazillian JuJitsu",
-    "href": "/search/category?type=bjj"
+    "href": "/search?type=bjj&numFighters=1"
   }
 ]
