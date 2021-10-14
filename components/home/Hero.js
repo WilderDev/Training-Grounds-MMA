@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import HeroBg from "../../public/images/hero-bg.jpg";
+// import HeroBg from "../../public/images/hero-bg.jpg";
 
 const Hero = () => {
   const router = useRouter();
@@ -9,14 +9,14 @@ const Hero = () => {
     <section className="relative h-[50vh] flex items-center justify-center">
       <div className="absolute top-0 left-0 w-full h-full bg-grayblue-900" />
       <Image
-        src={"/images/hero-bg.jpg" || HeroBg}
+        src="/images/hero-bg.jpg"
         alt="Hero Background Muay Thai fighter kicking a heavy bag in a gym with a mirror."
         layout="fill"
         objectFit="cover"
         objectPosition="center"
         quality={100}
         priority={true}
-        placeholder="blur"
+        // placeholder="blur"
         className="brightness-0 opacity-30"
       />
 

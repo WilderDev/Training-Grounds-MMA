@@ -22,7 +22,7 @@
 
 ### OPTIMIZATIONS
 
-- Google Lighthouse
+- Google Lighthouse (ON ALL PAGES)
   - PWA
   - Accessibility
   - Perf
