@@ -67,7 +67,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <div className="relative h-10 w-10 opacity-60">
+            <div className="relative h-10 w-10">
               <Image
                 src="/icons/Training-Grounds_Logo-Icon.png"
                 alt="Training Grounds Logo Triangle Arrow with open space."
