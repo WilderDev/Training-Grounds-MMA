@@ -4,12 +4,26 @@
 
 @layer base {
   section {
-    @apply max-w-[1600px] mx-auto px-4 sm:px-16;
+    @apply max-w-[1700px] mx-auto px-4 sm:px-8;
   }
 }
 
 @layer components {
   .button {
     @apply px-4 py-2 border rounded-full cursor-pointer hover:shadow-lg active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out;
+  }
+
+  .checkbox input:checked ~ span {
+    background-color: red;
+  }
+
+  .checkbox span:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox input:checked ~ span:after {
+    display: block;
   }
 }

@@ -43,6 +43,12 @@
 
 - SEO Head tags description
 
-- Search as the user moves the map
+- Search as the user moves the map and button to make map full screen
+
+- Clicking the love heart should check if user is authenticated first.
+
+### MAJOR
+
+- More in depth filters on search page
 
 - Internationalization

@@ -8,6 +8,7 @@ import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo } from "../../utils/search.helpers";
 import { toTitleCase, toTitleCases } from "../../utils/string.helpers";
+import Filters from "../../components/minor/Filters";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
@@ -47,14 +48,9 @@ const LocationSearch = ({ searchResults }) => {
             {type && toTitleCase(type)} Gyms{" "}
             {location && `in ${toTitleCases(location)}`}
           </h1>
-          <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
-            {/* TSK: These should filter the searchResults */}
-            <p className="button">Accommodation</p>
-            <p className="button">Type of Gym</p>
-            <p className="button">Price</p>
-            <p className="button">Location</p>
-            <p className="button">More Filters</p>
-          </div>
+
+          {/* Filters */}
+          <Filters />
 
           {/* Results (Cards) */}
           <div className="flex flex-col">

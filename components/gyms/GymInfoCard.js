@@ -6,6 +6,7 @@ import { StarIcon } from "@heroicons/react/solid";
 const GymInfoCard = ({ info }) => {
   const {
     title,
+    name,
     description,
     city,
     country,
@@ -21,13 +22,15 @@ const GymInfoCard = ({ info }) => {
 
   return (
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
-      <Link href={`training-camps/${href}`}>
+      <Link href={`/training-camps/${href}`}>
         <a
           target={title}
           rel="noopener noreferrer"
           aria-labelledby={title}
-          className="w-full h-full absolute z-40"
-        ></a>
+          className="w-full h-full absolute z-40 opacity-0"
+        >
+          See more details about training at {name} - {title}
+        </a>
       </Link>
 
       {/* Image */}
@@ -56,7 +59,7 @@ const GymInfoCard = ({ info }) => {
         </div>
 
         {/* Title */}
-        <h4 className="text-xl">{title}</h4>
+        <h3 className="text-xl">{title}</h3>
 
         {/* Divider Line */}
         <div className="border-b w-10 pt-2" />
