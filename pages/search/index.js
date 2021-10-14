@@ -26,7 +26,7 @@ const LocationSearch = ({ searchResults }) => {
     setPlaceholder(placeholder);
     setTitle(title);
     setSmallQuery(smallQuery);
-  }, [router.query]);
+  }, [router.query, searchResults.length]);
 
   return (
     <Layout placeholder={placeholder}>

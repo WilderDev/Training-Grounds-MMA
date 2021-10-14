@@ -9,7 +9,7 @@ const Hero = () => {
     <section className="relative h-[50vh] flex items-center justify-center">
       <div className="absolute top-0 left-0 w-full h-full bg-grayblue-900" />
       <Image
-        src={HeroBg}
+        src={HeroBg || "/images/hero-bg.jpg"}
         alt="Hero Background Muay Thai fighter kicking a heavy bag in a gym with a mirror."
         layout="fill"
         objectFit="cover"
