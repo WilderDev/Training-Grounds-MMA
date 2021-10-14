@@ -9,11 +9,14 @@ import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo } from "../../utils/search.helpers";
 import { toTitleCase, toTitleCases } from "../../utils/string.helpers";
 import Filters from "../../components/minor/Filters";
+import { sender } from "../../utils/http.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
+  const [resFilters, setResFilters] = useState([]);
+  const [filteredGyms, setFilteredGyms] = useState(searchResults);
 
-  console.log("searchResults:", searchResults);
+  // console.log("searchResults:", searchResults);
   const { location, type } = router.query;
   const [placeholder, setPlaceholder] = useState("");
   const [title, setTitle] = useState("");
@@ -22,12 +25,26 @@ const LocationSearch = ({ searchResults }) => {
   useEffect(() => {
     let { placeholder, title, smallQuery } = formatSearchInfo(
       router.query,
-      searchResults.length
+      filteredGyms.length
     );
     setPlaceholder(placeholder);
     setTitle(title);
     setSmallQuery(smallQuery);
-  }, [router.query, searchResults.length]);
+  }, [router.query, filteredGyms.length]);
+
+  useEffect(() => {
+    console.log("resFilters:", resFilters);
+    async function fetchData() {
+      const res = await sender("/api/search-results", {
+        filters: resFilters,
+      });
+
+      if (res && res.message === "Success!") {
+        setFilteredGyms(res.filterResults);
+      }
+    }
+    fetchData();
+  }, [resFilters]);
 
   return (
     <Layout placeholder={placeholder}>
@@ -50,12 +67,12 @@ const LocationSearch = ({ searchResults }) => {
           </h1>
 
           {/* Filters */}
-          <Filters />
+          <Filters filters={resFilters} setFilters={setResFilters} />
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
-            {searchResults?.length > 0 ? (
-              searchResults.map((gym) => <GymInfoCard key={v4()} info={gym} />)
+            {filteredGyms?.length > 0 ? (
+              filteredGyms.map((gym) => <GymInfoCard key={v4()} info={gym} />)
             ) : (
               <p>No camps found matching that description.</p>
             )}
@@ -63,9 +80,9 @@ const LocationSearch = ({ searchResults }) => {
         </div>
 
         {/* Right Side - Map */}
-        {searchResults.length && (
+        {filteredGyms.length && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-            <Map searchResults={searchResults} />
+            <Map searchResults={filteredGyms} />
           </div>
         )}
       </section>

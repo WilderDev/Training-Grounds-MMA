@@ -18,7 +18,7 @@ const GymInfoCard = ({ info }) => {
     href,
   } = info;
 
-  console.log("info:", info);
+  // console.log("info:", info);
 
   return (
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
