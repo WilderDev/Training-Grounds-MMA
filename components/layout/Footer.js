@@ -74,7 +74,7 @@ const Footer = () => {
                 layout="fill"
               />
             </div>
-            <p className="text-gray-500 text-base">
+            <p className="text-gray-600 text-base">
               Bringing fighters and trainers together. TSK.
             </p>
             <div className="flex space-x-6">
@@ -82,7 +82,7 @@ const Footer = () => {
                 <a
                   key={v4()}
                   href={item.href}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-500 hover:text-gray-600"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -93,14 +93,14 @@ const Footer = () => {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                <h3 className="text-sm font-bold text-gray-500 tracking-wider uppercase">
                   About
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.about.map((item) => (
                     <li key={v4()}>
                       <Link href={item.href}>
-                        <a className="text-base text-gray-500 hover:text-gray-900">
+                        <a className="text-base text-gray-600 hover:text-gray-900">
                           {item.name}
                         </a>
                       </Link>
@@ -109,14 +109,14 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                <h3 className="text-sm font-bold text-gray-500 tracking-wider uppercase">
                   Community
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.community.map((item) => (
                     <li key={v4()}>
                       <Link href={item.href}>
-                        <a className="text-base text-gray-500 hover:text-gray-900">
+                        <a className="text-base text-gray-600 hover:text-gray-900">
                           {item.name}
                         </a>
                       </Link>
@@ -127,14 +127,14 @@ const Footer = () => {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                <h3 className="text-sm font-bold text-gray-500 tracking-wider uppercase">
                   Hosting
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.hosting.map((item) => (
                     <li key={v4()}>
                       <Link href={item.href}>
-                        <a className="text-base text-gray-500 hover:text-gray-900">
+                        <a className="text-base text-gray-600 hover:text-gray-900">
                           {item.name}
                         </a>
                       </Link>
@@ -143,14 +143,14 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                <h3 className="text-sm font-bold text-gray-500 tracking-wider uppercase">
                   Support
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={v4()}>
                       <Link href={item.href}>
-                        <a className="text-base text-gray-500 hover:text-gray-900">
+                        <a className="text-base text-gray-600 hover:text-gray-900">
                           {item.name}
                         </a>
                       </Link>

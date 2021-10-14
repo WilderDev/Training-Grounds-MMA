@@ -122,6 +122,7 @@ const Header = ({ placeholder }) => {
           {({ open }) => (
             <>
               <Popover.Button
+                aria-label="user details and options dropdown menu"
                 className={classNames(
                   open ? "text-gray-900" : "text-gray-500",
                   "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
