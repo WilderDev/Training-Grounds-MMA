@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import DropdownCheckbox from "./DropdownCheckbox";
 
 const Filters = ({ filters, setFilters }) => {
-  const [trainingModalities, setTrainingModalities] = useState([]);
+  const [trainingModalities, setTrainingModalities] = useState(
+    filters.trainingModalities
+  );
 
   const updateTrainingModalities = (styleName) => {
+    console.log("trainingModalities:", trainingModalities);
     if (trainingModalities.includes(styleName)) {
       const newArr = trainingModalities.filter((style) => style !== styleName);
       setTrainingModalities(newArr);

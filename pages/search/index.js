@@ -31,7 +31,7 @@ const LocationSearch = ({ searchResults }) => {
   //   ...
   // }
   const [allFilters, setAllFilters] = useState({
-    trainingModalities: [],
+    trainingModalities: type ? [toTitleCases(type)] : [],
     priceRange: { min: 0, max: 10000 },
   });
 
