@@ -32,7 +32,7 @@ const LocationSearch = ({ searchResults }) => {
   // }
   const [allFilters, setAllFilters] = useState({
     trainingModalities: [],
-    // . . .
+    priceRange: { min: 0, max: 10000 },
   });
 
   // Screen Content State
@@ -56,6 +56,7 @@ const LocationSearch = ({ searchResults }) => {
     async function fetchData() {
       const res = await sender("/api/search-results", {
         filters: allFilters,
+        location: location,
       });
 
       if (res && res.message === "Success!") {
@@ -63,7 +64,7 @@ const LocationSearch = ({ searchResults }) => {
       }
     }
     fetchData();
-  }, [allFilters]);
+  }, [allFilters, location]);
 
   return (
     <Layout placeholder={placeholder}>

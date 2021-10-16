@@ -1,20 +1,23 @@
 import { buildFilterByQuery } from "../../utils/filter.helpers";
 import { connectToDatabase } from "../../utils/mongo.helpers";
+import { toTitleCases } from "../../utils/string.helpers";
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
-    const { filters, sorts } = req.body;
+    const { filters, sorts, location } = req.body;
+    const formattedLocation = location ? toTitleCases(location) : null;
     console.log("filters:", filters);
-
     try {
       const { db } = await connectToDatabase();
 
       const filterQuery = {
+        location: formattedLocation,
         trainingModalities: filters.trainingModalities,
+        priceRange: filters.priceRange,
       };
 
       const dbQueryFilter = buildFilterByQuery(filterQuery);
-      console.log("dbQueryFilter:", dbQueryFilter);
+
       const filteredGyms = await db
         .collection("Active")
         .find({})

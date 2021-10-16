@@ -9,42 +9,42 @@
     "img": "https://source.unsplash.com/128x128/?thailand",
     "location": "Thailand",
     "distance": "4.5-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=thailand&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?texas",
     "location": "Texas",
     "distance": "4.5-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=texas&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?arizona",
     "location": "Arizona",
     "distance": "4-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=arizona&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?oregon",
     "location": "Oregon",
     "distance": "45-minutes away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=oregon&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?brazil",
     "location": "Brazil",
     "distance": "4.5-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=brazil&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?taiwan",
     "location": "Taiwan",
     "distance": "6-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=taiwan&numFighters=1"
   },
   {
     "img": "https://source.unsplash.com/128x128/?china",
     "location": "China",
     "distance": "2-hours away",
-    "href": "/search?location=london&numFighters=1"
+    "href": "/search?location=china&numFighters=1"
   }
 ]
