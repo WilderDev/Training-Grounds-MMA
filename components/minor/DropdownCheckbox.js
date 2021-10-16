@@ -2,35 +2,16 @@ import { Fragment, useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { v4 } from "uuid";
 
-const allTrainingModalities = [
-  {
-    name: "MMA",
-    id: "mma",
-    value: "Mixed Martial Arts",
-    description: "Mixed Martial Arts",
-    ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-mma",
-  },
-  {
-    name: "Muay Thai",
-    id: "muay-thai",
-    value: "Muay Thai",
-    description: "Art of 8 Limbs",
-    ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-muay-thai",
-  },
-  {
-    name: "BJJ",
-    id: "bjj",
-    value: "Brazilian Jiu Jitsu",
-    description: "Brazilian Jiu-Jitsu",
-    ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-bjj",
-  },
-];
-
-const DropdownCheckbox = ({ trainingModalities, updateModalities }) => {
+const DropdownCheckbox = ({
+  filterOptions,
+  selectedOptions,
+  updateOptions,
+  title,
+}) => {
   return (
     <Menu as="div" className="relative  z-30" role="menu">
       <div>
-        <Menu.Button className="button">Fighting Styles</Menu.Button>
+        <Menu.Button className="button">{title}</Menu.Button>
       </div>
 
       <Transition
@@ -47,36 +28,39 @@ const DropdownCheckbox = ({ trainingModalities, updateModalities }) => {
           className=" absolute top-12 left-0 z-50 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
         >
           <fieldset className="border-t border-b border-gray-200">
-            <legend className="sr-only">Fighting Styles</legend>
+            <legend className="sr-only">{title}</legend>
             <div className="divide-y divide-gray-200 px-4">
-              {allTrainingModalities?.map((style) => (
+              {filterOptions?.map((option) => (
                 <div
                   key={v4()}
                   className="relative flex items-start py-4"
                   aria-disabled="false"
                   role="group"
-                  aria-labelledby={style.ariaLabelledBy}
+                  aria-labelledby={option.ariaLabelledBy}
                 >
                   <div className="mr-5 flex items-center h-5">
                     <input
                       type="checkbox"
-                      id={style.id}
-                      name={style.name}
-                      checked={trainingModalities.includes(style.value)}
-                      onChange={() => updateModalities(style.value)}
-                      aria-describedby={`${style.id}-description`}
+                      id={option.id}
+                      name={option.id}
+                      checked={selectedOptions.includes(option.value)}
+                      onChange={() => updateOptions(option.value)}
+                      aria-describedby={`${option.id}-description`}
                       className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                     />
                   </div>
                   <div className="min-w-0 flex-1 text-sm">
                     <label
-                      htmlFor={style.name}
+                      htmlFor={option.id}
                       className="font-medium text-gray-700 w-full block h-full"
                     >
-                      {style.name}
+                      {option.name}
                     </label>
-                    <p id={`${style.id}-description`} className="text-gray-500">
-                      {style.description}
+                    <p
+                      id={`${option.id}-description`}
+                      className="text-gray-500"
+                    >
+                      {option.description}
                     </p>
                   </div>
                 </div>

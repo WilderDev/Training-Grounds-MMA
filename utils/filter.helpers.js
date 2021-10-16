@@ -9,6 +9,7 @@ export function buildFilterByQuery({
   endDate,
   numFighters,
   trainingModalities,
+  priceTier,
 }) {
   let lengthOfStay;
 
@@ -27,6 +28,9 @@ export function buildFilterByQuery({
     }),
     ...(trainingModalities?.length > 0 && {
       styles_offered: { $in: trainingModalities },
+    }),
+    ...(priceTier?.length > 0 && {
+      price_tier: { $in: priceTier },
     }),
     isAvailable: { $eq: true },
   };

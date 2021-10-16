@@ -6,14 +6,14 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const { filters, sorts, location } = req.body;
     const formattedLocation = location ? toTitleCases(location) : null;
-    console.log("filters:", filters);
+
     try {
       const { db } = await connectToDatabase();
 
       const filterQuery = {
         location: formattedLocation,
         trainingModalities: filters.trainingModalities,
-        priceRange: filters.priceRange,
+        priceTier: filters.priceRange,
       };
 
       const dbQueryFilter = buildFilterByQuery(filterQuery);

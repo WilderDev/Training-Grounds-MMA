@@ -15,8 +15,6 @@ import {
   defaultStaticRanges,
 } from "../../utils/calendar.helpers";
 
-// TSK: useMedia React Hook: https://github.com/vercel/next.js/discussions/14810 (for the logo text showing on certain screen widths)
-
 const dropdownLinks = [
   {
     name: "Sign up",
@@ -78,7 +76,7 @@ const Header = ({ placeholder }) => {
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
       {/* Left - Logo */}
       <div
-        className="hidden relative sm:flex items-center h-10 cursor-pointer my-auto"
+        className="hidden relative lg:flex items-center h-10 cursor-pointer my-auto"
         onClick={() => router.push("/")}
       >
         <Image
@@ -95,9 +93,8 @@ const Header = ({ placeholder }) => {
         </p>
       </div>
 
-      {/* TSK: Search should have training options instead of the Last Week... etc */}
       {/* Center - Search */}
-      <div className="flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
+      <div className="col-span-2 lg:col-span-1 flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
         <input
           type="search"
           placeholder={placeholder || "Where do you want to go?"}
@@ -186,7 +183,7 @@ const Header = ({ placeholder }) => {
             <UsersIcon className="h-5" />
             <input
               type="number"
-              className="w-12 pl-2 text-lg outline-none text-red-400"
+              className="w-12 pl-2 text-lg outline-none border-none text-red-400"
               min={1}
               value={numFighters}
               onChange={(e) => setNumFighters(e.target.value)}

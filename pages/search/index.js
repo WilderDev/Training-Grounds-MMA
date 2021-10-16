@@ -15,8 +15,9 @@ import { createArrayFromMultipleParams } from "../../utils/array.helpers";
 const LocationSearch = ({ searchResults }) => {
   // Router Query
   const router = useRouter();
-  const { location, fightingStyles } = router.query;
+  const { location, fightingStyles, priceRange } = router.query;
   const fightingStylesArr = createArrayFromMultipleParams(fightingStyles);
+  const priceRangeArr = createArrayFromMultipleParams(priceRange);
 
   // Search Results
   const [filteredGyms, setFilteredGyms] = useState(searchResults);
@@ -34,7 +35,7 @@ const LocationSearch = ({ searchResults }) => {
   // }
   const [allFilters, setAllFilters] = useState({
     trainingModalities: fightingStylesArr,
-    priceRange: { min: 0, max: 10000 },
+    priceRange: priceRangeArr,
   });
 
   // Screen Content State
