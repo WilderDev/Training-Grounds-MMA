@@ -2,39 +2,30 @@ import { useState, useEffect } from "react";
 import DropdownCheckbox from "./DropdownCheckbox";
 
 const Filters = ({ filters, setFilters }) => {
-  const [gymTypes, setGymTypes] = useState(() => ({
-    MMA: false,
-    MuayThai: false,
-    BJJ: false,
-  }));
+  const [trainingModalities, setTrainingModalities] = useState([]);
+
+  const updateTrainingModalities = (styleName) => {
+    if (trainingModalities.includes(styleName)) {
+      const newArr = trainingModalities.filter((style) => style !== styleName);
+      setTrainingModalities(newArr);
+    } else {
+      setTrainingModalities([...trainingModalities, styleName]);
+    }
+  };
 
   useEffect(() => {
-    const gymFilters = [];
-    for (let key in gymTypes) {
-      if (gymTypes[key] === true) {
-        gymFilters.push(key);
-      }
-    }
-
-    if (gymFilters.length === 0) {
-      setFilters({
-        ...filters,
-        gymFilters: null,
-      });
-    } else {
-      setFilters({
-        ...filters,
-        gymFilters,
-      });
-    }
-  }, [gymTypes]);
+    setFilters({
+      ...filters,
+      trainingModalities,
+    });
+  }, [trainingModalities]);
 
   return (
     <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
       {/* Type of Gym */}
       <DropdownCheckbox
-        selectedGymTypes={gymTypes}
-        setSelectedGymTypes={setGymTypes}
+        trainingModalities={trainingModalities}
+        updateModalities={updateTrainingModalities}
       />
 
       <p className="button">Price</p>

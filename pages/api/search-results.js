@@ -10,10 +10,8 @@ const handler = async (req, res) => {
       const { db } = await connectToDatabase();
 
       const filterQuery = {
-        types: filters.gymFilters,
+        trainingModalities: filters.trainingModalities,
       };
-
-      //  TSK: Refactor this to use { $in: [] }
 
       const dbQueryFilter = buildFilterByQuery(filterQuery);
       console.log("dbQueryFilter:", dbQueryFilter);

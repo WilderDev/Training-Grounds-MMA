@@ -22,6 +22,12 @@
 
 ### OPTIMIZATIONS
 
+- Data Schema . . . (Add: Geospacial location, cancelation_policy, amenities array, security_deposit, images, gym owner reference ) - [MongoDB AirBnB Dataset](https://docs.atlas.mongodb.com/sample-data/sample-airbnb/).
+
+- use SWR library for data fetching.
+
+- Use Context or useReducer instead of state all the time!
+
 - Google Lighthouse (ON ALL PAGES)
   - PWA
   - Accessibility
@@ -52,3 +58,9 @@
 - More in depth filters on search page
 
 - Internationalization
+
+<!-- For every booking Airbnb charges the guest 6-12% of the booking fee. Moreover Airbnb charges the host 3% for every successful transaction. -->
+
+<!-- Airbnb provides offers, promotional codes and credits to frequent travelers, as well as to hosts -->
+
+<!-- https://bmtoolbox.net/tools/business-model-canvas/ -->

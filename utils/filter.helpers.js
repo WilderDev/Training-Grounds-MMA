@@ -8,7 +8,7 @@ export function buildFilterByQuery({
   startDate,
   endDate,
   numFighters,
-  types,
+  trainingModalities,
 }) {
   let lengthOfStay;
 
@@ -25,8 +25,8 @@ export function buildFilterByQuery({
     ...(numFighters && {
       open_spaces: { $gte: parseInt(numFighters) },
     }),
-    ...(types && {
-      styles_offered: { $in: types },
+    ...(trainingModalities?.length > 0 && {
+      styles_offered: { $in: trainingModalities },
     }),
     isAvailable: { $eq: true },
   };

@@ -12,14 +12,35 @@ import Filters from "../../components/minor/Filters";
 import { sender } from "../../utils/http.helpers";
 
 const LocationSearch = ({ searchResults }) => {
+  // Router Query
   const router = useRouter();
-  const [resFilters, setResFilters] = useState([]);
-  const [filteredGyms, setFilteredGyms] = useState(searchResults);
   const { location, type } = router.query;
+
+  // Search Results
+  const [filteredGyms, setFilteredGyms] = useState(searchResults);
+
+  // Filters for Searches
+  //  * Object will look like:
+  //  {
+  //    trainingModalities: ["MMA"],
+  //    prices: { min: 100, max: 200 }
+  //    location: GEOLOCATION array? + Radius // Country // City (TSK)
+  //   skillLevels: ["Beginner", "Professional"]
+  //   numFighters: 1
+  //    datesRequried: { start: new Date(), end: new Date() + 10 }
+  //   ...
+  // }
+  const [allFilters, setAllFilters] = useState({
+    trainingModalities: [],
+    // . . .
+  });
+
+  // Screen Content State
   const [placeholder, setPlaceholder] = useState("");
   const [title, setTitle] = useState("");
   const [smallQuery, setSmallQuery] = useState("");
 
+  // Get Placeholder Data Content
   useEffect(() => {
     let { placeholder, title, smallQuery } = formatSearchInfo(
       router.query,
@@ -30,11 +51,11 @@ const LocationSearch = ({ searchResults }) => {
     setSmallQuery(smallQuery);
   }, [router.query, filteredGyms.length]);
 
+  // Get New Search Results Based on Filters
   useEffect(() => {
-    console.log("resFilters:", resFilters);
     async function fetchData() {
       const res = await sender("/api/search-results", {
-        filters: resFilters,
+        filters: allFilters,
       });
 
       if (res && res.message === "Success!") {
@@ -42,7 +63,7 @@ const LocationSearch = ({ searchResults }) => {
       }
     }
     fetchData();
-  }, [resFilters]);
+  }, [allFilters]);
 
   return (
     <Layout placeholder={placeholder}>
@@ -65,7 +86,7 @@ const LocationSearch = ({ searchResults }) => {
           </h1>
 
           {/* Filters */}
-          <Filters filters={resFilters} setFilters={setResFilters} />
+          <Filters filters={allFilters} setFilters={setAllFilters} />
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
