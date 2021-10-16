@@ -33,7 +33,7 @@ const Map = ({ searchResults }) => {
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
       {searchResults?.map((item) => (
-        <div key={v4()}>
+        <div key={v4()} className="min-h-[80vh]">
           <Marker
             longitude={item.longitude}
             latitude={item.latitude}

@@ -1,6 +1,6 @@
 import { getDaysBetweenDates } from "./time.helpers";
 
-// TSK: Add all the filters we can search by: [type, accommodation, isFeatured, saved, skill-level]
+// TSK: Add all the filters we can search by: [fightingStyles, accommodation, isFeatured, saved, skill-level]
 // Comparison Queries: https://docs.mongodb.com/manual/reference/operator/query-comparison/
 
 export function buildFilterByQuery({

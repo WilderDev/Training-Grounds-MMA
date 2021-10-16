@@ -3,8 +3,8 @@ import { toTitleCase, toTitleCases } from "./string.helpers";
 
 // TSK: Pull out  minPrice, maxPrice, saved, minRating, accommodation, isFeatured. . .
 export function formatSearchInfo(queryParams, numSearchResults) {
-  console.log("queryParams:", queryParams);
-  const { startDate, endDate, numFighters, type, location } = queryParams;
+  const { startDate, endDate, numFighters, fightingStyles, location, heading } =
+    queryParams;
 
   let numGymsText =
     numSearchResults === 1 ? "1 Gym" : `${numSearchResults} Gyms`;
@@ -18,17 +18,32 @@ export function formatSearchInfo(queryParams, numSearchResults) {
 
   const placeholderText = `${
     (!!location && toTitleCases(location)) || "Anywhere"
-  } | ${(!!type && toTitleCase(type)) || "Training Camps"} | ${
-    (!!dateRangeText && dateRangeText) || "Soon"
-  } | ${numFightersText && `${numFightersText} Fighters`}`;
+  } | ${
+    (!!fightingStyles && toTitleCases(fightingStyles)) || "Training Camps"
+  } | ${(!!dateRangeText && dateRangeText) || "Soon"} | ${
+    numFightersText && `${numFightersText} Fighters`
+  }`;
 
-  const titleText = `${(!!location && location) || "Search"} | ${
-    (!!type && toTitleCase(type)) || "Martial Arts"
+  const titleText = `${(!!location && toTitleCases(location)) || "Search"} | ${
+    (!!fightingStyles && toTitleCases(fightingStyles)) || "Martial Arts"
   } Training Camps | Training Grounds | Training Camp Finder`;
 
   const smallQueryText = `${numGymsText} Found ~ ${
     (!!location && toTitleCases(location)) || "Anywhere"
   } ~ ${numFightersText}`;
+
+  let gymHeading;
+  if (fightingStyles) {
+    gymHeading =
+      fightingStyles.split(",").length < 2
+        ? `${toTitleCases(fightingStyles)} Camps`
+        : "Training Camps By Styles";
+  } else {
+    gymHeading = "Training Camps";
+  }
+  const headingText = `${gymHeading} ${
+    location && `in ${toTitleCases(location)}`
+  }`;
 
   const queryInfo = {
     formattedNumGyms: numGymsText,
@@ -37,13 +52,8 @@ export function formatSearchInfo(queryParams, numSearchResults) {
     placeholder: placeholderText,
     title: titleText,
     smallQuery: smallQueryText,
+    heading: headingText,
   };
 
   return queryInfo;
 }
-
-// * FILTERS * \\
-export function filterResults() {}
-
-// * SORTS * \\
-export function sortResults() {}

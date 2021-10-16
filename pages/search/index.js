@@ -41,16 +41,18 @@ const LocationSearch = ({ searchResults }) => {
   const [placeholder, setPlaceholder] = useState("");
   const [title, setTitle] = useState("");
   const [smallQuery, setSmallQuery] = useState("");
+  const [heading, setHeading] = useState("");
 
   // Get Placeholder Data Content
   useEffect(() => {
-    let { placeholder, title, smallQuery } = formatSearchInfo(
+    let { placeholder, title, smallQuery, heading } = formatSearchInfo(
       router.query,
       filteredGyms.length
     );
     setPlaceholder(placeholder);
     setTitle(title);
     setSmallQuery(smallQuery);
+    setHeading(heading);
   }, [router.query, filteredGyms.length]);
 
   // Get New Search Results Based on Filters
@@ -83,10 +85,7 @@ const LocationSearch = ({ searchResults }) => {
         <div className="flex-grow mx-auto md:mx-0 pt-14 md:px-6">
           {/* Top Info (Title) */}
           <p className="text-xs">{smallQuery}</p>
-          <h1 className="text-3xl font-semibold mt-2 mb-6">
-            {fightingStyles && toTitleCase(fightingStyles)} Gyms{" "}
-            {location && `in ${toTitleCases(location)}`}
-          </h1>
+          <h1 className="text-3xl font-semibold mt-2 mb-6">{heading}</h1>
 
           {/* Filters */}
           <Filters filters={allFilters} setFilters={setAllFilters} />
