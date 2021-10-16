@@ -54,12 +54,18 @@ const priceRangeOptions = [
 
 // TSK: We gotta abstract these functions and useEffects somehow!
 
-const Filters = ({ filters, setFilters }) => {
+const Filters = ({ filters, setFilters, clearFilters }) => {
   const router = useRouter();
   const [trainingModalities, setTrainingModalities] = useState(
     filters.trainingModalities
   );
   const [priceRange, setPriceRange] = useState(filters.priceRange);
+
+  const onClearFilters = () => {
+    setTrainingModalities([]);
+    setPriceRange([]);
+    clearFilters();
+  };
 
   // Price Range Logic
   const updatePrices = (priceOption) => {
@@ -129,6 +135,10 @@ const Filters = ({ filters, setFilters }) => {
       <p className="button">Skill Level</p>
       {/* <p className="button">Accommodation</p> */}
       <p className="button">More Filters</p>
+
+      <button className="text-xs text-gray-500 pl-3" onClick={onClearFilters}>
+        Clear
+      </button>
     </div>
   );
 };

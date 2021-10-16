@@ -15,12 +15,25 @@ import { createArrayFromMultipleParams } from "../../utils/array.helpers";
 const LocationSearch = ({ searchResults }) => {
   // Router Query
   const router = useRouter();
-  const { location, fightingStyles, priceRange } = router.query;
+  const { location, fightingStyles, priceRange, numFighters } = router.query;
   const fightingStylesArr = createArrayFromMultipleParams(fightingStyles);
   const priceRangeArr = createArrayFromMultipleParams(priceRange);
 
   // Search Results
   const [filteredGyms, setFilteredGyms] = useState(searchResults);
+
+  // Clear Filters
+  const clearFilters = () => {
+    setAllFilters({
+      filters: [],
+      location,
+    });
+    router.query = {
+      location: location,
+      numFighters: numFighters,
+    };
+    router.push(router);
+  };
 
   // Filters for Searches
   //  * Object will look like:
@@ -89,7 +102,11 @@ const LocationSearch = ({ searchResults }) => {
           <h1 className="text-3xl font-semibold mt-2 mb-6">{heading}</h1>
 
           {/* Filters */}
-          <Filters filters={allFilters} setFilters={setAllFilters} />
+          <Filters
+            filters={allFilters}
+            setFilters={setAllFilters}
+            clearFilters={clearFilters}
+          />
 
           {/* Results (Cards) */}
           <div className="flex flex-col">
