@@ -1,19 +1,27 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { createParamsFromArray } from "../../utils/array.helpers";
+import { pushNewRouterParams } from "../../utils/router.helpers";
 import DropdownCheckbox from "./DropdownCheckbox";
 
 const Filters = ({ filters, setFilters }) => {
+  const router = useRouter();
   const [trainingModalities, setTrainingModalities] = useState(
     filters.trainingModalities
   );
 
   const updateTrainingModalities = (styleName) => {
-    console.log("trainingModalities:", trainingModalities);
+    let updatedArr;
+
     if (trainingModalities.includes(styleName)) {
-      const newArr = trainingModalities.filter((style) => style !== styleName);
-      setTrainingModalities(newArr);
+      updatedArr = trainingModalities.filter((style) => style !== styleName);
     } else {
-      setTrainingModalities([...trainingModalities, styleName]);
+      updatedArr = [...trainingModalities, styleName];
     }
+    setTrainingModalities(updatedArr);
+
+    const newParams = createParamsFromArray(updatedArr);
+    pushNewRouterParams(updatedArr.length, "fightingStyles", newParams, router);
   };
 
   useEffect(() => {

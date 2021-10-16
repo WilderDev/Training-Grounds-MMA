@@ -11,3 +11,10 @@ export function toTitleCases(words) {
     .map((word) => toTitleCase(word));
   return dehyphenatedArr.join(" ");
 }
+
+export function toLowerCaseHyphenated(words) {
+  return words
+    .split(" ")
+    .map((word) => word.toLowerCase())
+    .join("-");
+}

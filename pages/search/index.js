@@ -10,11 +10,13 @@ import { formatSearchInfo } from "../../utils/search.helpers";
 import { toTitleCase, toTitleCases } from "../../utils/string.helpers";
 import Filters from "../../components/minor/Filters";
 import { sender } from "../../utils/http.helpers";
+import { createArrayFromMultipleParams } from "../../utils/array.helpers";
 
 const LocationSearch = ({ searchResults }) => {
   // Router Query
   const router = useRouter();
-  const { location, type } = router.query;
+  const { location, fightingStyles } = router.query;
+  const fightingStylesArr = createArrayFromMultipleParams(fightingStyles);
 
   // Search Results
   const [filteredGyms, setFilteredGyms] = useState(searchResults);
@@ -31,7 +33,7 @@ const LocationSearch = ({ searchResults }) => {
   //   ...
   // }
   const [allFilters, setAllFilters] = useState({
-    trainingModalities: type ? [toTitleCases(type)] : [],
+    trainingModalities: fightingStylesArr,
     priceRange: { min: 0, max: 10000 },
   });
 
@@ -82,7 +84,7 @@ const LocationSearch = ({ searchResults }) => {
           {/* Top Info (Title) */}
           <p className="text-xs">{smallQuery}</p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
-            {type && toTitleCase(type)} Gyms{" "}
+            {fightingStyles && toTitleCase(fightingStyles)} Gyms{" "}
             {location && `in ${toTitleCases(location)}`}
           </h1>
 

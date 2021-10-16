@@ -29,9 +29,12 @@
 - Use Context or useReducer instead of state all the time!
 
 - Google Lighthouse (ON ALL PAGES)
+
   - PWA
   - Accessibility
   - Perf
+
+- useMemo
 
 ### MINOR
 

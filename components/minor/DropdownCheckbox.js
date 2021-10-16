@@ -6,21 +6,21 @@ const allTrainingModalities = [
   {
     name: "MMA",
     id: "mma",
-    value: "MMA",
+    value: "Mixed Martial Arts",
     description: "Mixed Martial Arts",
     ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-mma",
   },
   {
     name: "Muay Thai",
     id: "muay-thai",
-    value: "MuayThai",
+    value: "Muay Thai",
     description: "Art of 8 Limbs",
     ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-muay-thai",
   },
   {
     name: "BJJ",
     id: "bjj",
-    value: "BJJ",
+    value: "Brazilian Jiu Jitsu",
     description: "Brazilian Jiu-Jitsu",
     ariaLabelledBy: "filter-gyms_type-checkbox_type-gym-bjj",
   },
@@ -62,11 +62,8 @@ const DropdownCheckbox = ({ trainingModalities, updateModalities }) => {
                       type="checkbox"
                       id={style.id}
                       name={style.name}
-                      checked={trainingModalities.includes(style.name)}
-                      // onChange={() =>
-                      //   setModalities([...modalities, style.name])
-                      // }
-                      onChange={() => updateModalities(style.name)}
+                      checked={trainingModalities.includes(style.value)}
+                      onChange={() => updateModalities(style.value)}
                       aria-describedby={`${style.id}-description`}
                       className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                     />
