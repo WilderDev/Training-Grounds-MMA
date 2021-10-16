@@ -3,9 +3,9 @@ import DropdownCheckbox from "./DropdownCheckbox";
 
 const Filters = ({ filters, setFilters }) => {
   const [gymTypes, setGymTypes] = useState(() => ({
-    mma: false,
-    mt: false,
-    bjj: false,
+    MMA: false,
+    MuayThai: false,
+    BJJ: false,
   }));
 
   useEffect(() => {

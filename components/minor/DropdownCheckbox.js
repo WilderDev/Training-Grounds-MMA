@@ -63,28 +63,28 @@ const DropdownCheckbox = ({ selectedGymTypes, setSelectedGymTypes }) => {
                 <div className="mr-5 flex items-center h-5">
                   <input
                     type="checkbox"
-                    id="mma"
-                    name="mma"
-                    checked={selectedGymTypes.mma}
+                    id="MMA"
+                    name="MMA"
+                    checked={selectedGymTypes.MMA}
                     onChange={() =>
                       setSelectedGymTypes({
-                        mma: !selectedGymTypes.mma,
-                        mt: selectedGymTypes.mt,
-                        bjj: selectedGymTypes.bjj,
+                        MMA: !selectedGymTypes.MMA,
+                        MuayThai: selectedGymTypes.MuayThai,
+                        BJJ: selectedGymTypes.BJJ,
                       })
                     }
-                    aria-describedby="mma-description"
+                    aria-describedby="MMA-description"
                     className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                   />
                 </div>
                 <div className="min-w-0 flex-1 text-sm">
                   <label
-                    htmlFor="mma"
+                    htmlFor="MMA"
                     className="font-medium text-gray-700 w-full block h-full"
                   >
                     MMA
                   </label>
-                  <p id="mma-description" className="text-gray-500">
+                  <p id="MMA-description" className="text-gray-500">
                     Mixed Martial Arts
                   </p>
                 </div>
@@ -101,28 +101,28 @@ const DropdownCheckbox = ({ selectedGymTypes, setSelectedGymTypes }) => {
                 <div className="mr-5 flex items-center h-5">
                   <input
                     type="checkbox"
-                    id="muay-thai"
-                    name="muay-thai"
-                    checked={selectedGymTypes.mt}
+                    id="MuayThai"
+                    name="MuayThai"
+                    checked={selectedGymTypes.MuayThai}
                     onChange={() =>
                       setSelectedGymTypes({
-                        mma: selectedGymTypes.mma,
-                        mt: !selectedGymTypes.mt,
-                        bjj: selectedGymTypes.bjj,
+                        MMA: selectedGymTypes.MMA,
+                        MuayThai: !selectedGymTypes.MuayThai,
+                        BJJ: selectedGymTypes.BJJ,
                       })
                     }
-                    aria-describedby="muay-thai-description"
+                    aria-describedby="MuayThai-description"
                     className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                   />
                 </div>
                 <div className="min-w-0 flex-1 text-sm">
                   <label
-                    htmlFor="muay-thai"
+                    htmlFor="MuayThai"
                     className="font-medium text-gray-700 w-full block h-full"
                   >
-                    Muay-Thai
+                    Muay Thai
                   </label>
-                  <p id="muay-thai-description" className="text-gray-500">
+                  <p id="MuayThai-description" className="text-gray-500">
                     Art of 8 Limbs
                   </p>
                 </div>
@@ -139,28 +139,28 @@ const DropdownCheckbox = ({ selectedGymTypes, setSelectedGymTypes }) => {
                 <div className="mr-5 flex items-center h-5">
                   <input
                     type="checkbox"
-                    id="bjj"
-                    name="bjj"
-                    checked={selectedGymTypes.bjj}
+                    id="BJJ"
+                    name="BJJ"
+                    checked={selectedGymTypes.BJJ}
                     onChange={() =>
                       setSelectedGymTypes({
-                        mma: selectedGymTypes.mma,
-                        mt: selectedGymTypes.mt,
-                        bjj: !selectedGymTypes.bjj,
+                        MMA: selectedGymTypes.MMA,
+                        MuayThai: selectedGymTypes.MuayThai,
+                        BJJ: !selectedGymTypes.BJJ,
                       })
                     }
-                    aria-describedby="bjj-description"
+                    aria-describedby="BJJ-description"
                     className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                   />
                 </div>
                 <div className="min-w-0 flex-1 text-sm">
                   <label
-                    htmlFor="bjj"
+                    htmlFor="BJJ"
                     className="font-medium text-gray-700 w-full block h-full"
                   >
                     BJJ
                   </label>
-                  <p id="bjj-description" className="text-gray-500">
+                  <p id="BJJ-description" className="text-gray-500">
                     Brazilian Jiu-Jitsu
                   </p>
                 </div>

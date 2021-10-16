@@ -13,6 +13,8 @@ const handler = async (req, res) => {
         types: filters.gymFilters,
       };
 
+      //  TSK: Refactor this to use { $in: [] }
+
       const dbQueryFilter = buildFilterByQuery(filterQuery);
       console.log("dbQueryFilter:", dbQueryFilter);
       const filteredGyms = await db

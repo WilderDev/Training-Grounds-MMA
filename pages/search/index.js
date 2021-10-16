@@ -15,8 +15,6 @@ const LocationSearch = ({ searchResults }) => {
   const router = useRouter();
   const [resFilters, setResFilters] = useState([]);
   const [filteredGyms, setFilteredGyms] = useState(searchResults);
-
-  // console.log("searchResults:", searchResults);
   const { location, type } = router.query;
   const [placeholder, setPlaceholder] = useState("");
   const [title, setTitle] = useState("");

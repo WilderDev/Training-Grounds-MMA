@@ -25,75 +25,9 @@ export function buildFilterByQuery({
     ...(numFighters && {
       open_spaces: { $gte: parseInt(numFighters) },
     }),
-    // All Three
-    ...(types &&
-      types.includes("mma") &&
-      types.includes("bjj") &&
-      types.includes("mt") && {
-        $or: [
-          { styles_offered: { $elemMatch: { $eq: "MMA" } } },
-          { styles_offered: { $elemMatch: { $eq: "Muay Thai" } } },
-          { styles_offered: { $elemMatch: { $eq: "BJJ" } } },
-        ],
-      }),
-
-    // MMA + BJJ
-    ...(types &&
-      types.includes("mma") &&
-      types.includes("bjj") &&
-      !types.includes("mt") && {
-        $or: [
-          { styles_offered: { $elemMatch: { $eq: "MMA" } } },
-          { styles_offered: { $elemMatch: { $eq: "BJJ" } } },
-        ],
-      }),
-
-    // MMA + MT
-    ...(types &&
-      types.includes("mma") &&
-      !types.includes("bjj") &&
-      types.includes("mt") && {
-        $or: [
-          { styles_offered: { $elemMatch: { $eq: "MMA" } } },
-          { styles_offered: { $elemMatch: { $eq: "Muay Thai" } } },
-        ],
-      }),
-
-    // BJJ + MT
-    ...(types &&
-      !types.includes("mma") &&
-      types.includes("bjj") &&
-      types.includes("mt") && {
-        $or: [
-          { styles_offered: { $elemMatch: { $eq: "Muay Thai" } } },
-          { styles_offered: { $elemMatch: { $eq: "BJJ" } } },
-        ],
-      }),
-
-    // JUST MMA
-    ...(types &&
-      types.includes("mma") &&
-      !types.includes("bjj") &&
-      !types.includes("mt") && {
-        styles_offered: { $elemMatch: { $eq: "MMA" } },
-      }),
-
-    // JUST MT
-    ...(types &&
-      !types.includes("mma") &&
-      !types.includes("bjj") &&
-      types.includes("mt") && {
-        styles_offered: { $elemMatch: { $eq: "Muay Thai" } },
-      }),
-
-    // JUST BJJ
-    ...(types &&
-      !types.includes("mma") &&
-      types.includes("bjj") &&
-      !types.includes("mt") && {
-        styles_offered: { $elemMatch: { $eq: "BJJ" } },
-      }),
-
+    ...(types && {
+      styles_offered: { $in: types },
+    }),
     isAvailable: { $eq: true },
   };
 
