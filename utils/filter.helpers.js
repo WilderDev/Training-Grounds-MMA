@@ -35,7 +35,7 @@ export function buildFilterByQuery({
     ...(priceTier?.length > 0 && {
       price_tier: { $in: priceTier },
     }),
-    ...(skillLevels && {
+    ...(skillLevels?.length > 0 && {
       skill_levels: { $in: skillLevels },
     }),
     // TSK: ...(accommodations && {

@@ -15,6 +15,7 @@ const handler = async (req, res) => {
         location: formattedLocation,
         trainingModalities: filters.trainingModalities,
         priceTier: filters.priceRange,
+        skillLevels: filters.skillLevels,
         accommodations: filters.accommodationOptions,
         isFeatured: filters.isFeatured,
       };
@@ -22,6 +23,8 @@ const handler = async (req, res) => {
       console.log("filterQuery:", filterQuery);
 
       const dbQueryFilter = buildFilterByQuery(filterQuery);
+
+      console.log("dbQueryFilter:", dbQueryFilter);
 
       const filteredGyms = await db
         .collection("Active")

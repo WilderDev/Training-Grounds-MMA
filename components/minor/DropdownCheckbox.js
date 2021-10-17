@@ -27,7 +27,7 @@ const DropdownCheckbox = ({
       >
         <Menu.Items
           static
-          className=" absolute top-12 left-0 z-50 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+          className=" absolute top-12 left-0 z-50 mt-2 max-w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
         >
           <fieldset className="border-t border-b border-gray-200">
             <legend className="sr-only">{title}</legend>
@@ -43,6 +43,7 @@ const DropdownCheckbox = ({
                   <div className="mr-5 flex items-center h-5">
                     <input
                       type="checkbox"
+                      className="cursor-pointer"
                       id={option.id}
                       name={option.id}
                       checked={selectedOptions.includes(option.value)}
@@ -61,7 +62,7 @@ const DropdownCheckbox = ({
                   <div className="min-w-0 flex-1 text-sm">
                     <label
                       htmlFor={option.id}
-                      className="font-medium text-gray-700 w-full block h-full"
+                      className="font-medium text-gray-700 w-full block h-full cursor-pointer"
                     >
                       {option.name}
                     </label>

@@ -117,7 +117,7 @@ const LocationSearch = ({ searchResults }) => {
         </div>
 
         {/* Right Side - Map */}
-        {filteredGyms.length && (
+        {filteredGyms?.length && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
             <Map searchResults={filteredGyms} />
           </div>
@@ -130,7 +130,7 @@ const LocationSearch = ({ searchResults }) => {
 export default LocationSearch;
 
 export async function getServerSideProps({ query }) {
-  const searchResults = await getAllActiveGymsByQuery(query);
+  const searchResults = (await getAllActiveGymsByQuery(query)) || [];
 
   return {
     props: {

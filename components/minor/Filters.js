@@ -52,16 +52,42 @@ const priceRangeOptions = [
   },
 ];
 
+const skillLevelOptions = [
+  {
+    name: "Beginner",
+    id: "beginner",
+    value: "Beginner",
+    description: "Master the fundamentals",
+    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-beginner",
+  },
+  {
+    name: "Proficient",
+    id: "proficient",
+    value: "Proficient",
+    description: "Bring your game to the next level",
+    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-proficient",
+  },
+  {
+    name: "Professional",
+    id: "professional",
+    value: "Professional",
+    description: "Building skills and breakin' wills",
+    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-professional",
+  },
+];
+
 const Filters = ({ filters, setFilters, clearFilters }) => {
   const router = useRouter();
   const [trainingModalities, setTrainingModalities] = useState(
     filters.trainingModalities
   );
   const [priceRange, setPriceRange] = useState(filters.priceRange);
+  const [skillLevels, setSkillLevels] = useState(filters.skillLevels);
 
   const onClearFilters = () => {
     setTrainingModalities([]);
     setPriceRange([]);
+    setSkillLevels([]);
     clearFilters();
   };
 
@@ -86,8 +112,9 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       ...filters,
       trainingModalities: trainingModalities,
       priceRange: priceRange,
+      skillLevels: skillLevels,
     });
-  }, [trainingModalities, priceRange]);
+  }, [trainingModalities, priceRange, skillLevels]);
 
   return (
     <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
@@ -111,7 +138,16 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
         param="priceRange"
       />
 
-      <p className="button">Skill Level</p>
+      {/* Skill Level */}
+      <DropdownCheckbox
+        filterOptions={skillLevelOptions}
+        selectedOptions={skillLevels}
+        setSelectedOptions={setSkillLevels}
+        updateOptions={updateFilters}
+        title="Skill Level"
+        param="skillLevels"
+      />
+
       <p className="button">Accommodation</p>
 
       {/* TSK: Add More Filters after MVP */}
