@@ -24,7 +24,7 @@ export function buildFilterByQuery({
       max_length_stay: { $gte: Math.round(lengthOfStay) },
     }),
     ...(numFighters && {
-      open_spaces: { $gte: parseInt(numFighters) },
+      open_spaces: { $gte: numFighters },
     }),
     ...(trainingModalities?.length > 0 && {
       styles_offered: { $in: trainingModalities },

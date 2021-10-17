@@ -27,6 +27,7 @@ const LocationSearch = ({ searchResults }) => {
     setAllFilters({
       filters: [],
       location,
+      numFighters,
     });
     router.query = {
       location: location,
@@ -36,19 +37,14 @@ const LocationSearch = ({ searchResults }) => {
   };
 
   // Filters for Searches
-  //  * Object will look like:
-  //  {
-  //    trainingModalities: ["MMA"],
-  //    prices: { min: 100, max: 200 }
-  //    location: GEOLOCATION array? + Radius // Country // City (TSK)
-  //   skillLevels: ["Beginner", "Professional"]
-  //   numFighters: 1
-  //    datesRequried: { start: new Date(), end: new Date() + 10 }
-  //   ...
-  // }
   const [allFilters, setAllFilters] = useState({
     trainingModalities: fightingStylesArr,
     priceRange: priceRangeArr,
+    //    location: GEOLOCATION array? + Radius // Country // City (TSK)
+    //   skillLevels: ["Beginner", "Professional"]
+    //   numFighters: 1
+    //    datesRequried: { start: new Date(), end: new Date() + 10 }
+    // . . .
   });
 
   // Screen Content State
@@ -74,7 +70,8 @@ const LocationSearch = ({ searchResults }) => {
     async function fetchData() {
       const res = await sender("/api/search-results", {
         filters: allFilters,
-        location: location,
+        location,
+        numFighters: +numFighters,
       });
 
       if (res && res.message === "Success!") {

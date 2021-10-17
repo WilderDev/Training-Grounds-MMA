@@ -4,17 +4,20 @@ import { toTitleCases } from "../../utils/string.helpers";
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
-    const { filters, sorts, location } = req.body;
+    const { filters, sorts, location, numFighters } = req.body;
     const formattedLocation = location ? toTitleCases(location) : null;
 
     try {
       const { db } = await connectToDatabase();
 
       const filterQuery = {
+        numFighters,
         location: formattedLocation,
         trainingModalities: filters.trainingModalities,
         priceTier: filters.priceRange,
       };
+
+      console.log("filterQuery:", filterQuery);
 
       const dbQueryFilter = buildFilterByQuery(filterQuery);
 
