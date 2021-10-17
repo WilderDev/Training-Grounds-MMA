@@ -5,8 +5,10 @@ import { v4 } from "uuid";
 const DropdownCheckbox = ({
   filterOptions,
   selectedOptions,
+  setSelectedOptions,
   updateOptions,
   title,
+  param,
 }) => {
   return (
     <Menu as="div" className="relative  z-30" role="menu">
@@ -44,7 +46,14 @@ const DropdownCheckbox = ({
                       id={option.id}
                       name={option.id}
                       checked={selectedOptions.includes(option.value)}
-                      onChange={() => updateOptions(option.value)}
+                      onChange={() =>
+                        updateOptions(
+                          option.value,
+                          selectedOptions,
+                          setSelectedOptions,
+                          param
+                        )
+                      }
                       aria-describedby={`${option.id}-description`}
                       className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
                     />

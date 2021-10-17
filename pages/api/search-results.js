@@ -15,6 +15,8 @@ const handler = async (req, res) => {
         location: formattedLocation,
         trainingModalities: filters.trainingModalities,
         priceTier: filters.priceRange,
+        accommodations: filters.accommodationOptions,
+        isFeatured: filters.isFeatured,
       };
 
       console.log("filterQuery:", filterQuery);

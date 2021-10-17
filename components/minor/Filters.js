@@ -52,8 +52,6 @@ const priceRangeOptions = [
   },
 ];
 
-// TSK: We gotta abstract these functions and useEffects somehow!
-
 const Filters = ({ filters, setFilters, clearFilters }) => {
   const router = useRouter();
   const [trainingModalities, setTrainingModalities] = useState(
@@ -67,51 +65,29 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
     clearFilters();
   };
 
-  // Price Range Logic
-  const updatePrices = (priceOption) => {
+  // Update Filters
+  const updateFilters = (option, filterArr, setFilterArr, paramName) => {
     let updatedArr;
 
-    if (priceRange.includes(priceOption)) {
-      updatedArr = priceRange.filter((option) => option !== priceOption);
+    if (filterArr.includes(option)) {
+      updatedArr = filterArr.filter((opt) => opt !== option);
     } else {
-      updatedArr = [...priceRange, priceOption];
+      updatedArr = [...filterArr, option];
     }
-    setPriceRange(updatedArr);
+    setFilterArr(updatedArr);
 
     const newParams = createParamsFromArray(updatedArr);
-    pushNewRouterParams(updatedArr.length, "priceRange", newParams, router);
+    pushNewRouterParams(updatedArr.length, paramName, newParams, router);
   };
 
-  // Training Modalities Logic
-  const updateModalities = (styleName) => {
-    let updatedArr;
-
-    if (trainingModalities.includes(styleName)) {
-      updatedArr = trainingModalities.filter((style) => style !== styleName);
-    } else {
-      updatedArr = [...trainingModalities, styleName];
-    }
-    setTrainingModalities(updatedArr);
-
-    const newParams = createParamsFromArray(updatedArr);
-    pushNewRouterParams(updatedArr.length, "fightingStyles", newParams, router);
-  };
-
-  // Training Modalities useEffect
+  // Refresh Filters
   useEffect(() => {
     setFilters({
       ...filters,
-      trainingModalities,
+      trainingModalities: trainingModalities,
+      priceRange: priceRange,
     });
-  }, [trainingModalities]);
-
-  // Price Range Use Effect
-  useEffect(() => {
-    setFilters({
-      ...filters,
-      priceRange,
-    });
-  }, [priceRange]);
+  }, [trainingModalities, priceRange]);
 
   return (
     <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
@@ -119,22 +95,27 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       <DropdownCheckbox
         filterOptions={fightingStyleOptions}
         selectedOptions={trainingModalities}
-        updateOptions={updateModalities}
+        setSelectedOptions={setTrainingModalities}
+        updateOptions={updateFilters}
         title="Fighting Styles"
+        param="fightingStyles"
       />
 
       {/* Price Range */}
       <DropdownCheckbox
         filterOptions={priceRangeOptions}
         selectedOptions={priceRange}
-        updateOptions={updatePrices}
+        setSelectedOptions={setPriceRange}
+        updateOptions={updateFilters}
         title="Price"
+        param="priceRange"
       />
 
-      <p className="button">Location</p>
       <p className="button">Skill Level</p>
-      {/* <p className="button">Accommodation</p> */}
-      <p className="button">More Filters</p>
+      <p className="button">Accommodation</p>
+
+      {/* TSK: Add More Filters after MVP */}
+      {/* <p className="button">More Filters</p> */}
 
       <button className="text-xs text-gray-500 pl-3" onClick={onClearFilters}>
         Clear

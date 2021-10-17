@@ -10,6 +10,9 @@ export function buildFilterByQuery({
   numFighters,
   trainingModalities,
   priceTier,
+  skillLevels,
+  accommodations,
+  isFeatured,
 }) {
   let lengthOfStay;
 
@@ -31,6 +34,15 @@ export function buildFilterByQuery({
     }),
     ...(priceTier?.length > 0 && {
       price_tier: { $in: priceTier },
+    }),
+    ...(skillLevels && {
+      skill_levels: { $in: skillLevels },
+    }),
+    // TSK: ...(accommodations && {
+    //   accommodation_options: {  }
+    // }),
+    ...(isFeatured && {
+      isFeatured: { $eq: true },
     }),
     isAvailable: { $eq: true },
   };
