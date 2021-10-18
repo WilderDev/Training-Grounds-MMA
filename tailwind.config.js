@@ -9,10 +9,17 @@ module.exports = {
       colors: {
         grayblue: colors.blueGray,
       },
+      gridTemplateRows: {
+        "[auto,auto,1fr]": "auto auto 1fr",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("tailwind-scrollbar-hide"), require("@tailwindcss/forms")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };

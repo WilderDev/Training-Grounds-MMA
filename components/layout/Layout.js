@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Layout = ({ children, placeholder, isSticky }) => {
+const Layout = ({ children, placeholder, isSticky = true }) => {
   return (
     <>
       <Header placeholder={placeholder} isSticky={isSticky} />

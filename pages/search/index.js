@@ -90,7 +90,7 @@ const LocationSearch = ({ searchResults }) => {
   }, [allFilters, location]);
 
   return (
-    <Layout placeholder={placeholder} isSticky={true}>
+    <Layout placeholder={placeholder}>
       <Head>
         <title>{title}</title>
         <meta
