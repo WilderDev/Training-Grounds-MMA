@@ -78,18 +78,39 @@ const skillLevelOptions = [
 
 const accommodationOptions = [
   {
-    name: "Single - Standard",
-    id: "single-standard",
-    value: "Single Standard",
-    description: "Master the fundamentals",
-    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-beginner",
+    name: "Single",
+    id: "single",
+    value: "Single",
+    description: "For solo fighters",
+    ariaLabelledBy: "filter-gyms_type-checkbox_accommodation-single",
   },
   {
-    name: "Single - Deluxe",
-    id: "proficient",
-    value: "Proficient",
-    description: "Bring your game to the next level",
-    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-proficient",
+    name: "Double",
+    id: "double",
+    value: "Double",
+    description: "For pairs and duo's",
+    ariaLabelledBy: "filter-gyms_type-checkbox_accommodation-double",
+  },
+  {
+    name: "Dorm",
+    id: "dormitory",
+    value: "Dormitory",
+    description: "For solo fighters on a budget",
+    ariaLabelledBy: "filter-gyms_type-checkbox_accommodation-dormitory",
+  },
+  {
+    name: "Standard",
+    id: "standard",
+    value: "Standard",
+    description: "A bed is all you need",
+    ariaLabelledBy: "filter-gyms_type-checkbox_accommodation-standard",
+  },
+  {
+    name: "Deluxe",
+    id: "deluxe",
+    value: "Deluxe",
+    description: "For modern comforts and luxeries",
+    ariaLabelledBy: "filter-gyms_type-checkbox_accommodation-deluxe",
   },
 ];
 
@@ -100,6 +121,7 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
   );
   const [priceRange, setPriceRange] = useState(filters.priceRange);
   const [skillLevels, setSkillLevels] = useState(filters.skillLevels);
+  const [accommodations, setAccommodations] = useState(filters.accommodations);
 
   const onClearFilters = () => {
     setTrainingModalities([]);
@@ -130,8 +152,9 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       trainingModalities: trainingModalities,
       priceRange: priceRange,
       skillLevels: skillLevels,
+      accommodations: accommodations,
     });
-  }, [trainingModalities, priceRange, skillLevels]);
+  }, [trainingModalities, priceRange, skillLevels, accommodations]);
 
   return (
     <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
@@ -165,7 +188,15 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
         param="skillLevels"
       />
 
-      <p className="button">Accommodation</p>
+      {/* Accommodations */}
+      <DropdownCheckbox
+        filterOptions={accommodationOptions}
+        selectedOptions={accommodations}
+        setSelectedOptions={setAccommodations}
+        updateOptions={updateFilters}
+        title="Accommodation"
+        param="accommodations"
+      />
 
       {/* TSK: Add More Filters after MVP */}
       {/* Like: Radius. */}

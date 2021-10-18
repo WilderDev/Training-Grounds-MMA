@@ -35,9 +35,25 @@ export function buildFilterByQuery({
     ...(skillLevels?.length > 0 && {
       skill_levels: { $in: skillLevels },
     }),
-    // ...(accommodations?.length > 0 && {
-    //   accommodation_options: { $elemMatch: { name: { $in: accommodations } } },
-    // }),
+    ...(accommodations?.length > 0 && {
+      $or: [
+        {
+          accommodation_options: {
+            $elemMatch: { guest_type: { $in: accommodations } },
+          },
+        },
+        {
+          accommodation_options: {
+            $elemMatch: { space_type: { $in: accommodations } },
+          },
+        },
+        {
+          accommodation_options: {
+            $elemMatch: { space_desc: { $in: accommodations } },
+          },
+        },
+      ],
+    }),
     ...(isFeatured && {
       is_featured: { $eq: true },
     }),

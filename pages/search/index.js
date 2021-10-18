@@ -14,14 +14,21 @@ import { createArrayFromMultipleParams } from "../../utils/array.helpers";
 const LocationSearch = ({ searchResults }) => {
   // Router Query
   const router = useRouter();
-  const { location, fightingStyles, priceRange, skillLevels, numFighters } =
-    router.query;
+  const {
+    location,
+    fightingStyles,
+    priceRange,
+    skillLevels,
+    numFighters,
+    accommodations,
+  } = router.query;
   // TSK:    location: GEOLOCATION array? + Radius // Country // City
 
   // Create arrays from query params
   const fightingStylesArr = createArrayFromMultipleParams(fightingStyles);
   const priceRangeArr = createArrayFromMultipleParams(priceRange);
   const skillLevelsArr = createArrayFromMultipleParams(skillLevels);
+  const accommodationsArr = createArrayFromMultipleParams(accommodations);
 
   // Search Results
   const [filteredGyms, setFilteredGyms] = useState(searchResults);
@@ -45,6 +52,7 @@ const LocationSearch = ({ searchResults }) => {
     trainingModalities: fightingStylesArr,
     priceRange: priceRangeArr,
     skillLevels: skillLevelsArr,
+    accommodations: accommodationsArr,
   });
 
   // Screen Content State

@@ -16,7 +16,7 @@ const handler = async (req, res) => {
         trainingModalities: filters.trainingModalities,
         priceTier: filters.priceRange,
         skillLevels: filters.skillLevels,
-        accommodations: filters.accommodationOptions,
+        accommodations: filters.accommodations,
         isFeatured: filters.isFeatured,
       };
 
