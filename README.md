@@ -6,13 +6,11 @@
 
 ## MVP TODO
 
-1. Filter Click UI
-2. Filter Click Logic
-3. Calendar Sidebar Options Removed/Replaced
-4. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
-5. User Authentication
-6. Footer Links & Pages
-7. Responsive every page
+1. Calendar Sidebar Options Removed/Replaced
+2. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
+3. User Authentication
+4. Footer Links & Pages
+5. Responsive every page
 
 ---
 

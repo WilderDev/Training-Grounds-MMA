@@ -199,6 +199,7 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       />
 
       {/* TSK: Add More Filters after MVP */}
+      {/* TSK: Add Sorts! */}
       {/* Like: Radius. */}
       {/* <p className="button">More Filters</p> */}
 

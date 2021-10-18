@@ -20,11 +20,7 @@ const handler = async (req, res) => {
         isFeatured: filters.isFeatured,
       };
 
-      console.log("filterQuery:", filterQuery);
-
       const dbQueryFilter = buildFilterByQuery(filterQuery);
-
-      console.log("dbQueryFilter:", dbQueryFilter);
 
       const filteredGyms = await db
         .collection("Active")
