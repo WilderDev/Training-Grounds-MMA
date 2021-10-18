@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { v4 } from "uuid";
 
@@ -43,7 +43,6 @@ const DropdownCheckbox = ({
                   <div className="mr-5 flex items-center h-5">
                     <input
                       type="checkbox"
-                      className="cursor-pointer"
                       id={option.id}
                       name={option.id}
                       checked={selectedOptions.includes(option.value)}
@@ -56,7 +55,7 @@ const DropdownCheckbox = ({
                         )
                       }
                       aria-describedby={`${option.id}-description`}
-                      className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded"
+                      className="focus:ring-red-500 h-5 w-5 text-red-600 border-gray-300 rounded cursor-pointer"
                     />
                   </div>
                   <div className="min-w-0 flex-1 text-sm">

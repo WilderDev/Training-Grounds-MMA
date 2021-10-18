@@ -147,6 +147,7 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
 
   // Refresh Filters
   useEffect(() => {
+    console.log("inHERE:");
     setFilters({
       ...filters,
       trainingModalities: trainingModalities,
@@ -154,7 +155,7 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       skillLevels: skillLevels,
       accommodations: accommodations,
     });
-  }, [trainingModalities, priceRange, skillLevels, accommodations]);
+  }, [trainingModalities, priceRange, skillLevels, accommodations, setFilters]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return (
     <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">

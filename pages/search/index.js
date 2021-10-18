@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/Layout";
@@ -87,7 +87,7 @@ const LocationSearch = ({ searchResults }) => {
       }
     }
     fetchData();
-  }, [allFilters, location]);
+  }, [allFilters, location, numFighters]);
 
   return (
     <Layout placeholder={placeholder}>
@@ -109,7 +109,9 @@ const LocationSearch = ({ searchResults }) => {
           {/* Filters */}
           <Filters
             filters={allFilters}
-            setFilters={setAllFilters}
+            setFilters={useCallback((filters) => {
+              setAllFilters(filters);
+            }, [])}
             clearFilters={clearFilters}
           />
 
