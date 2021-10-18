@@ -6,11 +6,10 @@
 
 ## MVP TODO
 
-1. Calendar Sidebar Options Removed/Replaced
-2. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
-3. User Authentication
-4. Footer Links & Pages
-5. Responsive every page
+1. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
+2. User Authentication
+3. Footer Links & Pages
+4. Responsive every page
 
 ---
 
@@ -20,7 +19,7 @@
 
 ### OPTIMIZATIONS
 
-- Data Schema . . . (Add: Geospacial location, cancelation_policy, amenities array, security_deposit, images, gym owner reference ) - [MongoDB AirBnB Dataset](https://docs.atlas.mongodb.com/sample-data/sample-airbnb/).
+- Data Schema . . . (Add: Geospacial location, cancelation_policy, amenities array, security_deposit, images, gym owner reference, gear, schedule ) - [MongoDB AirBnB Dataset](https://docs.atlas.mongodb.com/sample-data/sample-airbnb/).
 
 - use SWR library for data fetching.
 
@@ -50,9 +49,19 @@
 
 - SEO Head tags description
 
+- Detailed rating on cleanliniess, accuracy, communication, location, value, trainers
+
+- Share buttons on the single page
+
+- Favorites page.
+
+- Super hosts and fighters . . . discounts and badges
+
 - Search as the user moves the map and button to make map full screen
 
 - Clicking the love heart should check if user is authenticated first.
+
+- Report listings
 
 ### MAJOR
 
