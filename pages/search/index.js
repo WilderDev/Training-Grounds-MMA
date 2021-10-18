@@ -7,7 +7,6 @@ import { v4 } from "uuid";
 import Map from "../../components/map/Map";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo } from "../../utils/search.helpers";
-import { toTitleCase, toTitleCases } from "../../utils/string.helpers";
 import Filters from "../../components/minor/Filters";
 import { sender } from "../../utils/http.helpers";
 import { createArrayFromMultipleParams } from "../../utils/array.helpers";

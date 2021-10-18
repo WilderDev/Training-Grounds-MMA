@@ -1,8 +1,5 @@
 import { getDaysBetweenDates } from "./time.helpers";
 
-// TSK: Add all the filters we can search by: [fightingStyles, accommodation, isFeatured, saved, skill-level]
-// Comparison Queries: https://docs.mongodb.com/manual/reference/operator/query-comparison/
-
 export function buildFilterByQuery({
   location,
   startDate,
@@ -38,13 +35,13 @@ export function buildFilterByQuery({
     ...(skillLevels?.length > 0 && {
       skill_levels: { $in: skillLevels },
     }),
-    // TSK: ...(accommodations && {
-    //   accommodation_options: {  }
+    // ...(accommodations?.length > 0 && {
+    //   accommodation_options: { $elemMatch: { name: { $in: accommodations } } },
     // }),
     ...(isFeatured && {
-      isFeatured: { $eq: true },
+      is_featured: { $eq: true },
     }),
-    isAvailable: { $eq: true },
+    is_available: { $eq: true },
   };
 
   return filter;

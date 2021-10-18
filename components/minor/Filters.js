@@ -76,6 +76,23 @@ const skillLevelOptions = [
   },
 ];
 
+const accommodationOptions = [
+  {
+    name: "Single - Standard",
+    id: "single-standard",
+    value: "Single Standard",
+    description: "Master the fundamentals",
+    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-beginner",
+  },
+  {
+    name: "Single - Deluxe",
+    id: "proficient",
+    value: "Proficient",
+    description: "Bring your game to the next level",
+    ariaLabelledBy: "filter-gyms_type-checkbox_skill-level-proficient",
+  },
+];
+
 const Filters = ({ filters, setFilters, clearFilters }) => {
   const router = useRouter();
   const [trainingModalities, setTrainingModalities] = useState(
@@ -151,6 +168,7 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
       <p className="button">Accommodation</p>
 
       {/* TSK: Add More Filters after MVP */}
+      {/* Like: Radius. */}
       {/* <p className="button">More Filters</p> */}
 
       <button className="text-xs text-gray-500 pl-3" onClick={onClearFilters}>

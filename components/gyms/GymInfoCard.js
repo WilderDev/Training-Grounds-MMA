@@ -12,7 +12,7 @@ const GymInfoCard = ({ info }) => {
     country,
     pricing,
     rating,
-    imageURL,
+    image_url,
     features,
     training_options,
     href,
@@ -36,7 +36,7 @@ const GymInfoCard = ({ info }) => {
       {/* Image */}
       <div className="relative h-24 w-full flex-shrink-0 md:h-60 md:w-80 self-center">
         <Image
-          src={imageURL}
+          src={image_url}
           alt={title}
           layout="fill"
           objectFit="cover"
