@@ -18,3 +18,7 @@ export function toLowerCaseHyphenated(words) {
     .map((word) => word.toLowerCase())
     .join("-");
 }
+
+export function toSmallKebabCase(text) {
+  return text.split(" ").join("-").replace(/'/g, "").toLowerCase();
+}
