@@ -1,4 +1,4 @@
-const GymFeatures = () => {
+const GymFeatures = ({ name, features, stylesOffered }) => {
   return (
     <section>
       <h2>Entir Guest suite hosted . . .</h2>

@@ -1,4 +1,4 @@
-const MeetTheTrainers = () => {
+const MeetTheTrainers = ({ trainers }) => {
   return <section>Instead of Where youll sleep</section>;
 };
 

@@ -35,6 +35,8 @@
 
 - Loading Spinner or state
 
+- [Internationalization](https://www.npmjs.com/package/talkr)
+
 ### MINOR
 
 - [Style MAP click Popups](https://visgl.github.io/react-map-gl/docs/api-reference/popup)

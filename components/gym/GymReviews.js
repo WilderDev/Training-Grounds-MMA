@@ -1,4 +1,4 @@
-const GymReviews = () => {
+const GymReviews = ({ reviews, rating }) => {
   return <section>Review section for the gym</section>;
 };
 

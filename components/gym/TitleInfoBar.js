@@ -1,9 +1,7 @@
-const TitleInfoBar = ({ desc, name, city, country, numReviews, rating }) => {
+const TitleInfoBar = ({ title, city, country, numReviews, rating }) => {
   return (
     <section>
-      <h1>
-        {desc} - {name}
-      </h1>
+      <h1>{title}</h1>
       reviews, badges, location, share, save
     </section>
   );
