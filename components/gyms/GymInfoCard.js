@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
-import { v4 } from "uuid";
 
 const GymInfoCard = ({ info }) => {
   const {
@@ -24,7 +23,7 @@ const GymInfoCard = ({ info }) => {
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
       <Link href={`/training-camps/${href}`}>
         <a
-          target={title}
+          target={href}
           rel="noopener noreferrer"
           aria-labelledby={title}
           className="w-full h-full absolute z-40 opacity-0"

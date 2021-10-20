@@ -3,8 +3,8 @@ import Image from "next/image";
 // TSK: Button to see more/all
 const HeroImageGallery = ({ mainImage, images, name }) => {
   return (
-    <section className="mt-6 lg:grid lg:grid-cols-3 lg:gap-x-8">
-      <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+    <section className="lg:grid lg:grid-cols-3 lg:gap-x-8">
+      <div className="relative hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
         <Image
           src={mainImage}
           alt={`Train at ${name}`}
@@ -15,7 +15,7 @@ const HeroImageGallery = ({ mainImage, images, name }) => {
         />
       </div>
       <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-        <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+        <div className="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
           <Image
             src={images[0].src}
             alt={images[0].alt}
@@ -25,7 +25,7 @@ const HeroImageGallery = ({ mainImage, images, name }) => {
             objectPosition="center"
           />
         </div>
-        <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+        <div className="relative aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
           <Image
             src={images[1]?.src}
             alt={images[1]?.alt}
@@ -36,7 +36,7 @@ const HeroImageGallery = ({ mainImage, images, name }) => {
           />
         </div>
       </div>
-      <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+      <div className="relative aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
         <Image
           src={images[2]?.src}
           alt={images[2]?.alt}

@@ -93,27 +93,29 @@ const SingleGymTemplate = ({ gym }) => {
         <meta name="description" content={description} />
       </Head>
 
-      <div className="max-w-7xl mx-auto mt-6 space-y-6 sm:px-6 lg:px-8">
-        {/*  Title Info Bar*/}
-        <TitleInfoBar
-          title={title}
-          rating={rating}
-          numReviews={reviews.length}
-          country={location.country}
-          city={location.city}
-        />
+      <div className="w-screen sm:max-w-7xl mx-auto mt-6 lg:mt-7  sm:px-6 lg:px-8">
+        {/* AboveTheFold Page Content */}
+        <div className="space-y-4">
+          {/*  Title Info Bar*/}
+          <TitleInfoBar
+            title={title}
+            rating={rating}
+            numReviews={reviews.length}
+            location={location}
+          />
 
-        {/* Image gallery */}
-        <HeroImageGallery
-          mainImage={main_image_url}
-          images={all_images}
-          name={name}
-        />
+          {/* Image gallery */}
+          <HeroImageGallery
+            mainImage={main_image_url}
+            images={all_images}
+            name={name}
+          />
+        </div>
 
         {/* BelowTheFold Page Content */}
         <div className="flex justify-between">
           {/* Gym Info */}
-          <div className="w-2/3  space-y-6">
+          <div className="w-full sm:w-2/3  space-y-6">
             {/* Gym Features */}
             <GymFeatures
               name={name}
@@ -135,7 +137,7 @@ const SingleGymTemplate = ({ gym }) => {
           </div>
 
           {/* Book Gym */}
-          <div className="w-1/3 bg-gray-100">
+          <div className="sticky w-full bottom-0 sm:w-1/3 bg-gray-100 bg-red-500">
             <BookGymBox
               packageOptions={package_options}
               trainingOptions={training_options}
