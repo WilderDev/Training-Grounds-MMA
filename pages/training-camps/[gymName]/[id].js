@@ -93,7 +93,7 @@ const SingleGymTemplate = ({ gym }) => {
         <meta name="description" content={description} />
       </Head>
 
-      <div className="w-screen sm:max-w-7xl mx-auto mt-6 lg:mt-7  sm:px-6 lg:px-8">
+      <div className="relative w-screen sm:max-w-7xl mx-auto mt-6 lg:mt-7  sm:px-6 lg:px-8">
         {/* AboveTheFold Page Content */}
         <div className="space-y-4">
           {/*  Title Info Bar*/}
@@ -113,7 +113,7 @@ const SingleGymTemplate = ({ gym }) => {
         </div>
 
         {/* BelowTheFold Page Content */}
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between">
           {/* Gym Info */}
           <div className="w-full sm:w-2/3  space-y-6">
             {/* Gym Features */}
@@ -137,7 +137,7 @@ const SingleGymTemplate = ({ gym }) => {
           </div>
 
           {/* Book Gym */}
-          <div className="sticky w-full bottom-0 sm:w-1/3 bg-gray-100 bg-red-500">
+          <div className="fixed w-screen bottom-0 sm:static sm:w-1/3  bg-white z-50 shadow-md p-5 md:px-10 mt-10">
             <BookGymBox
               packageOptions={package_options}
               trainingOptions={training_options}
