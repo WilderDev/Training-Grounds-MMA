@@ -3,6 +3,17 @@ import Layout from "../../../components/layout/Layout";
 import HeroImageGallery from "../../../components/gym/HeroImageGallery";
 import { connectToDatabase } from "../../../utils/mongo.helpers";
 import { toSmallKebabCase } from "../../../utils/string.helpers";
+import TitleInfoBar from "../../../components/gym/TitleInfoBar";
+import GymFeatures from "../../../components/gym/GymFeatures";
+import GymDescription from "../../../components/gym/GymDescription";
+import MeetTheTrainers from "../../../components/gym/MeetTheTrainers";
+import GymAmenities from "../../../components/gym/GymAmenities";
+import AvailabilityCalendar from "../../../components/gym/AvailabilityCalendar";
+import GymReviews from "../../../components/gym/GymReviews";
+import GymSurroundings from "../../../components/gym/GymSurroundings";
+import OwnerDetails from "../../../components/gym/OwnerDetails";
+import GymDetails from "../../../components/gym/GymDetails";
+import NearbyGyms from "../../../components/gym/NearbyGyms";
 
 const SingleGymTemplate = ({ gym }) => {
   console.log("gym:", gym);
@@ -16,10 +27,46 @@ const SingleGymTemplate = ({ gym }) => {
         <meta name="description" content={gym.description} />
       </Head>
 
-      {/* Image gallery */}
-      <HeroImageGallery images={gym.all_images} />
+      <div className="max-w-7xl mx-auto">
+        {/*  Title Info Bar*/}
+        <TitleInfoBar />
 
-      {/* Product info */}
+        {/* Image gallery */}
+        <HeroImageGallery images={gym.all_images} />
+
+        {/* Gym Info */}
+        <div className="w-2/3">
+          {/* Gym Features */}
+          <GymFeatures />
+
+          {/* Gym Description */}
+          <GymDescription />
+
+          {/* Meet Trainers */}
+          <MeetTheTrainers />
+
+          {/* Gym Amenities */}
+          <GymAmenities />
+
+          {/* Gym Calendar Availability */}
+          <AvailabilityCalendar />
+        </div>
+
+        {/* Reviews */}
+        <GymReviews />
+
+        {/* Location Map */}
+        <GymSurroundings />
+
+        {/* Owner Details */}
+        <OwnerDetails />
+
+        {/* Gym Details */}
+        <GymDetails />
+
+        {/* Nearby Gyms */}
+        <NearbyGyms />
+      </div>
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-const MainInfoBar = () => {
+const TitleInfoBar = () => {
   return (
     <section>
       <h1>Cozy 1 Bed . . .</h1>
@@ -7,4 +7,4 @@ const MainInfoBar = () => {
   );
 };
 
-export default MainInfoBar;
+export default TitleInfoBar;
