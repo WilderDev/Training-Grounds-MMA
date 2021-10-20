@@ -28,8 +28,6 @@ const handler = async (req, res) => {
         .filter(dbQueryFilter)
         .toArray();
 
-      console.log("filteredGyms:", filteredGyms);
-
       return res.status(201).json({
         message: "Success!",
         filterResults: filteredGyms,

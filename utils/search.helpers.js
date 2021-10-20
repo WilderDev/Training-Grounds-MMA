@@ -3,7 +3,7 @@ import { toTitleCase, toTitleCases } from "./string.helpers";
 
 // TSK: Pull out  minPrice, maxPrice, saved, minRating, accommodation, isFeatured. . .
 export function formatSearchInfo(queryParams, numSearchResults) {
-  const { startDate, endDate, numFighters, fightingStyles, location, heading } =
+  const { startDate, endDate, numFighters, fightingStyles, location } =
     queryParams;
 
   let numGymsText =
@@ -41,9 +41,9 @@ export function formatSearchInfo(queryParams, numSearchResults) {
   } else {
     gymHeading = "Training Camps";
   }
-  const headingText = `${gymHeading} ${
-    location && `in ${toTitleCases(location)}`
-  }`;
+  const headingText = location
+    ? `${gymHeading} in ${toTitleCases(location)}`
+    : gymHeading;
 
   const queryInfo = {
     formattedNumGyms: numGymsText,
