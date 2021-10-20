@@ -9,8 +9,8 @@ const Map = ({ searchResults }) => {
 
   //   Transform searchResults into something "geolib" understands
   const coordinates = searchResults.map((item) => ({
-    longitude: item.longitude,
-    latitude: item.latitude,
+    longitude: item.location.longitude,
+    latitude: item.location.latitude,
   }));
 
   //   Geolib finding center of all our searchResults coordinates
@@ -35,8 +35,8 @@ const Map = ({ searchResults }) => {
       {searchResults?.map((item) => (
         <div key={v4()} className="min-h-[80vh]">
           <Marker
-            longitude={item.longitude}
-            latitude={item.latitude}
+            longitude={item.location.longitude}
+            latitude={item.location.latitude}
             offsetLeft={-20}
             offsetTop={-10}
           >
@@ -51,12 +51,12 @@ const Map = ({ searchResults }) => {
           </Marker>
 
           {/* Popup that shows when we click on a marker */}
-          {selectedLocation.longitude === item.longitude &&
-            selectedLocation.latitude === item.latitude && (
+          {selectedLocation?.location?.longitude === item.location.longitude &&
+            selectedLocation?.location?.latitude === item.location.latitude && (
               <Popup
                 onClose={() => setSelectedLocation({})}
-                latitude={item.latitude}
-                longitude={item.longitude}
+                latitude={item.location.latitude}
+                longitude={item.location.longitude}
                 closeOnClick={true}
               >
                 {item.title}

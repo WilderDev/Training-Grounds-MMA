@@ -18,7 +18,10 @@ export function buildFilterByQuery({
 
   let filter = {
     ...(location && {
-      $or: [{ country: { $eq: location } }, { city: { $eq: location } }],
+      $or: [
+        { "location.country": { $eq: location } },
+        { "location.city": { $eq: location } },
+      ],
     }),
     ...(lengthOfStay && {
       max_length_stay: { $gte: Math.round(lengthOfStay) },

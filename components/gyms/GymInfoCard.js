@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
+import { v4 } from "uuid";
 
 const GymInfoCard = ({ info }) => {
   const {
     title,
     name,
     description,
-    city,
-    country,
+    location,
     pricing,
     rating,
     main_image_url,
@@ -49,7 +49,7 @@ const GymInfoCard = ({ info }) => {
         {/* Location and Heart */}
         <div className="flex justify-between items-center text-sm pb-2 ">
           <p className="">
-            {city},{country}
+            {location.city}, {location.country}
           </p>
           <HeartIcon
             type="button"
@@ -69,9 +69,11 @@ const GymInfoCard = ({ info }) => {
           {description}
         </p>
         {/* Features */}
-        <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
-          {features}
-        </p>
+        {/* <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
+          {features.map((feature) => (
+            <span key={v4()}>{feature.feature}</span>
+          ))}
+        </p> */}
 
         {/* Bottom Row */}
         <div className="flex justify-between pt-5">

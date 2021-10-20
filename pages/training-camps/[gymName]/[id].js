@@ -22,11 +22,10 @@ const SingleGymTemplate = ({ gym }) => {
     name,
     title,
     description,
+    location,
     main_image_url,
     features,
     amenities,
-    latitude,
-    longitude,
     rating,
     reviews,
     skill_levels,
@@ -35,8 +34,6 @@ const SingleGymTemplate = ({ gym }) => {
     is_available,
     all_images,
     pricing,
-    city,
-    country,
     currently_enrolled,
     max_capacity,
     open_spaces,
@@ -90,7 +87,8 @@ const SingleGymTemplate = ({ gym }) => {
     <Layout isSticky={false}>
       <Head>
         <title>
-          {name} | {city}, {country} | Training Grounds | MMA Gym Finder
+          {name} | {location.city}, {location.country} | Training Grounds | MMA
+          Gym Finder
         </title>
         <meta name="description" content={description} />
       </Head>
@@ -101,8 +99,8 @@ const SingleGymTemplate = ({ gym }) => {
           title={title}
           rating={rating}
           numReviews={reviews.length}
-          country={country}
-          city={city}
+          country={location.country}
+          city={location.city}
         />
 
         {/* Image gallery */}
@@ -158,13 +156,7 @@ const SingleGymTemplate = ({ gym }) => {
         <GymReviews reviews={reviews} rating={rating} />
 
         {/* Location Map */}
-        <GymSurroundings
-          latitude={latitude}
-          longitude={longitude}
-          city={city}
-          country={country}
-          locationDesc="TSK... create in DB . . .Change location to be an object with: city, state, country, zip, latitude, longitude, desc, . . ."
-        />
+        <GymSurroundings location={location} />
 
         {/* Owner Details */}
         <OwnerDetails owner={gym_owner} />
@@ -177,7 +169,7 @@ const SingleGymTemplate = ({ gym }) => {
         />
 
         {/* Nearby Gyms */}
-        <NearbyGyms location="TSK... this object will change to contain long, lat, city, state. . . ect" />
+        <NearbyGyms location={location} />
       </div>
     </Layout>
   );

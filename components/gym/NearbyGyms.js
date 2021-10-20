@@ -1,5 +1,5 @@
 const NearbyGyms = ({ location }) => {
-  // const { latitude, longitude, city, country, state, desc } = location;
+  const { latitude, longitude, city, country, state, description } = location;
 
   return (
     <section>
