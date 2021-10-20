@@ -33,6 +33,8 @@
 
 - useMemo
 
+- Loading Spinner or state
+
 ### MINOR
 
 - [Style MAP click Popups](https://visgl.github.io/react-map-gl/docs/api-reference/popup)
