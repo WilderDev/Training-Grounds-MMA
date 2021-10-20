@@ -14,6 +14,7 @@ import GymSurroundings from "../../../components/gym/GymSurroundings";
 import OwnerDetails from "../../../components/gym/OwnerDetails";
 import GymDetails from "../../../components/gym/GymDetails";
 import NearbyGyms from "../../../components/gym/NearbyGyms";
+import BookGymBox from "../../../components/gym/BookGymBox";
 
 const SingleGymTemplate = ({ gym }) => {
   console.log("gym:", gym);
@@ -27,29 +28,37 @@ const SingleGymTemplate = ({ gym }) => {
         <meta name="description" content={gym.description} />
       </Head>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-6 space-y-6 sm:px-6 lg:px-8">
         {/*  Title Info Bar*/}
         <TitleInfoBar />
 
         {/* Image gallery */}
         <HeroImageGallery images={gym.all_images} />
 
-        {/* Gym Info */}
-        <div className="w-2/3">
-          {/* Gym Features */}
-          <GymFeatures />
+        {/* BelowTheFold Page Content */}
+        <div className="flex justify-between">
+          {/* Gym Info */}
+          <div className="w-2/3  space-y-6">
+            {/* Gym Features */}
+            <GymFeatures />
 
-          {/* Gym Description */}
-          <GymDescription />
+            {/* Gym Description */}
+            <GymDescription />
 
-          {/* Meet Trainers */}
-          <MeetTheTrainers />
+            {/* Meet Trainers */}
+            <MeetTheTrainers />
 
-          {/* Gym Amenities */}
-          <GymAmenities />
+            {/* Gym Amenities */}
+            <GymAmenities />
 
-          {/* Gym Calendar Availability */}
-          <AvailabilityCalendar />
+            {/* Gym Calendar Availability */}
+            <AvailabilityCalendar />
+          </div>
+
+          {/* Book Gym */}
+          <div className="w-1/3 bg-gray-100">
+            <BookGymBox />
+          </div>
         </div>
 
         {/* Reviews */}

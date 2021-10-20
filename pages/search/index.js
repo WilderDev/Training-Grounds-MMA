@@ -99,7 +99,7 @@ const LocationSearch = ({ searchResults }) => {
         />
       </Head>
 
-      <section className="flex mb-24">
+      <section className="flex mb-24 px-4 sm:px-8">
         {/* Left side - Title && Cards */}
         <div className="flex-grow mx-auto md:mx-0 pt-14 md:px-6">
           {/* Top Info (Title) */}

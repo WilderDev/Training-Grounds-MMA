@@ -18,18 +18,20 @@ export default function Home({ locationGridData, categoryCardsData }) {
         />
       </Head>
 
-      <Hero />
+      <div className="px-4 sm:px-8">
+        <Hero />
 
-      <LocationGrid data={locationGridData} />
+        <LocationGrid data={locationGridData} />
 
-      <CategoryCards data={categoryCardsData} />
+        <CategoryCards data={categoryCardsData} />
 
-      <CTABox
-        image="/images/hero-bg-alt.jpg"
-        title="Put Your Gym on the Map"
-        description="Attract top talent to your gym and grow your members by sharing your gym."
-        buttonText="Learn More"
-      />
+        <CTABox
+          image="/images/hero-bg-alt.jpg"
+          title="Put Your Gym on the Map"
+          description="Attract top talent to your gym and grow your members by sharing your gym."
+          buttonText="Learn More"
+        />
+      </div>
     </Layout>
   );
 }

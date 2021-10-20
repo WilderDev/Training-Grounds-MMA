@@ -3,7 +3,7 @@ import Image from "next/image";
 // TSK: Button to see more/all
 const HeroImageGallery = ({ images }) => {
   return (
-    <section className="mt-6 sm:px-6 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+    <section className="mt-6 lg:grid lg:grid-cols-3 lg:gap-x-8">
       <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
         <Image
           src={images[0].src}
@@ -51,3 +51,8 @@ const HeroImageGallery = ({ images }) => {
 };
 
 export default HeroImageGallery;
+
+// IX_TSK
+// 1. Create validation so user has to input atleast 4 photos
+// 2. Check if there are > 4 photos => Add a button in bottom right to open a gallery like page modal
+// 3. That modal should have the ability to select a photo and look up close
