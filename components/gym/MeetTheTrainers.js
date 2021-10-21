@@ -12,7 +12,7 @@ const MeetTheTrainers = ({ trainers }) => {
         {trainers.map((trainer) => (
           <div
             key={v4()}
-            className="flex rounded-lg border border-gray-300 w-1/4 mr-8 mt-4 py-4 px-3 group cursor-pointer hover:bg-gray-900 hover:text-white"
+            className="flex rounded-lg border border-gray-300 w-full md:w-5/12 lg:w-1/3 mr-2 md:mr-4 lg:mr-8 mt-4 py-4 px-3 group cursor-pointer hover:bg-gray-900 hover:text-white"
           >
             {/* Image */}
             <div className="relative pr-6">
