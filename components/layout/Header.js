@@ -80,23 +80,22 @@ const Header = ({ placeholder, isSticky }) => {
       )}
     >
       {/* Left - Logo */}
-      <div
-        className="hidden relative lg:flex items-center h-10 cursor-pointer my-auto"
-        onClick={() => router.push("/")}
-      >
-        <Image
-          src="/icons/Training-Grounds_Logo-Icon.png"
-          alt="Training Grounds Logo Triangle Arrow with open space."
-          layout="fill"
-          objectFit="contain"
-          objectPosition="left"
-          quality={100}
-          priority={true}
-        />
-        <p className="hidden lg:block font-black ml-14 text-2xl">
-          Training Grounds
-        </p>
-      </div>
+      <Link href="/">
+        <a className="hidden relative lg:flex items-center h-10 cursor-pointer my-auto">
+          <Image
+            src="/icons/Training-Grounds_Logo-Icon.png"
+            alt="Training Grounds Logo Triangle Arrow with open space."
+            layout="fill"
+            objectFit="contain"
+            objectPosition="left"
+            quality={100}
+            priority={true}
+          />
+          <p className="hidden xl:block font-black ml-14 text-2xl">
+            Training Grounds
+          </p>
+        </a>
+      </Link>
 
       {/* Center - Search */}
       <div className="col-span-2 lg:col-span-1 flex items-center py-2 rounded-full md:border-2 md:shadow-sm">
