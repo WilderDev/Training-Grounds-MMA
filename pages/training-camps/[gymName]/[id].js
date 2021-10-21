@@ -93,7 +93,7 @@ const SingleGymTemplate = ({ gym }) => {
         <meta name="description" content={description} />
       </Head>
 
-      <div className="relative w-screen sm:max-w-7xl mx-auto mt-6 lg:mt-7  sm:px-6 lg:px-8">
+      <div className="relative w-screen sm:max-w-7xl mx-auto lg:mt-7  sm:px-6 lg:px-8">
         {/* AboveTheFold Page Content */}
         <div className="space-y-4">
           {/*  Title Info Bar*/}

@@ -2,7 +2,7 @@ const GymSurroundings = ({ location }) => {
   const { latitude, longitude, city, country, state, description } = location;
 
   return (
-    <section>
+    <section className="responsive">
       Map with cool places nearby, description, and show more modal button
     </section>
   );

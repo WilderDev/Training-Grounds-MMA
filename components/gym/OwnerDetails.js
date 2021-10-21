@@ -1,6 +1,6 @@
 const OwnerDetails = ({ owner }) => {
   return (
-    <section>
+    <section className="responsive">
       In depth owner details iwth reviews, badges, descriptoin, contact button
       and more!
     </section>

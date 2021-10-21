@@ -5,7 +5,7 @@ const TitleInfoBar = ({ title, location, numReviews, rating }) => {
   const { city, state, country } = location;
 
   return (
-    <section className="px-6 sm:px-0 order-3">
+    <section className="responsive order-3">
       <h1 className="font-bold text-3xl text-gray-800">{title}</h1>
 
       {/* Bottom Bar */}

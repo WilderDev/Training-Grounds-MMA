@@ -1,31 +1,63 @@
-import { PaperAirplaneIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 import { v4 } from "uuid";
+import { getMatchingFeatureIcon } from "../../utils/icon.helpers";
+import { BadgeCheckIcon } from "@heroicons/react/solid";
 
 const GymFeatures = ({ name, features, stylesOffered }) => {
-  const icon = { icon: <PaperAirplaneIcon className="h-5 pr-4" /> };
+  const featuresWithIcons = features.map((feature) => {
+    const icon = getMatchingFeatureIcon(feature.icon);
+    return {
+      ...feature,
+      icon,
+    };
+  });
 
   return (
-    <section className="">
-      {/* Top Bar - Title, Styles */}
-      <h2>{name}</h2>
-      <p className="space-x-4">
-        {stylesOffered.map((style) => (
-          <span key={v4()}>{style}</span>
-        ))}
-      </p>
+    <section className="responsive">
+      {/* Top Bar - Title, Styles, userProfile */}
+      <div className="flex justify-between items-center">
+        {/* Left Side (Top) - Title, Styles */}
+        <div>
+          <h2 className="font-semibold text-xl sm:text-2xl">{name}</h2>
+          <p className="space-x-2 sm:space-x-4 mb-4 mt-1">
+            {stylesOffered.map((style) => (
+              <span key={v4()} className="text-gray-700 font-serif">
+                <span className="hidden sm:inline-block">·</span> {style}{" "}
+                <span>·</span>
+              </span>
+            ))}
+          </p>
+        </div>
 
+        {/* Right Side (Top) - User Photo w/ Badge */}
+        <div className="relative">
+          {/* Photo */}
+          <Image
+            src="https://source.unsplash.com/150x150/?face,man"
+            height={50}
+            width={50}
+            className="rounded-full"
+          />
+
+          {/* Badge */}
+          <div className="absolute top-6 -right-1 z-20">
+            <BadgeCheckIcon className="h-6 text-red-500" />
+          </div>
+        </div>
+      </div>
       {/* Divider */}
       <hr />
 
       {/* Bot Content - Features */}
       <ul className="space-y-4 my-6">
-        {features.map((feature) => (
+        {featuresWithIcons.map((feature) => (
           <li key={v4()} className="flex items-center">
-            {/* <PaperAirplane.Icon className="h-5 pr-4" /> */}
-            {icon.icon}
+            <feature.icon className="h-5 sm:h-7 text-gray-500 pr-5" />
             <p className="flex flex-col">
-              <span>{feature.feature}</span>
-              <span>{feature.description}</span>
+              <span className="font-semibold">{feature.feature}</span>
+              <span className="text-gray-700 text-xs sm:text-base">
+                {feature.description}
+              </span>
             </p>
           </li>
         ))}

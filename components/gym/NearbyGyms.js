@@ -2,7 +2,7 @@ const NearbyGyms = ({ location }) => {
   const { latitude, longitude, city, country, state, description } = location;
 
   return (
-    <section>
+    <section className="responsive">
       List of all nearby gyms by city... probably create another component for
       by trainingModality
     </section>

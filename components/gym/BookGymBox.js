@@ -11,7 +11,7 @@ const BookGymBox = ({
   total,
 }) => {
   return (
-    <section className="">
+    <section className="responsive">
       Add Checkin and Checkout dates, numFighters, and big button...
       {/* /TSK eventually the report listings will go here as well */}
     </section>

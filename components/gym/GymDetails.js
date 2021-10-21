@@ -1,6 +1,6 @@
 const GymDetails = ({ gymRules, safteyInfo, cancellationPolicy }) => {
   return (
-    <section>
+    <section className="responsive">
       Three rows for Gym Rules, Health and Safety, and Cancelation policy!
     </section>
   );
