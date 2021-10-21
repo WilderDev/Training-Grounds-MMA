@@ -54,13 +54,13 @@ const TitleInfoBar = ({ title, location, numReviews, rating }) => {
         {/* Right - Share & Save */}
         <div className="hidden sm:flex">
           {/* Share */}
-          <button className="flex items-center underline font-semibold font-sm text-gray-700 hover:bg-gray-200 rounded-lg p-2">
+          <button className="flex items-center underline font-semibold font-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-colors rounded-lg p-2">
             <ShareIcon className="h-5 pr-2" />
             Share
           </button>
 
           {/* Save */}
-          <button className="flex items-center underline font-semibold font-sm text-gray-700 hover:bg-gray-200 rounded-lg p-2">
+          <button className="flex items-center underline font-semibold font-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-colors rounded-lg p-2">
             <HeartIcon className="h-5 pr-2" />
             Save
           </button>

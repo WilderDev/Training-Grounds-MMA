@@ -46,10 +46,10 @@ const GymFeatures = ({ name, features, stylesOffered }) => {
         </div>
       </div>
       {/* Divider */}
-      <hr />
+      <hr className="mt-1 mb-6 sm:mb-8" />
 
       {/* Bot Content - Features */}
-      <ul className="space-y-4 my-6">
+      <ul className="space-y-4 sm:space-y-6">
         {featuresWithIcons.map((feature) => (
           <li key={v4()} className="flex items-center">
             <feature.icon className="h-5 sm:h-7 text-gray-500 pr-5" />
@@ -64,7 +64,7 @@ const GymFeatures = ({ name, features, stylesOffered }) => {
       </ul>
 
       {/* Divider */}
-      <hr />
+      <hr className="my-6 sm:my-8" />
     </section>
   );
 };
