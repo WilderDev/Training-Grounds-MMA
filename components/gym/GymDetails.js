@@ -1,3 +1,5 @@
+// https://heroicons.com/
+
 const GymDetails = ({ gymRules, safteyInfo, cancellationPolicy }) => {
   return (
     <section className="responsive">
