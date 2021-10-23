@@ -1,6 +1,8 @@
 import { BadgeCheckIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { getMonthAndYear } from "../../utils/time.helpers";
+import { getMatchingBadgeIcon } from "../../utils/icon.helpers";
+import { v4 } from "uuid";
 
 const dummy = {
   first_name: "Jacob",
@@ -34,6 +36,12 @@ const dummy = {
 
 const OwnerDetails = ({ owner }) => {
   // const {  } = owner;
+  const ownerBadges = dummy.badges.map((badge) => ({
+    name: badge,
+    icon: getMatchingBadgeIcon(badge),
+  }));
+
+  console.log("ownerBadges:", ownerBadges);
 
   return (
     <section className="responsive">
@@ -72,7 +80,14 @@ const OwnerDetails = ({ owner }) => {
         {/* Left - Badges, Location, Bio, Public Message */}
         <div className="flex flex-col">
           {/* Badges */}
-          <div className="flex flex-wrap"></div>
+          <div className="flex flex-wrap">
+            {ownerBadges.map((badge) => (
+              <p key={v4()} className="flex items-center">
+                <badge.icon className="h-5" />
+                {badge.name}
+              </p>
+            ))}
+          </div>
 
           {/* Location */}
 
