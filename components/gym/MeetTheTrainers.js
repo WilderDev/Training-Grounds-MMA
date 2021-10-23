@@ -37,7 +37,10 @@ const MeetTheTrainers = ({ trainers }) => {
               {/* Styles */}
               <ul className="flex">
                 {trainer.styles.map((style) => (
-                  <li className="mr-4 text-gray-600 group-hover:text-gray-300">
+                  <li
+                    key={v4()}
+                    className="mr-4 text-gray-600 group-hover:text-gray-300"
+                  >
                     {style}
                   </li>
                 ))}

@@ -12,12 +12,9 @@ const GymInfoCard = ({ info }) => {
     pricing,
     rating,
     main_image_url,
-    features,
     training_options,
     href,
   } = info;
-
-  // console.log("info:", info);
 
   return (
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
@@ -67,12 +64,6 @@ const GymInfoCard = ({ info }) => {
         <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
           {description}
         </p>
-        {/* Features */}
-        {/* <p className="pt-2 text-sm text-gray-500  group-hover:text-gray-300 flex-grow">
-          {features.map((feature) => (
-            <span key={v4()}>{feature.feature}</span>
-          ))}
-        </p> */}
 
         {/* Bottom Row */}
         <div className="flex justify-between pt-5">

@@ -147,7 +147,6 @@ const Filters = ({ filters, setFilters, clearFilters }) => {
 
   // Refresh Filters
   useEffect(() => {
-    console.log("inHERE:");
     setFilters({
       ...filters,
       trainingModalities: trainingModalities,

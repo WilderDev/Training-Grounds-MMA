@@ -21,16 +21,6 @@ const featureIcons = [
 ];
 
 export function getMatchingFeatureIcon(feature) {
-  console.log("feature:", feature);
   const selectedIcon = featureIcons.filter((item) => item.name === feature);
-  console.log("selectedIcon:", selectedIcon);
   return selectedIcon[0].icon;
-  // switch (feature) {
-  // 	case "beef":
-  // 		return "beef"
-  // 		break;
-
-  // 	default:
-  // 		break;
-  // }
 }

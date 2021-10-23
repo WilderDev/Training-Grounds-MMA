@@ -61,8 +61,6 @@ const SingleGymTemplate = ({ gym }) => {
     selectedPackageOption.prices[stayDurationOption]
   );
 
-  console.log("total:", total);
-
   const getTotal = () => {
     if (selectedPackageOption)
       setTotal(

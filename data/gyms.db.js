@@ -13,7 +13,6 @@ export async function getAllActiveGyms() {
 
 export async function getAllActiveGymsByQuery(query) {
   const filter = buildFilterByQuery(query);
-  console.log("filter:", filter);
   try {
     const { db } = await connectToDatabase();
     const allGymsByQuery = await db
