@@ -14,7 +14,7 @@ const GymAmenities = ({ amenities }) => {
   });
   return (
     <section className="responsive">
-      <h2 className="dynamicPageHeading mb-6">Gym Ammenities</h2>
+      <h2 className="dynamicPageHeading mb-6">Gym & Housing Ammenities</h2>
       <ul className="space-y-3">
         {amenitiesWithIcons.slice(0, 4).map((item) => (
           <li key={v4()} className="flex items-center">

@@ -12,14 +12,15 @@ const SurroundingsMap = ({ latitude, longitude, name }) => {
     height: "100%",
     latitude: center.latitude,
     longitude: center.longitude,
-    zoom: 12,
+    zoom: 13,
   });
 
-  //   TSK: use mapbox streets: https://www.mapbox.com/maps/streets
-
+  //   TSK: use mapbox streets:
+  // https://docs.mapbox.com/help/tutorials/local-search-geocoding-api/
+  // https://docs.mapbox.com/help/tutorials/tilequery-healthy-food-finder/
   return (
     <ReactMapGL
-      mapStyle="mapbox://styles/wilderdev/ckuaavva26k8f19qj6etlivy2"
+      mapStyle="mapbox://styles/wilderdev/ckv441qkg5buh14o6bkmphwyq"
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
@@ -53,3 +54,7 @@ const SurroundingsMap = ({ latitude, longitude, name }) => {
 };
 
 export default SurroundingsMap;
+
+// IX_TSK
+// 1. Use https://docs.mapbox.com/help/tutorials/get-started-isochrone-api/ to show how close everything is
+// 2. Add search capabilities
