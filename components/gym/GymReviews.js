@@ -21,7 +21,7 @@ const GymReviews = ({ reviews, rating }) => {
 
       {/* Reviews */}
       <div className="flex justify-between flex-col sm:flex-row">
-        {reviewsWithComment.slice(0, 5).map((review) => (
+        {reviewsWithComment?.slice(0, 5).map((review) => (
           <div key={v4()} className="w-5/12">
             {/* Top - Pic, Name, Date */}
             <div className="flex items-center">
@@ -40,7 +40,7 @@ const GymReviews = ({ reviews, rating }) => {
               {/* Info */}
               <div className="flex flex-col ml-4">
                 <h3 className="font-semibold">
-                  {review.user.firstName || "Anonymous"}
+                  {review?.user?.firstName || "Anonymous"}
                 </h3>
                 <p className="text-gray-500 text-sm">
                   {getMonthAndYear(review.date_created)}

@@ -34,6 +34,7 @@ const GymFeatures = ({ name, features, stylesOffered }) => {
           {/* Photo */}
           <Image
             src="https://source.unsplash.com/150x150/?face,man"
+            alt={name + " owner"}
             height={50}
             width={50}
             className="rounded-full"

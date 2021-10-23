@@ -1,7 +1,7 @@
 const OwnerDetails = ({ owner }) => {
   return (
     <section className="responsive">
-      <h2 className="dynamicPageHeading">This gym is owned by {owner.name}</h2>
+      <h2 className="dynamicPageHeading">This gym is owned by {owner?.name}</h2>
       In depth owner details iwth reviews, badges, descriptoin, contact button
       and more!
       <hr className="spacedHR" />

@@ -18,6 +18,7 @@ const MeetTheTrainers = ({ trainers }) => {
             <div className="relative pr-6">
               <Image
                 src={trainer.profile_picture}
+                alt={trainer.name}
                 height={50}
                 width={50}
                 className="rounded-full"
