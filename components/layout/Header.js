@@ -5,15 +5,8 @@ import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { SearchIcon, UserCircleIcon, UsersIcon } from "@heroicons/react/solid";
-import { DateRangePicker } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
 import { v4 } from "uuid";
 import { classNames } from "../../utils/misc.helpers";
-import {
-  defaultInputRanges,
-  defaultStaticRanges,
-} from "../../utils/calendar.helpers";
 import DateRangeCalendar from "../minor/DateRangeCalendar";
 
 const dropdownLinks = [

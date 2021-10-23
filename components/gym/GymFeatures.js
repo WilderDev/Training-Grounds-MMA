@@ -18,7 +18,7 @@ const GymFeatures = ({ name, features, stylesOffered }) => {
       <div className="flex justify-between items-center">
         {/* Left Side (Top) - Title, Styles */}
         <div>
-          <h2 className="font-semibold text-xl sm:text-2xl">{name}</h2>
+          <h2 className="dynamicPageHeading">{name}</h2>
           <p className="space-x-2 sm:space-x-4 mb-4 mt-1">
             {stylesOffered.map((style) => (
               <span key={v4()} className="text-gray-700 font-serif">
@@ -64,7 +64,7 @@ const GymFeatures = ({ name, features, stylesOffered }) => {
       </ul>
 
       {/* Divider */}
-      <hr className="my-6 sm:my-8" />
+      <hr className="spacedHR" />
     </section>
   );
 };

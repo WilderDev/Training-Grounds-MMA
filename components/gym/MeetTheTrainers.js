@@ -5,7 +5,7 @@ const MeetTheTrainers = ({ trainers }) => {
   return (
     <section className="responsive">
       {/* Title */}
-      <h2 className="text-2xl font-medium mb-2">Meet Your Trainers</h2>
+      <h2 className="dynamicPageHeading mb-2">Meet Your Trainers</h2>
 
       {/* Trainers */}
       <div className="flex flex-wrap">
@@ -50,7 +50,7 @@ const MeetTheTrainers = ({ trainers }) => {
         ))}
       </div>
 
-      <hr className="my-6 sm:my-8" />
+      <hr className="spacedHR" />
     </section>
   );
 };

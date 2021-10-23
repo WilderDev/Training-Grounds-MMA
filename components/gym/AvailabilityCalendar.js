@@ -15,7 +15,7 @@ const AvailabilityCalendar = ({ city, state, country }) => {
 
   return (
     <section className="responsive">
-      <h2 className="font-semibold text-xl sm:text-2xl mb-2">
+      <h2 className="dynamicPageHeading mb-2">
         {getStringOfSelectedDays(startDate, endDate)} in{" "}
         {locationsToString(city, state, country)}
       </h2>
@@ -27,6 +27,8 @@ const AvailabilityCalendar = ({ city, state, country }) => {
         startDate={startDate}
         endDate={endDate}
       />
+
+      <hr className="spacedHR" />
     </section>
   );
 };

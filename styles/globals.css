@@ -20,6 +20,14 @@
     @apply px-6 sm:px-0 mt-6 sm:mt-8;
   }
 
+  .dynamicPageHeading {
+    @apply font-semibold text-xl sm:text-2xl;
+  }
+
+  .spacedHR {
+    @apply my-6 sm:my-8;
+  }
+
   .button {
     @apply px-4 py-2 border rounded-full cursor-pointer hover:shadow-lg active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out;
   }

@@ -25,7 +25,7 @@ const GymDescription = ({ desc, detailedDesc }) => {
         />
       )}
 
-      <hr className="my-6 sm:my-8" />
+      <hr className="spacedHR" />
     </section>
   );
 };

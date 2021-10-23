@@ -14,7 +14,7 @@ const GymAmenities = ({ amenities }) => {
   });
   return (
     <section className="responsive">
-      <h2 className="font-semibold text-xl sm:text-2xl mb-6">Gym Ammenities</h2>
+      <h2 className="dynamicPageHeading mb-6">Gym Ammenities</h2>
       <ul className="space-y-3">
         {amenitiesWithIcons.slice(0, 4).map((item) => (
           <li key={v4()} className="flex items-center">
@@ -37,7 +37,7 @@ const GymAmenities = ({ amenities }) => {
         {showAllAmenities ? "Hide" : `Show all ${amenities.length} amenities`}
       </button>
 
-      <hr className="my-8" />
+      <hr className="spacedHR" />
     </section>
   );
 };

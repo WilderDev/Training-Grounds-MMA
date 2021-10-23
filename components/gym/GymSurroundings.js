@@ -3,7 +3,9 @@ const GymSurroundings = ({ location }) => {
 
   return (
     <section className="responsive">
+      <h2 className="dynamicPageHeading">Around the area</h2>
       Map with cool places nearby, description, and show more modal button
+      <hr className="spacedHR" />
     </section>
   );
 };
