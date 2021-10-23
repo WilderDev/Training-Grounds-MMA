@@ -15,3 +15,10 @@ export function getLocalDateString(date) {
     day: "numeric",
   });
 }
+
+export function getMonthAndYear(date) {
+  return new Date(date).toLocaleDateString("en-us", {
+    month: "long",
+    year: "numeric",
+  });
+}
