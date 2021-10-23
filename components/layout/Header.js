@@ -14,6 +14,7 @@ import {
   defaultInputRanges,
   defaultStaticRanges,
 } from "../../utils/calendar.helpers";
+import DateRangeCalendar from "../minor/DateRangeCalendar";
 
 const dropdownLinks = [
   {
@@ -45,15 +46,10 @@ const Header = ({ placeholder, isSticky }) => {
 
   const [searchInput, setSearchInput] = useState("");
   const [numFighters, setNumFighters] = useState(1);
+
+  // IX_TSK set these in context so I can use them in the SingleDynamicGym Page Calendar
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: "selection",
-  };
-
   const handleSelectDates = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
@@ -170,14 +166,10 @@ const Header = ({ placeholder, isSticky }) => {
       {/* Bot - Calendar */}
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-4">
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={new Date()}
-            disabledDates={[new Date().getDate() - 1]}
-            rangeColors={["#ef4444"]}
-            onChange={handleSelectDates}
-            staticRanges={defaultStaticRanges}
-            inputRanges={defaultInputRanges}
+          <DateRangeCalendar
+            handleSelectDates={handleSelectDates}
+            startDate={startDate}
+            endDate={endDate}
           />
           <div className="flex items-center border-b mb-4">
             <h2 className="text-2xl flex-grow font-semibold">

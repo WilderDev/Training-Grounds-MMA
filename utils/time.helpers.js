@@ -5,3 +5,13 @@ export function getDaysBetweenDates(end, start) {
 
   return daysDifference + 1;
 }
+
+// IX_TSK, take in a second argument, locale and format accordingly
+export function getLocalDateString(date) {
+  return date.toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}

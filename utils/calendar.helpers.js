@@ -121,3 +121,9 @@ export const defaultInputRanges = [
     },
   },
 ];
+
+export function getStringOfSelectedDays(startDate, endDate) {
+  const numDays = differenceInCalendarDays(endDate, startDate) + 1;
+  const formattedDays = numDays === 1 ? "1 day" : `${numDays} days`;
+  return formattedDays;
+}

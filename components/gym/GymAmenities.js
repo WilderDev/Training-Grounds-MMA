@@ -12,7 +12,6 @@ const GymAmenities = ({ amenities }) => {
       icon,
     };
   });
-  console.log("amenities:", amenities);
   return (
     <section className="responsive">
       <h2 className="font-semibold text-xl sm:text-2xl mb-6">Gym Ammenities</h2>

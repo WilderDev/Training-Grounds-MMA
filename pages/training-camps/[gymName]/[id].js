@@ -136,7 +136,11 @@ const SingleGymTemplate = ({ gym }) => {
             <GymAmenities amenities={amenities} />
 
             {/* Gym Calendar Availability */}
-            <AvailabilityCalendar />
+            <AvailabilityCalendar
+              city={location.city}
+              country={location.country}
+              state={location.state}
+            />
           </div>
 
           {/* Book Gym */}
