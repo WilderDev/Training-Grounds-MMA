@@ -165,7 +165,7 @@ const SingleGymTemplate = ({ gym }) => {
         <GymReviews reviews={reviews} rating={rating} />
 
         {/* Location Map */}
-        <GymSurroundings location={location} />
+        <GymSurroundings location={location} name={name} />
 
         {/* Owner Details */}
         <OwnerDetails owner={gym_owner} />

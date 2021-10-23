@@ -4,7 +4,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { v4 } from "uuid";
 
-const Map = ({ searchResults }) => {
+const ResultsMap = ({ searchResults }) => {
   const [selectedLocation, setSelectedLocation] = useState({});
 
   //   Transform searchResults into something "geolib" understands
@@ -12,6 +12,8 @@ const Map = ({ searchResults }) => {
     longitude: item.location.longitude,
     latitude: item.location.latitude,
   }));
+
+  console.log("coordinates:", coordinates);
 
   //   Geolib finding center of all our searchResults coordinates
   const center = getCenter(coordinates);
@@ -68,4 +70,4 @@ const Map = ({ searchResults }) => {
   );
 };
 
-export default Map;
+export default ResultsMap;

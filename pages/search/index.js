@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout/Layout";
 import GymInfoCard from "../../components/gyms/GymInfoCard";
 import { v4 } from "uuid";
-import Map from "../../components/map/Map";
+import ResultsMap from "../../components/map/ResultsMap";
 import { getAllActiveGymsByQuery } from "../../data/gyms.db";
 import { formatSearchInfo } from "../../utils/search.helpers";
 import Filters from "../../components/minor/Filters";
@@ -128,7 +128,7 @@ const LocationSearch = ({ searchResults }) => {
         {/* Right Side - Map */}
         {filteredGyms?.length && (
           <div className="hidden xl:inline-flex xl:min-w-[600px] max-h-[90vh] sticky top-24">
-            <Map searchResults={filteredGyms} />
+            <ResultsMap searchResults={filteredGyms} />
           </div>
         )}
       </section>
