@@ -18,6 +18,7 @@ const SurroundingsMap = ({ latitude, longitude, name }) => {
   //   TSK: use mapbox streets:
   // https://docs.mapbox.com/help/tutorials/local-search-geocoding-api/
   // https://docs.mapbox.com/help/tutorials/tilequery-healthy-food-finder/
+
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/wilderdev/ckv441qkg5buh14o6bkmphwyq"
@@ -58,3 +59,4 @@ export default SurroundingsMap;
 // IX_TSK
 // 1. Use https://docs.mapbox.com/help/tutorials/get-started-isochrone-api/ to show how close everything is
 // 2. Add search capabilities
+// 3. Move to context: https://github.com/visgl/react-map-gl/issues/878

@@ -22,7 +22,7 @@ const GymReviews = ({ reviews, rating }) => {
       {/* Reviews */}
       <div className="flex justify-between flex-col sm:flex-row">
         {reviewsWithComment?.slice(0, 5).map((review) => (
-          <div key={v4()} className="w-5/12">
+          <div key={v4()} className="w-full my-4 sm:my-0 sm:w-5/12">
             {/* Top - Pic, Name, Date */}
             <div className="flex items-center">
               {/* Image */}

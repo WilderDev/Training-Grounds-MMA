@@ -13,7 +13,7 @@ const GymSurroundings = ({ location, name }) => {
       </p>
 
       {/* Map */}
-      <div className="hidden w-full xl:inline-flex h-[500px]">
+      <div className="w-full xl:inline-flex h-[400px] sm:h-[500px]">
         <SurroundingsMap
           latitude={latitude}
           longitude={longitude}
@@ -21,7 +21,7 @@ const GymSurroundings = ({ location, name }) => {
         />
       </div>
 
-      {/* Description of surroundings */}
+      {/* Description of surroundings IX_TSK */}
       <h3 className=""></h3>
       <p className=""></p>
       <hr className="spacedHR" />
