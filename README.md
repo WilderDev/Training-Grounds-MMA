@@ -73,6 +73,8 @@
 
 - Internationalization
 
+- Get insurance for payments... vet all gym owners to make sure they aren't scammer bo jammers
+
 <!-- For every booking Airbnb charges the guest 6-12% of the booking fee. Moreover Airbnb charges the host 3% for every successful transaction. -->
 
 <!-- Airbnb provides offers, promotional codes and credits to frequent travelers, as well as to hosts -->

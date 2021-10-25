@@ -146,7 +146,7 @@ const SingleGymTemplate = ({ gym }) => {
           </div>
 
           {/* Book Gym */}
-          <div className="fixed w-screen bottom-0 sm:static sm:w-1/3 sm:ml-14  bg-white z-30 shadow-md p-5 md:px-10 mt-10">
+          <div className="fixed w-screen bottom-0 sm:static sm:w-1/3 sm:ml-14  bg-white z-30 shadow-md p-5 md:px-10 mt-10  max-h-[500px]">
             <BookGymBox
               packageOptions={package_options}
               trainingOptions={training_options}

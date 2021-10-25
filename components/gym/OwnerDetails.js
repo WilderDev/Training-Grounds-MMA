@@ -16,7 +16,7 @@ const dummy = {
   reviews: [{}, {}],
   gyms: ["TSK Ref to Master Martial Arts Gym"],
   location: {
-    city: "Bankok",
+    city: "Bangkok",
     state: null,
     // TSK zip:
     country: "Thailand",

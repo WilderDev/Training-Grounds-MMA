@@ -12,8 +12,10 @@ const BookGymBox = ({
 }) => {
   return (
     <section className="responsive">
-      Add Checkin and Checkout dates, numFighters, and big button...
-      {/* /TSK eventually the report listings will go here as well */}
+      {/* Submit Btn */}
+      <button className="w-full py-3 px-6 bg-gradient-to-br from-red-500 to-red-700 hover:bg-gradient-to-tr hover:to-red-600 transition-all text-white font-bold rounded-lg text-lg shadow-md hover:shadow-xl active:shadow-sm active:bg-red-600">
+        Reserve my spot!
+      </button>
     </section>
   );
 };
@@ -27,3 +29,7 @@ export default BookGymBox;
 // 3. Have this update the parents state for price/nights
 // 4. Add offer_options
 // 5. Calculate Taxes
+// 6. Button should be a gradient w/ smooth hover
+{
+  /* /TSK eventually the report listings will go here as well */
+}

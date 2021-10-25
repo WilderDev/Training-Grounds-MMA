@@ -61,8 +61,8 @@ export function formatSearchInfo(queryParams, numSearchResults) {
 export function getNearbyGyms(latitude, longitude) {
   let nearbyGyms = [
     {
-      name: "Bankok Training Camps",
-      href: "http://localhost:3000/search?location=bankok&numFighters=1",
+      name: "Bangkok Training Camps",
+      href: "http://localhost:3000/search?location=bangkok&numFighters=1",
     },
   ];
 
