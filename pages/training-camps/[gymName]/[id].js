@@ -136,11 +136,11 @@ const SingleGymTemplate = ({ gym }) => {
             <GymAmenities amenities={amenities} />
 
             {/* Gym Calendar Availability */}
-            <AvailabilityCalendar
+            {/* <AvailabilityCalendar
               city={location.city}
               country={location.country}
               state={location.state}
-            />
+            /> */}
           </div>
 
           {/* Book Gym */}
@@ -165,7 +165,7 @@ const SingleGymTemplate = ({ gym }) => {
         <GymReviews reviews={reviews} rating={rating} />
 
         {/* Location Map */}
-        <GymSurroundings location={location} name={name} />
+        {/* <GymSurroundings location={location} name={name} /> */}
 
         {/* Owner Details */}
         <OwnerDetails owner={gym_owner} />

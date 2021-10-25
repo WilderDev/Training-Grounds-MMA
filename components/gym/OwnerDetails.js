@@ -1,4 +1,4 @@
-import { BadgeCheckIcon } from "@heroicons/react/solid";
+import { BadgeCheckIcon, LockClosedIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { getMonthAndYear } from "../../utils/time.helpers";
 import { getMatchingBadgeIcon } from "../../utils/icon.helpers";
@@ -109,7 +109,7 @@ const OwnerDetails = ({ owner }) => {
         </div>
 
         {/* Right - Stats, Contact Button */}
-        <div className="flex flex-col sm:ml-10">
+        <div className="flex flex-col mt-8 sm:mt-0 sm:ml-16">
           {/* Stats */}
           <p className="mb-2">Response rate: {dummy.stats.response_rate}</p>
           <p>Response time: {dummy.stats.avg_response_time}</p>
@@ -118,6 +118,14 @@ const OwnerDetails = ({ owner }) => {
           <button className="dynamicPageBtn">Contact Owner</button>
 
           {/* TSK - Protect Payment badge */}
+          <div className="flex items-center mt-5">
+            <LockClosedIcon className="h-5 mr-4 text-yellow-400" />{" "}
+            <p className="text-xs text-gray-500 w-80">
+              Beware of sending payments outside of the TrainingGrounds website.
+              We cannot protect your investment if you choose to contact the
+              owner outside of our platform.
+            </p>
+          </div>
         </div>
       </div>
 
