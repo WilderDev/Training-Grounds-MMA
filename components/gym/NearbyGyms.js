@@ -13,7 +13,7 @@ const NearbyGyms = ({ location }) => {
         Explore more gyms in {locationsToString(city, state, country)}
       </h2>
 
-      <div className="mt-10">
+      <div className="mb-12 mt-8">
         {nearbyGyms.map((gym) => (
           <Link key={v4()} href={gym.href}>
             <a className="dynamicPageBtn" target={gym.name}>

@@ -53,7 +53,9 @@ const BookGymBox = ({
       >
         Reserve my spot!
       </button>
-      <p className="text-xs text-gray-600">*TSK</p>
+      <p className="text-xs text-gray-600 mt-2">
+        *Clicking here does not lock you in to a purchase.
+      </p>
     </section>
   );
 };

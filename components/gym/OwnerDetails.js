@@ -79,7 +79,7 @@ const OwnerDetails = ({ owner }) => {
         {/* Left - Badges, Location, Bio, Public Message */}
         <div className="flex flex-col">
           {/* Badges */}
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap mb-6">
             {ownerBadges.map((badge) => (
               <p key={v4()} className="flex items-center mr-5">
                 <badge.icon className="h-5 pr-1 text-red-500" />
@@ -89,21 +89,21 @@ const OwnerDetails = ({ owner }) => {
           </div>
 
           {/* Location */}
-          <p className="my-6 text-gray-700">
+          {/* <p className="my-6 text-gray-700">
             {locationsToString(
               dummy.location.city,
               dummy.location.state,
               dummy.location.country
             )}
-          </p>
-
-          {/* Bio */}
-          <h3 className="font-semibold text-lg">Bio</h3>
-          <p className="mt-1 max-w-prose">{dummy.bio}</p>
+          </p> */}
 
           {/* Public Message */}
-          <h3 className="font-semibold text-lg mt-4">Message from the owner</h3>
+          <h3 className="font-semibold text-lg">Message from the owner</h3>
           <p className="mt-1 max-w-prose">{dummy.public_message}</p>
+
+          {/* Bio */}
+          <h3 className="font-semibold text-lg mt-4">Bio</h3>
+          <p className="mt-1 max-w-prose">{dummy.bio}</p>
         </div>
 
         {/* Right - Stats, Contact Button */}
