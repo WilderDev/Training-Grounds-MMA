@@ -10,6 +10,7 @@ const BookGymBox = ({
   setSelectedPackageOption,
   total,
 }) => {
+  // Price, Rating, Check-in / Check-oiut, numFighters, total
   return (
     <section className="responsive">
       {/* Submit Btn */}
