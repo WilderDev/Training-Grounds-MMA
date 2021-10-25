@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { v4 } from "uuid";
 import { locationsToString } from "../../utils/location.helpers";
 import { getNearbyGyms } from "../../utils/search.helpers";
 
@@ -14,7 +15,7 @@ const NearbyGyms = ({ location }) => {
 
       <div className="mt-10">
         {nearbyGyms.map((gym) => (
-          <Link href={gym.href}>
+          <Link key={v4()} href={gym.href}>
             <a className="dynamicPageBtn" target={gym.name}>
               {gym.name}
             </a>

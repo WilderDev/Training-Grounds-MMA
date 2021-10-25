@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 
-const GymInfoCard = ({ info }) => {
+const GymInfoCard = ({ info, numFighters, startDate, endDate }) => {
   const {
     title,
     name,
@@ -18,7 +18,12 @@ const GymInfoCard = ({ info }) => {
 
   return (
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
-      <Link href={`/training-camps/${href}`}>
+      <Link
+        href={{
+          pathname: `/training-camps/${href}`,
+          query: { numFighters, startDate, endDate },
+        }}
+      >
         <a
           target={href}
           rel="noopener noreferrer"
@@ -74,7 +79,7 @@ const GymInfoCard = ({ info }) => {
           </p>
 
           {/* Price */}
-          <div className="">
+          <div>
             <p className="text-right font-extralight">Starting at</p>
             <p className="text-lg font-semibold pb-2 lg:text-2xl">
               {/* TSK: use currency package */}

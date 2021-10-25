@@ -42,8 +42,6 @@ const OwnerDetails = ({ owner }) => {
     icon: getMatchingBadgeIcon(badge),
   }));
 
-  console.log("ownerBadges:", ownerBadges);
-
   return (
     <section className="responsive">
       {/* Top bar - Title, Joined, Image */}

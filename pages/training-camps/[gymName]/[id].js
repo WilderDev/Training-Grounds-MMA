@@ -159,6 +159,8 @@ const SingleGymTemplate = ({ gym }) => {
               setSelectedPackageOption={setSelectedPackageOption}
               // IX_TSK: extraFees={extraFees} . . .like $50 for airport transportation ... ect
               total={total}
+              currency={pricing.currency}
+              rating={rating}
             />
           </div>
         </div>
