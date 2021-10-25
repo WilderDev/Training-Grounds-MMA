@@ -45,6 +45,8 @@ const SingleGymTemplate = ({ gym }) => {
     training_options,
     gym_owner,
     trainers,
+    contact_info,
+    gym_policies,
   } = gym;
 
   const [selectedTrainingOption, setSelectedTrainingOption] = useState(
@@ -172,9 +174,9 @@ const SingleGymTemplate = ({ gym }) => {
 
         {/* Gym Details */}
         <GymDetails
-          gymRules="TSK create in database"
-          safetyInfo="TSK create in DB"
-          cancellationPolicy="TSK create in database"
+          gymRules={gym_policies.gym_rules}
+          safetyInfo={gym_policies.safety_info}
+          cancellationPolicy={gym_policies.cancellation_policy}
         />
 
         {/* Nearby Gyms */}

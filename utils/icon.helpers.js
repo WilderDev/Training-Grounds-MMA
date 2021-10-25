@@ -14,6 +14,10 @@ import {
   StarIcon,
   ChatAltIcon,
   FilterIcon,
+  CalendarIcon,
+  VariableIcon,
+  BeakerIcon,
+  CameraIcon,
 } from "@heroicons/react/solid";
 
 // TSK: ADD all the icons for the available fields once you create the form for new gyms to fill out and think of the options
@@ -74,6 +78,25 @@ const badgeIcons = [
   },
 ];
 
+const policyIcons = [
+  {
+    name: "Calendar",
+    icon: CalendarIcon,
+  },
+  {
+    name: "Pee",
+    icon: VariableIcon,
+  },
+  {
+    name: "Tickle",
+    icon: BeakerIcon,
+  },
+  {
+    name: "Shorts",
+    icon: CameraIcon,
+  },
+];
+
 export function getMatchingFeatureIcon(feature) {
   const selectedIcon = featureIcons.filter((item) => item.name === feature);
   return selectedIcon[0].icon;
@@ -86,6 +109,10 @@ export function getMatchingAmenityIcon(amenity) {
 
 export function getMatchingBadgeIcon(badge) {
   const selectedIcon = badgeIcons.filter((item) => item.name === badge);
-  console.log("selectedIcon[0]:", selectedIcon[0]);
+  return selectedIcon[0].icon;
+}
+
+export function getMatchingPolicyIcon(policyName) {
+  const selectedIcon = policyIcons.filter((item) => item.name === policyName);
   return selectedIcon[0].icon;
 }

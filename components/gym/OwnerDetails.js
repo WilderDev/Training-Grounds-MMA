@@ -120,7 +120,7 @@ const OwnerDetails = ({ owner }) => {
           {/* TSK - Protect Payment badge */}
           <div className="flex items-center mt-5">
             <LockClosedIcon className="h-5 mr-4 text-yellow-400" />{" "}
-            <p className="text-xs text-gray-500 w-80">
+            <p className="text-xs font-light text-gray-500 w-80">
               Beware of sending payments outside of the TrainingGrounds website.
               We cannot protect your investment if you choose to contact the
               owner outside of our platform.
