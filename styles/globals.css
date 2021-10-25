@@ -24,6 +24,10 @@
     @apply font-semibold text-xl sm:text-2xl;
   }
 
+  .dynamicPageBtn {
+    @apply mt-6 border font-semibold border-gray-700 rounded-lg px-6 py-3 shadow hover:bg-gray-100 hover:shadow-lg transition-all;
+  }
+
   .spacedHR {
     @apply my-6 sm:my-8;
   }

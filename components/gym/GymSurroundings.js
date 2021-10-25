@@ -22,8 +22,8 @@ const GymSurroundings = ({ location, name }) => {
       </div>
 
       {/* Description of surroundings IX_TSK */}
-      <h3 className=""></h3>
-      <p className=""></p>
+      {/* <h3 className="">{locationsToString(city, state, country)}</h3> */}
+      <p className="mt-8 max-w-prose sm:hidden">{description}</p>
       <hr className="spacedHR" />
     </section>
   );

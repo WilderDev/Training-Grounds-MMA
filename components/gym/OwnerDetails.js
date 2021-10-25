@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getMonthAndYear } from "../../utils/time.helpers";
 import { getMatchingBadgeIcon } from "../../utils/icon.helpers";
 import { v4 } from "uuid";
+import { locationsToString } from "../../utils/location.helpers";
 
 const dummy = {
   first_name: "Jacob",
@@ -46,7 +47,7 @@ const OwnerDetails = ({ owner }) => {
   return (
     <section className="responsive">
       {/* Top bar - Title, Joined, Image */}
-      <div className="flex items-center  mb-6">
+      <div className="flex items-center  mb-4">
         <div className="flex flex-col sm:order-2">
           {/* Title */}
           <h2 className="dynamicPageHeading mb-1 ">
@@ -76,31 +77,45 @@ const OwnerDetails = ({ owner }) => {
       </div>
 
       {/* Bottom or Side to Side */}
-      <div className="">
+      <div className=" sm:flex">
         {/* Left - Badges, Location, Bio, Public Message */}
         <div className="flex flex-col">
           {/* Badges */}
           <div className="flex flex-wrap">
             {ownerBadges.map((badge) => (
-              <p key={v4()} className="flex items-center">
-                <badge.icon className="h-5" />
+              <p key={v4()} className="flex items-center mr-5">
+                <badge.icon className="h-5 pr-1 text-red-500" />
                 {badge.name}
               </p>
             ))}
           </div>
 
           {/* Location */}
+          <p className="my-6 text-gray-700">
+            {locationsToString(
+              dummy.location.city,
+              dummy.location.state,
+              dummy.location.country
+            )}
+          </p>
 
           {/* Bio */}
+          <h3 className="font-semibold text-lg">Bio</h3>
+          <p className="mt-1 max-w-prose">{dummy.bio}</p>
 
           {/* Public Message */}
+          <h3 className="font-semibold text-lg mt-4">Message from the owner</h3>
+          <p className="mt-1 max-w-prose">{dummy.public_message}</p>
         </div>
 
         {/* Right - Stats, Contact Button */}
-        <div className="flex flex-col">
+        <div className="flex flex-col sm:ml-10">
           {/* Stats */}
+          <p className="mb-2">Response rate: {dummy.stats.response_rate}</p>
+          <p>Response time: {dummy.stats.avg_response_time}</p>
 
           {/* Contact */}
+          <button className="dynamicPageBtn">Contact Owner</button>
 
           {/* TSK - Protect Payment badge */}
         </div>

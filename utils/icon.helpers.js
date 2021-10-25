@@ -7,11 +7,14 @@ import {
   WifiIcon,
   PencilIcon,
   SparklesIcon,
+} from "@heroicons/react/outline";
+
+import {
   BadgeCheckIcon,
   StarIcon,
   ChatAltIcon,
   FilterIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/solid";
 
 // TSK: ADD all the icons for the available fields once you create the form for new gyms to fill out and think of the options
 const featureIcons = [

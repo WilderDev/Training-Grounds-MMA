@@ -32,7 +32,7 @@ const GymAmenities = ({ amenities }) => {
       </ul>
       <button
         onClick={() => setShowAllAmenities(!showAllAmenities)}
-        className="border border-gray-700 rounded-lg mt-6 px-6 py-2 shadow hover:bg-gray-100 hover:shadow-lg transition-all"
+        className="dynamicPageBtn"
       >
         {showAllAmenities ? "Hide" : `Show all ${amenities.length} amenities`}
       </button>
