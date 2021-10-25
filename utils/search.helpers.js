@@ -57,3 +57,16 @@ export function formatSearchInfo(queryParams, numSearchResults) {
 
   return queryInfo;
 }
+
+export function getNearbyGyms(latitude, longitude) {
+  let nearbyGyms = [
+    {
+      name: "Bankok Training Camps",
+      href: "http://localhost:3000/search?location=bankok&numFighters=1",
+    },
+  ];
+
+  // IX_TSK: Create this function
+
+  return nearbyGyms;
+}

@@ -139,3 +139,4 @@ export default OwnerDetails;
 // IX_TSK
 // 1. Create gym owner object: { firstName, lastName, joinedOn, badges, reviews, gyms, city, country, state, bio, . . . }
 // 2. To protect your payment, never transfer money or communicate outside of the Airbnb website or app. . .
+// 3. Contact owner button should do something
