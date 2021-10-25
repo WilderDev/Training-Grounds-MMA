@@ -15,7 +15,7 @@ const DropdownToggle = ({ title, desc, list }) => {
   });
 
   return (
-    <dl className="space-y-6 divide-y divide-gray-200">
+    <dl className="space-y-6 divide-y divide-gray-200 lg:w-[30%]">
       <Disclosure as="div">
         {({ open }) => (
           <>
@@ -38,7 +38,7 @@ const DropdownToggle = ({ title, desc, list }) => {
                 </span>
               </Disclosure.Button>
             </dt>
-            <Disclosure.Panel as="dd" className="mt-3 space-y-3">
+            <Disclosure.Panel as="dd" className="mt-6 space-y-3">
               {listWithIcons.map((item) => (
                 <div key={v4()} className="flex items-center">
                   <item.icon className="h-5 text-red-500 mr-2" />
