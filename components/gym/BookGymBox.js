@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { StarIcon } from "@heroicons/react/solid";
+import ReserveGymModal from "../modals/ReserveGymModal";
 
 const BookGymBox = ({
+  name,
+  reviews,
   packageOptions,
   trainingOptions,
   accommodationOptions,
@@ -21,9 +24,8 @@ const BookGymBox = ({
   const { numFighters, startDate, endDate } = router.query;
   // ... !!startDate && !!endDate
 
-  // Price, Rating, Check-in / Check-oiut, numFighters, total
   return (
-    <section className="responsive">
+    <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
       {/* Top Bar - PricePer & Rating */}
       <div className="flex justify-between mb-6">
         {/* Price Per */}
@@ -44,18 +46,43 @@ const BookGymBox = ({
       </div>
 
       {/* Middle Section - Checkin/out & numFighters */}
-      <div className=""></div>
+      {/* <div className="border rounded-md mb-6 flex flex-wrap"> */}
+      {/* Check In */}
+      {/* <div className="w-full border p-4"> */}
+      {/* <p className="font-semibold text-xs uppercase">Check-In</p> */}
+      {/* <input */}
+      {/* className="text-gray-500 mt-1 border-none outline-none" */}
+      {/* type="text" */}
+      {/* placeholder="Add Date" */}
+      {/* /> */}
+      {/* </div> */}
+
+      {/* Check Out */}
+      {/* <div className="w-full border p-4">Check out</div> */}
+
+      {/* Num Fighters */}
+      {/* <div className="w-full p-4">Num</div> */}
+      {/* </div> */}
 
       {/* Submit Btn */}
       <button
         onClick={() => setModalIsOpen(true)}
-        className="w-full py-3 px-6 bg-gradient-to-br from-red-500 to-red-700 hover:bg-gradient-to-tr hover:to-red-600 transition-all text-white font-bold rounded-lg text-lg shadow-md hover:shadow-xl active:shadow-sm active:bg-red-600"
+        className="w-full py-3 px-6 bg-gradient-to-br from-red-500 to-red-700 hover:bg-gradient-to-tr hover:to-red-600 transition-all text-white font-bold rounded-lg text-lg shadow-xs hover:shadow-md active:shadow-sm active:bg-red-600"
       >
         Reserve my spot!
       </button>
       <p className="text-xs text-gray-600 mt-2">
         *Clicking here does not lock you in to a purchase.
       </p>
+
+      <ReserveGymModal
+        open={modalIsOpen}
+        setOpen={setModalIsOpen}
+        name={name}
+        reviews={reviews}
+        rating={rating}
+        total={total}
+      />
     </section>
   );
 };
@@ -73,3 +100,4 @@ export default BookGymBox;
 {
   /* /TSK eventually the report listings will go here as well */
 }
+// 7. Should go to navbar when scroll down farther

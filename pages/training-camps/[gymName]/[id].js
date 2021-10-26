@@ -146,8 +146,9 @@ const SingleGymTemplate = ({ gym }) => {
           </div>
 
           {/* Book Gym */}
-          <div className="fixed w-screen bottom-0 sm:static sm:w-1/3 sm:ml-14  bg-white z-30 shadow-md p-5 md:px-10 mt-10  max-h-[500px]">
+          <div className="relative w-screen sm:static sm:w-1/3 sm:ml-14 mb-12 z-30 ">
             <BookGymBox
+              // TSK: we are almost better off passing in the whole gym
               packageOptions={package_options}
               trainingOptions={training_options}
               accommodationOptions={accommodation_options}
@@ -161,6 +162,9 @@ const SingleGymTemplate = ({ gym }) => {
               total={total}
               currency={pricing.currency}
               rating={rating}
+              reviews={reviews}
+              name={name}
+              reviews={reviews}
             />
           </div>
         </div>
