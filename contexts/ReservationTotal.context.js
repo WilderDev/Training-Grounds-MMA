@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { useSelectedOptions } from "./SelectedOption.context";
 
 const ReservationTotalCtx = createContext();
@@ -53,12 +53,12 @@ function ReservationTotalProvider({ children }) {
   };
 
   // IX_TSK: Memoize this?
-  const value = {
+  const value = useMemo(() => ({
     total,
     setTotal,
     perUnit,
     setPerUnit,
-  };
+  }));
 
   return (
     <ReservationTotalCtx.Provider value={value}>

@@ -12,15 +12,13 @@ const BookGymBox = ({ gym }) => {
   const { numFighters, startDate, endDate } = router.query; // ... !!startDate && !!endDate
 
   const selectedOptions = useSelectedOptions();
-  const { total, setTotal, perUnit, setPerUnit } = useReservationTotal();
+  const { setTotal, perUnit, setPerUnit } = useReservationTotal();
   useEffect(() => {
     selectedOptions.setTrainingOption(gym.training_options[0]);
     selectedOptions.setAccommodationOption(gym.accommodation_options[0]);
     setPerUnit();
     setTotal();
-  }, []);
-
-  console.log("perUnit:", perUnit);
+  }, [selectedOptions]);
 
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
@@ -31,9 +29,9 @@ const BookGymBox = ({ gym }) => {
           <p className="text-lg font-semibold pb-2 lg:text-2xl mr-2">
             {/* TSK: use currency package */}
             {gym.pricing.currency === "USD" && "$"}
-            {perUnit.amount}
+            {perUnit?.amount}
           </p>
-          <p className="text-gray-600">/ {perUnit.unit}</p>
+          <p className="text-gray-600">/ {perUnit?.unit}</p>
         </div>
 
         {/* Rating */}
