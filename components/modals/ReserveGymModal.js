@@ -6,6 +6,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import { classNames } from "../../utils/misc.helpers";
 import { v4 } from "uuid";
 import { locationsToString } from "../../utils/location.helpers";
+import { useSelectedOption } from "../../contexts/SelectedOption.context";
 
 const product = {
   name: "Basic Tee 6-Pack ",
@@ -47,6 +48,8 @@ const ReserveGymModal = ({
   packageOptions,
 }) => {
   const { name, reviews, total, rating, main_image_url, location } = gym;
+  const test = useSelectedOption();
+  console.log("test:", test);
 
   return (
     <Transition.Root show={open} as={Fragment}>
