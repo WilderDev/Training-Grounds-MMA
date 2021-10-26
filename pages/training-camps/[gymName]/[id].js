@@ -148,7 +148,7 @@ const SingleGymTemplate = ({ gym }) => {
           {/* Book Gym */}
           <div className="relative w-screen sm:static sm:w-1/3 sm:ml-14 mb-12 z-30 ">
             <BookGymBox
-              // TSK: we are almost better off passing in the whole gym
+              gym={gym}
               packageOptions={package_options}
               trainingOptions={training_options}
               accommodationOptions={accommodation_options}
@@ -159,12 +159,6 @@ const SingleGymTemplate = ({ gym }) => {
               selectedPackageOption={selectedPackageOption}
               setSelectedPackageOption={setSelectedPackageOption}
               // IX_TSK: extraFees={extraFees} . . .like $50 for airport transportation ... ect
-              total={total}
-              currency={pricing.currency}
-              rating={rating}
-              reviews={reviews}
-              name={name}
-              reviews={reviews}
             />
           </div>
         </div>

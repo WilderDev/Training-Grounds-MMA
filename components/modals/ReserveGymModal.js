@@ -5,6 +5,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 import { classNames } from "../../utils/misc.helpers";
 import { v4 } from "uuid";
+import { locationsToString } from "../../utils/location.helpers";
 
 const product = {
   name: "Basic Tee 6-Pack ",
@@ -32,9 +33,20 @@ const product = {
   ],
 };
 
-const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+const ReserveGymModal = ({
+  open,
+  setOpen,
+  gym,
+  setSelectedTrainingOption,
+  selectedAccommodationOption,
+  setSelectedAccommodationOption,
+  selectedPackageOption,
+  setSelectedPackageOption,
+  trainingOptions,
+  accommodationOptions,
+  packageOptions,
+}) => {
+  const { name, reviews, total, rating, main_image_url, location } = gym;
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -87,11 +99,11 @@ const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
                 </button>
 
                 <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-                  <div className="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
+                  <div className="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5 h-full">
                     {/* TSK */}
                     <Image
-                      src="https://source.unsplash.com/500x500/?mma"
-                      alt={product.imageAlt}
+                      src={main_image_url}
+                      alt={name}
                       layout="fill"
                       className="object-center object-cover"
                     />
@@ -100,6 +112,14 @@ const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
                     <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">
                       {name}
                     </h2>
+
+                    <p className="text-gray-600 font-light">
+                      {locationsToString(
+                        location.city,
+                        location.state,
+                        location.country
+                      )}
+                    </p>
 
                     <section
                       aria-labelledby="information-heading"
@@ -110,7 +130,7 @@ const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
                       </h3>
 
                       {/* IX_TSK */}
-                      <p className="text-2xl text-gray-900">${total}</p>
+                      <p className="text-2xl text-gray-900">$TSK</p>
 
                       {/* Reviews */}
                       <div className="mt-6">
@@ -146,23 +166,23 @@ const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
                       className="mt-10"
                     >
                       <h3 id="options-heading" className="sr-only">
-                        Gym options
+                        Accommodation Options
                       </h3>
 
                       <form>
-                        {/* Colors */}
+                        {/* Accommodations */}
                         <div>
                           <h4 className="text-sm text-gray-900 font-medium">
-                            Color
+                            Accommodation Options
                           </h4>
 
                           <RadioGroup
-                            value={selectedColor}
-                            onChange={setSelectedColor}
+                            value={selectedAccommodationOption}
+                            onChange={setSelectedAccommodationOption}
                             className="mt-4"
                           >
                             <RadioGroup.Label className="sr-only">
-                              Choose a color
+                              Choose an accommodation option
                             </RadioGroup.Label>
                             <div className="flex items-center space-x-3">
                               {product.colors.map((color) => (
@@ -200,19 +220,19 @@ const ReserveGymModal = ({ open, setOpen, name, reviews, total, rating }) => {
                         <div className="mt-10">
                           <div className="flex items-center justify-between">
                             <h4 className="text-sm text-gray-900 font-medium">
-                              Size
+                              Package Options
                             </h4>
                             <a
                               href="#"
                               className="text-sm font-medium text-red-600 hover:text-red-500"
                             >
-                              Size guide
+                              Package Options
                             </a>
                           </div>
 
                           <RadioGroup
-                            value={selectedSize}
-                            onChange={setSelectedSize}
+                            value={selectedPackageOption}
+                            onChange={setSelectedPackageOption}
                             className="mt-4"
                           >
                             <RadioGroup.Label className="sr-only">

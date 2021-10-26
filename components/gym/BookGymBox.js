@@ -4,8 +4,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
 
 const BookGymBox = ({
-  name,
-  reviews,
+  gym,
   packageOptions,
   trainingOptions,
   accommodationOptions,
@@ -15,9 +14,6 @@ const BookGymBox = ({
   setSelectedAccommodationOption,
   selectedPackageOption,
   setSelectedPackageOption,
-  total,
-  currency,
-  rating,
 }) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -32,7 +28,7 @@ const BookGymBox = ({
         <div className="flex items-center">
           <p className="text-lg font-semibold pb-2 lg:text-2xl mr-2">
             {/* TSK: use currency package */}
-            {currency === "USD" && "$"}
+            {gym.pricing.currency === "USD" && "$"}
             {selectedTrainingOption.prices.perDay}
           </p>
           <p className="text-gray-600">/ day</p>
@@ -41,28 +37,9 @@ const BookGymBox = ({
         {/* Rating */}
         <p className="flex items-center">
           <StarIcon className="h-6 mr-1 text-red-400" />
-          <span>{rating}</span>
+          <span>{gym.rating}</span>
         </p>
       </div>
-
-      {/* Middle Section - Checkin/out & numFighters */}
-      {/* <div className="border rounded-md mb-6 flex flex-wrap"> */}
-      {/* Check In */}
-      {/* <div className="w-full border p-4"> */}
-      {/* <p className="font-semibold text-xs uppercase">Check-In</p> */}
-      {/* <input */}
-      {/* className="text-gray-500 mt-1 border-none outline-none" */}
-      {/* type="text" */}
-      {/* placeholder="Add Date" */}
-      {/* /> */}
-      {/* </div> */}
-
-      {/* Check Out */}
-      {/* <div className="w-full border p-4">Check out</div> */}
-
-      {/* Num Fighters */}
-      {/* <div className="w-full p-4">Num</div> */}
-      {/* </div> */}
 
       {/* Submit Btn */}
       <button
@@ -78,10 +55,15 @@ const BookGymBox = ({
       <ReserveGymModal
         open={modalIsOpen}
         setOpen={setModalIsOpen}
-        name={name}
-        reviews={reviews}
-        rating={rating}
-        total={total}
+        gym={gym}
+        trainingOptions={trainingOptions}
+        accommodationOptions={accommodationOptions}
+        packageOptions={packageOptions}
+        setSelectedTrainingOption={setSelectedTrainingOption}
+        selectedAccommodationOption={selectedAccommodationOption}
+        setSelectedAccommodationOption={setSelectedAccommodationOption}
+        selectedPackageOption={selectedPackageOption}
+        setSelectedPackageOption={setSelectedPackageOption}
       />
     </section>
   );
