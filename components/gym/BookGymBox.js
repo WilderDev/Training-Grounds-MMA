@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
+import { useReservationTotal } from "../../contexts/ReservationTotal.context";
 
 const BookGymBox = ({ gym }) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const { numFighters, startDate, endDate } = router.query; // ... !!startDate && !!endDate
+
   const selectedOptions = useSelectedOptions();
+  const { total, setTotal, perUnit, setPerUnit } = useReservationTotal();
+  useEffect(() => {
+    selectedOptions.setTrainingOption(gym.training_options[0]);
+    selectedOptions.setAccommodationOption(gym.accommodation_options[0]);
+    setPerUnit();
+    setTotal();
+  }, []);
+
+  console.log("perUnit:", perUnit);
 
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
@@ -19,9 +31,9 @@ const BookGymBox = ({ gym }) => {
           <p className="text-lg font-semibold pb-2 lg:text-2xl mr-2">
             {/* TSK: use currency package */}
             {gym.pricing.currency === "USD" && "$"}
-            {selectedOptions.trainingOption.prices.perDay}
+            {perUnit.amount}
           </p>
-          <p className="text-gray-600">/ day</p>
+          <p className="text-gray-600">/ {perUnit.unit}</p>
         </div>
 
         {/* Rating */}

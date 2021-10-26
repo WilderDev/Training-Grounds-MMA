@@ -4,25 +4,15 @@ const SelectedOptionsCtx = createContext();
 
 function SelectedOptionsProvider({ children }) {
   // * TRAINING OPTIONS
-  const [trainingOption, setTrainingOption] = useState({
-    name: "TSK",
-    prices: { perDay: 30 },
-  });
-  const [accommodationOption, setAccommodationOption] = useState({
-    name: "TSK",
-    prices: { perDay: 30 },
-  });
-  const [packageOption, setPackageOption] = useState({
-    name: "TSK",
-    prices: { perDay: 30 },
-  });
+  const [trainingOption, setTrainingOption] = useState();
+  const [accommodationOption, setAccommodationOption] = useState();
+  const [packageOption, setPackageOption] = useState();
 
   //   * STAY DURATIONS
   const [stayDurationOption, setStayDurationOption] = useState("perDay");
-  const [stayDurationLength, setStayDurationLength] = useState(3);
 
-  //   * TOTAL PRICE
-  const [total, setTotal] = useState("TSK");
+  //   TSK: Set this up in all components that use the calendar
+  const [stayDurationLength, setStayDurationLength] = useState(3);
 
   // IX_TSK: Memoize this?
   const value = {
@@ -36,8 +26,6 @@ function SelectedOptionsProvider({ children }) {
     setStayDurationOption,
     stayDurationLength,
     setStayDurationLength,
-    total,
-    setTotal,
   };
 
   return (
@@ -52,32 +40,12 @@ function useSelectedOptions() {
 
   if (ctx === undefined)
     throw new Error(
-      "useSelectedOption must be used within a SelectedOptionProvider"
+      "useSelectedOptions must be used within a SelectedOptionsProvider"
     );
   return ctx;
 }
 
 export { SelectedOptionsProvider, useSelectedOptions };
-
-// const getTotal = () => {
-// 	if (selectedPackageOption)
-// 	  setTotal(
-// 	    selectedPackageOption.prices[stayDurationOption] * stayDurationLength
-// 	  );
-
-// 	if (!selectedPackageOption) {
-// 	  const trainingPrice =
-// 	    selectedTrainingOption.prices[stayDurationOption] * stayDurationLength;
-// 	  // TSK: Create a helper function that takes in the amount of days...
-// 	  // and returns the correct number for stayDurationLength depending on the stayDurationOptions...
-// 	  // eg: 6days === 6; 12days === 2; 33days === 1;
-// 	  const accommPrice =
-// 	    selectedAccommodationOption.prices[stayDurationOption] *
-// 	    stayDurationLength;
-
-// 	  setTotal(trainingPrice + accommPrice);
-// 	}
-//       };
 
 // IX_TSK
 // 1. Seperate these into smaller Contexts
