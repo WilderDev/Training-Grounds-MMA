@@ -40,48 +40,11 @@ const SingleGymTemplate = ({ gym }) => {
     max_length_stay,
     gear,
     schedule,
-    package_options,
-    accommodation_options,
-    training_options,
     gym_owner,
     trainers,
     contact_info,
     gym_policies,
   } = gym;
-
-  const [selectedTrainingOption, setSelectedTrainingOption] = useState(
-    training_options[0]
-  );
-  const [selectedPackageOption, setSelectedPackageOption] = useState(
-    package_options[0]
-  );
-  const [selectedAccommodationOption, setSelectedAccommodationOption] =
-    useState(accommodation_options[0]);
-  const [stayDurationOption, setStayDurationOption] = useState("perDay");
-  const [stayDurationLength, setStayDurationLength] = useState(3);
-  const [total, setTotal] = useState(
-    selectedPackageOption.prices[stayDurationOption]
-  );
-
-  const getTotal = () => {
-    if (selectedPackageOption)
-      setTotal(
-        selectedPackageOption.prices[stayDurationOption] * stayDurationLength
-      );
-
-    if (!selectedPackageOption) {
-      const trainingPrice =
-        selectedTrainingOption.prices[stayDurationOption] * stayDurationLength;
-      // TSK: Create a helper function that takes in the amount of days...
-      // and returns the correct number for stayDurationLength depending on the stayDurationOptions...
-      // eg: 6days === 6; 12days === 2; 33days === 1;
-      const accommPrice =
-        selectedAccommodationOption.prices[stayDurationOption] *
-        stayDurationLength;
-
-      setTotal(trainingPrice + accommPrice);
-    }
-  };
 
   return (
     <Layout isSticky={false}>
@@ -149,15 +112,6 @@ const SingleGymTemplate = ({ gym }) => {
           <div className="relative w-screen sm:static sm:w-1/3 sm:ml-14 mb-12 z-30 ">
             <BookGymBox
               gym={gym}
-              packageOptions={package_options}
-              trainingOptions={training_options}
-              accommodationOptions={accommodation_options}
-              selectedTrainingOption={selectedTrainingOption}
-              setSelectedTrainingOption={setSelectedTrainingOption}
-              selectedAccommodationOption={selectedAccommodationOption}
-              setSelectedAccommodationOption={setSelectedAccommodationOption}
-              selectedPackageOption={selectedPackageOption}
-              setSelectedPackageOption={setSelectedPackageOption}
               // IX_TSK: extraFees={extraFees} . . .like $50 for airport transportation ... ect
             />
           </div>

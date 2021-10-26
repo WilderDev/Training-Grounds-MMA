@@ -2,23 +2,13 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
+import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 
-const BookGymBox = ({
-  gym,
-  packageOptions,
-  trainingOptions,
-  accommodationOptions,
-  selectedTrainingOption,
-  setSelectedTrainingOption,
-  selectedAccommodationOption,
-  setSelectedAccommodationOption,
-  selectedPackageOption,
-  setSelectedPackageOption,
-}) => {
+const BookGymBox = ({ gym }) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { numFighters, startDate, endDate } = router.query;
-  // ... !!startDate && !!endDate
+  const { numFighters, startDate, endDate } = router.query; // ... !!startDate && !!endDate
+  const selectedOptions = useSelectedOptions();
 
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
@@ -29,7 +19,7 @@ const BookGymBox = ({
           <p className="text-lg font-semibold pb-2 lg:text-2xl mr-2">
             {/* TSK: use currency package */}
             {gym.pricing.currency === "USD" && "$"}
-            {selectedTrainingOption.prices.perDay}
+            {selectedOptions.trainingOption.prices.perDay}
           </p>
           <p className="text-gray-600">/ day</p>
         </div>
@@ -52,19 +42,7 @@ const BookGymBox = ({
         *Clicking here does not lock you in to a purchase.
       </p>
 
-      <ReserveGymModal
-        open={modalIsOpen}
-        setOpen={setModalIsOpen}
-        gym={gym}
-        trainingOptions={trainingOptions}
-        accommodationOptions={accommodationOptions}
-        packageOptions={packageOptions}
-        setSelectedTrainingOption={setSelectedTrainingOption}
-        selectedAccommodationOption={selectedAccommodationOption}
-        setSelectedAccommodationOption={setSelectedAccommodationOption}
-        selectedPackageOption={selectedPackageOption}
-        setSelectedPackageOption={setSelectedPackageOption}
-      />
+      <ReserveGymModal open={modalIsOpen} setOpen={setModalIsOpen} gym={gym} />
     </section>
   );
 };

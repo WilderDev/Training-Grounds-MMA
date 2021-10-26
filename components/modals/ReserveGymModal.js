@@ -6,7 +6,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import { classNames } from "../../utils/misc.helpers";
 import { v4 } from "uuid";
 import { locationsToString } from "../../utils/location.helpers";
-import { useSelectedOption } from "../../contexts/SelectedOption.context";
+import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 
 const product = {
   name: "Basic Tee 6-Pack ",
@@ -34,22 +34,9 @@ const product = {
   ],
 };
 
-const ReserveGymModal = ({
-  open,
-  setOpen,
-  gym,
-  setSelectedTrainingOption,
-  selectedAccommodationOption,
-  setSelectedAccommodationOption,
-  selectedPackageOption,
-  setSelectedPackageOption,
-  trainingOptions,
-  accommodationOptions,
-  packageOptions,
-}) => {
+const ReserveGymModal = ({ open, setOpen, gym }) => {
   const { name, reviews, total, rating, main_image_url, location } = gym;
-  const test = useSelectedOption();
-  console.log("test:", test);
+  const selectedOptions = useSelectedOptions();
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -180,8 +167,8 @@ const ReserveGymModal = ({
                           </h4>
 
                           <RadioGroup
-                            value={selectedAccommodationOption}
-                            onChange={setSelectedAccommodationOption}
+                            value={selectedOptions.accommodationOption}
+                            onChange={selectedOptions.setAccommodationOption}
                             className="mt-4"
                           >
                             <RadioGroup.Label className="sr-only">
@@ -234,8 +221,8 @@ const ReserveGymModal = ({
                           </div>
 
                           <RadioGroup
-                            value={selectedPackageOption}
-                            onChange={setSelectedPackageOption}
+                            value={selectedOptions.packageOption}
+                            onChange={selectedOptions.setPackageOption}
                             className="mt-4"
                           >
                             <RadioGroup.Label className="sr-only">

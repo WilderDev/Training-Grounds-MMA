@@ -1,11 +1,28 @@
 import { createContext, useContext, useState } from "react";
 
-const SelectedOptionCtx = createContext();
+const SelectedOptionsCtx = createContext();
 
-function SelectedOptionProvider({ children }) {
-  const [trainingOption, setTrainingOption] = useState("TSK");
-  const [accommodationOption, setAccommodationOption] = useState("TSK");
-  const [packageOption, setPackageOption] = useState("TSK");
+function SelectedOptionsProvider({ children }) {
+  // * TRAINING OPTIONS
+  const [trainingOption, setTrainingOption] = useState({
+    name: "TSK",
+    prices: { perDay: 30 },
+  });
+  const [accommodationOption, setAccommodationOption] = useState({
+    name: "TSK",
+    prices: { perDay: 30 },
+  });
+  const [packageOption, setPackageOption] = useState({
+    name: "TSK",
+    prices: { perDay: 30 },
+  });
+
+  //   * STAY DURATIONS
+  const [stayDurationOption, setStayDurationOption] = useState("perDay");
+  const [stayDurationLength, setStayDurationLength] = useState(3);
+
+  //   * TOTAL PRICE
+  const [total, setTotal] = useState("TSK");
 
   // IX_TSK: Memoize this?
   const value = {
@@ -15,17 +32,23 @@ function SelectedOptionProvider({ children }) {
     setAccommodationOption,
     packageOption,
     setPackageOption,
+    stayDurationOption,
+    setStayDurationOption,
+    stayDurationLength,
+    setStayDurationLength,
+    total,
+    setTotal,
   };
 
   return (
-    <SelectedOptionCtx.Provider value={value}>
+    <SelectedOptionsCtx.Provider value={value}>
       {children}
-    </SelectedOptionCtx.Provider>
+    </SelectedOptionsCtx.Provider>
   );
 }
 
-function useSelectedOption() {
-  const ctx = useContext(SelectedOptionCtx);
+function useSelectedOptions() {
+  const ctx = useContext(SelectedOptionsCtx);
 
   if (ctx === undefined)
     throw new Error(
@@ -34,4 +57,27 @@ function useSelectedOption() {
   return ctx;
 }
 
-export { SelectedOptionProvider, useSelectedOption };
+export { SelectedOptionsProvider, useSelectedOptions };
+
+// const getTotal = () => {
+// 	if (selectedPackageOption)
+// 	  setTotal(
+// 	    selectedPackageOption.prices[stayDurationOption] * stayDurationLength
+// 	  );
+
+// 	if (!selectedPackageOption) {
+// 	  const trainingPrice =
+// 	    selectedTrainingOption.prices[stayDurationOption] * stayDurationLength;
+// 	  // TSK: Create a helper function that takes in the amount of days...
+// 	  // and returns the correct number for stayDurationLength depending on the stayDurationOptions...
+// 	  // eg: 6days === 6; 12days === 2; 33days === 1;
+// 	  const accommPrice =
+// 	    selectedAccommodationOption.prices[stayDurationOption] *
+// 	    stayDurationLength;
+
+// 	  setTotal(trainingPrice + accommPrice);
+// 	}
+//       };
+
+// IX_TSK
+// 1. Seperate these into smaller Contexts

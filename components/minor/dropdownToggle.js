@@ -5,7 +5,6 @@ import { getMatchingPolicyIcon } from "../../utils/icon.helpers";
 import { classNames } from "../../utils/misc.helpers";
 
 const DropdownToggle = ({ title, desc, list }) => {
-  console.log("list:", list);
   const listWithIcons = list.map((item) => {
     const icon = getMatchingPolicyIcon(item.icon);
     return {
