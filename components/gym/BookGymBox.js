@@ -16,6 +16,9 @@ const BookGymBox = ({ gym }) => {
   useEffect(() => {
     selectedOptions.setTrainingOption(gym.training_options[0]);
     selectedOptions.setAccommodationOption(gym.accommodation_options[0]);
+  }, []);
+
+  useEffect(() => {
     setPerUnit();
     setTotal();
   }, [selectedOptions]);
@@ -23,7 +26,7 @@ const BookGymBox = ({ gym }) => {
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
       {/* Top Bar - PricePer & Rating */}
-      <div className="flex justify-between mb-6">
+      <div className="flex justify-between mb-2">
         {/* Price Per */}
         <div className="flex items-center">
           <p className="text-lg font-semibold pb-2 lg:text-2xl mr-2">
@@ -39,6 +42,34 @@ const BookGymBox = ({ gym }) => {
           <StarIcon className="h-6 mr-1 text-red-400" />
           <span>{gym.rating}</span>
         </p>
+      </div>
+
+      {/* Middle */}
+      <div className="mb-8 space-y-2">
+        {selectedOptions?.trainingOption && (
+          <p>
+            Training Option:{" "}
+            <span className="text-red-600 font-light">
+              {selectedOptions.trainingOption.name}
+            </span>
+          </p>
+        )}
+        {selectedOptions?.accommodationOption && (
+          <p>
+            Accommodation Option:{" "}
+            <span className="text-red-600 font-light">
+              {selectedOptions.accommodationOption.name}
+            </span>
+          </p>
+        )}
+        {selectedOptions?.packageOption && (
+          <p>
+            Package Option:{" "}
+            <span className="text-red-600 font-light">
+              {selectedOptions.packageOption.name}
+            </span>
+          </p>
+        )}
       </div>
 
       {/* Submit Btn */}

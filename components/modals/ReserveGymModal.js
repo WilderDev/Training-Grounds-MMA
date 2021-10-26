@@ -22,6 +22,8 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
   } = gym;
   const selectedOptions = useSelectedOptions();
 
+  console.log(selectedOptions);
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -163,12 +165,11 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                                 <RadioGroup.Option
                                   key={v4()}
                                   value={option}
-                                  className={({ active }) =>
-                                    classNames(
-                                      active ? "ring-2 ring-red-500" : "",
-                                      "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
-                                    )
-                                  }
+                                  className={classNames(
+                                    option === selectedOptions.trainingOption &&
+                                      "ring-2 ring-red-500",
+                                    "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
+                                  )}
                                 >
                                   <RadioGroup.Label
                                     as="p"
@@ -204,12 +205,12 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                                 <RadioGroup.Option
                                   key={v4()}
                                   value={option}
-                                  className={({ active }) =>
-                                    classNames(
-                                      active && "ring-2 ring-red-500",
-                                      "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
-                                    )
-                                  }
+                                  className={classNames(
+                                    option ===
+                                      selectedOptions.accommodationOption &&
+                                      "ring-2 ring-red-500",
+                                    "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
+                                  )}
                                 >
                                   <RadioGroup.Label
                                     as="p"
@@ -245,12 +246,11 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                                 <RadioGroup.Option
                                   key={v4()}
                                   value={option}
-                                  className={({ active }) =>
-                                    classNames(
-                                      active && "ring-2 ring-red-500",
-                                      "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
-                                    )
-                                  }
+                                  className={classNames(
+                                    option === selectedOptions.packageOption &&
+                                      "ring-2 ring-red-500",
+                                    "bg-white shadow-sm text-sm text-gray-900 cursor-pointer group relative border rounded-md py-3 px-4 flex flex-col hover:bg-gray-50 focus:outline-none sm:flex-1"
+                                  )}
                                 >
                                   <RadioGroup.Label
                                     as="p"

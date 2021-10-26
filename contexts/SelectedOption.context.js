@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const SelectedOptionsCtx = createContext();
 
@@ -7,6 +7,19 @@ function SelectedOptionsProvider({ children }) {
   const [trainingOption, setTrainingOption] = useState();
   const [accommodationOption, setAccommodationOption] = useState();
   const [packageOption, setPackageOption] = useState();
+
+  useEffect(() => {
+    if (packageOption) {
+      setTrainingOption();
+      setAccommodationOption();
+    }
+  }, [packageOption]);
+
+  useEffect(() => {
+    if ((packageOption && trainingOption) || accommodationOption) {
+      setPackageOption();
+    }
+  }, [trainingOption, accommodationOption]);
 
   //   * STAY DURATIONS
   const [stayDurationOption, setStayDurationOption] = useState("perDay");
