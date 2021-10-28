@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 import { useReservationTotal } from "../../contexts/ReservationTotal.context";
 import SelectDatesModal from "../modals/SelectDatesModal";
+import { useSelectedDates } from "../../contexts/SelectedDates.context";
+import { getLocalDateString } from "../../utils/time.helpers";
 
 const BookGymBox = ({ gym }) => {
-  const router = useRouter();
   const [datePickerIsOpen, setDatePickerIsOpen] = useState(false);
   const [optionPickerIsOpen, setOptionPickerIsOpen] = useState(false);
 
-  const { numFighters, startDate, endDate } = router.query; // ... !!startDate && !!endDate
-
   const selectedOptions = useSelectedOptions();
   const { setTotal, perUnit, setPerUnit } = useReservationTotal();
+  const { startDate, endDate, stayDurationLength, stayDurationOption } =
+    useSelectedDates();
   useEffect(() => {
     selectedOptions.setTrainingOption(gym.training_options[0]);
     selectedOptions.setAccommodationOption(gym.accommodation_options[0]);
@@ -23,7 +23,7 @@ const BookGymBox = ({ gym }) => {
   useEffect(() => {
     setPerUnit();
     setTotal();
-  }, [selectedOptions]);
+  }, [selectedOptions, stayDurationLength, stayDurationOption]);
 
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
@@ -72,7 +72,28 @@ const BookGymBox = ({ gym }) => {
             </span>
           </p>
         )}
+
+        <div className="pt-8">
+          {startDate && (
+            <p>
+              Start Date:{" "}
+              <span className="text-gray-700 font-light">
+                {getLocalDateString(startDate)}
+              </span>
+            </p>
+          )}
+          {endDate && (
+            <p>
+              End Date:{" "}
+              <span className="text-gray-700 font-light">
+                {getLocalDateString(endDate)}
+              </span>
+            </p>
+          )}
+        </div>
       </div>
+
+      {/* TSK: Up there . . . put dates if we gotz any */}
 
       {/* Submit Btn */}
       <button

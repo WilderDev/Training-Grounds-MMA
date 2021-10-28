@@ -1,18 +1,12 @@
 import { useState } from "react";
+import { useSelectedDates } from "../../contexts/SelectedDates.context";
 import { getStringOfSelectedDays } from "../../utils/calendar.helpers";
 import { locationsToString } from "../../utils/location.helpers";
 import { getLocalDateString } from "../../utils/time.helpers";
 import DateRangeCalendar from "../minor/DateRangeCalendar";
 
 const AvailabilityCalendar = ({ city, state, country }) => {
-  // IX_TSK: These should be gotten in context or router Query
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const handleSelectDates = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  };
-
+  const { startDate, endDate } = useSelectedDates();
   return (
     <section className="responsive">
       <h2 className="dynamicPageHeading mb-2">
@@ -22,11 +16,7 @@ const AvailabilityCalendar = ({ city, state, country }) => {
       <p className="text-gray-400 text-sm mb-6">
         {getLocalDateString(startDate)} - {getLocalDateString(endDate)}
       </p>
-      <DateRangeCalendar
-        handleSelectDates={handleSelectDates}
-        startDate={startDate}
-        endDate={endDate}
-      />
+      <DateRangeCalendar />
 
       <hr className="spacedHR" />
     </section>

@@ -9,6 +9,8 @@ import {
   endOfWeek,
   isSameDay,
   differenceInCalendarDays,
+  sub,
+  getDaysInMonth,
 } from "date-fns";
 
 const defineds = {
@@ -21,9 +23,17 @@ const defineds = {
   startOfTomorrow: startOfDay(addDays(new Date(), +1)),
   endOfTomorrow: endOfDay(addDays(new Date(), +1)),
   startOfMonth: startOfMonth(new Date()),
-  endOfMonth: endOfMonth(new Date()),
+  endOfMonth:
+    differenceInCalendarDays(
+      sub(endOfMonth(new Date()), { days: 2 }),
+      endOfMonth(new Date())
+    ) > 29
+      ? sub(endOfMonth(new Date()), { days: 2 })
+      : endOfMonth(new Date()),
   startOfNextMonth: startOfMonth(addMonths(new Date(), +1)),
-  endOfNextMonth: endOfMonth(addMonths(new Date(), +1)),
+  endOfNextMonth: sub(endOfMonth(addMonths(new Date(), +1)), {
+    days: getDaysInMonth(addMonths(new Date(), +1)) === 31 ? 2 : 1,
+  }),
 };
 
 const staticRangeHandler = {
@@ -38,6 +48,12 @@ const staticRangeHandler = {
 };
 
 export function createStaticRanges(ranges) {
+  console.log(
+    "ranges:",
+    ranges.map((range) => {
+      console.log("range.startDate:", range.range());
+    })
+  );
   return ranges.map((range) => ({ ...staticRangeHandler, ...range }));
 }
 

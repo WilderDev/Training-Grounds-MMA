@@ -8,6 +8,7 @@ import { SearchIcon, UserCircleIcon, UsersIcon } from "@heroicons/react/solid";
 import { v4 } from "uuid";
 import { classNames } from "../../utils/misc.helpers";
 import DateRangeCalendar from "../minor/DateRangeCalendar";
+import { useSelectedDates } from "../../contexts/SelectedDates.context";
 
 const dropdownLinks = [
   {
@@ -40,13 +41,7 @@ const Header = ({ placeholder, isSticky }) => {
   const [searchInput, setSearchInput] = useState("");
   const [numFighters, setNumFighters] = useState(1);
 
-  // IX_TSK set these in context so I can use them in the SingleDynamicGym Page Calendar
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const handleSelectDates = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  };
+  const { startDate, endDate } = useSelectedDates();
 
   const onSearch = () => {
     router.push({
@@ -159,11 +154,7 @@ const Header = ({ placeholder, isSticky }) => {
       {/* Bot - Calendar */}
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-4">
-          <DateRangeCalendar
-            handleSelectDates={handleSelectDates}
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <DateRangeCalendar />
           <div className="flex items-center border-b mb-4">
             <h2 className="text-2xl flex-grow font-semibold">
               Number of Fighters

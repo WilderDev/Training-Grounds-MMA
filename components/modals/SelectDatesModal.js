@@ -59,11 +59,7 @@ const SelectDatesModal = ({ open, setOpen, setOptionPickerIsOpen }) => {
 
                 <div className="flex flex-col mt-12 w-full">
                   <div className="mx-auto">
-                    <DateRangeCalendar
-                      handleSelectDates={handleSelectDates}
-                      startDate={startDate}
-                      endDate={endDate}
-                    />
+                    <DateRangeCalendar />
                   </div>
                   <button
                     disabled={!startDate && !endDate}
