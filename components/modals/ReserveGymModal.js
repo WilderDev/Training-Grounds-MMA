@@ -11,7 +11,7 @@ import { useReservationTotal } from "../../contexts/ReservationTotal.context";
 import { getTimeScale, getTimeScaleNum } from "../../utils/time.helpers";
 import { useSelectedDates } from "../../contexts/SelectedDates.context";
 
-const ReserveGymModal = ({ open, setOpen, gym }) => {
+const ReserveGymModal = ({ open, setOpen, gym, onReserveGym }) => {
   const {
     name,
     reviews,
@@ -157,7 +157,7 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                         Accommodation Options
                       </h3>
 
-                      <form>
+                      <form onSubmit={onReserveGym}>
                         {/* Training */}
                         <div className="mt-8">
                           <h4 className="text-sm text-gray-900 font-medium">

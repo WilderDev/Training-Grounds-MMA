@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
@@ -8,6 +9,7 @@ import { useSelectedDates } from "../../contexts/SelectedDates.context";
 import { getLocalDateString } from "../../utils/time.helpers";
 
 const BookGymBox = ({ gym }) => {
+  const router = useRouter();
   const [datePickerIsOpen, setDatePickerIsOpen] = useState(false);
   const [optionPickerIsOpen, setOptionPickerIsOpen] = useState(false);
 
@@ -24,6 +26,13 @@ const BookGymBox = ({ gym }) => {
     setPerUnit();
     setTotal();
   }, [selectedOptions, stayDurationLength, stayDurationOption]);
+
+  const reserveGym = (e) => {
+    e.preventDefault();
+
+    console.log("router:", router);
+    router.push(`${router.asPath}/confirmation`);
+  };
 
   return (
     <section className="responsive sm:sticky top-96 shadow-md md:px-10 md:py-8">
@@ -118,6 +127,7 @@ const BookGymBox = ({ gym }) => {
         open={optionPickerIsOpen}
         setOpen={setOptionPickerIsOpen}
         gym={gym}
+        onReserveGym={reserveGym}
       />
     </section>
   );

@@ -1,20 +1,18 @@
 import Head from "next/head";
-import Layout from "../../../components/layout/Layout";
-import HeroImageGallery from "../../../components/gym/HeroImageGallery";
-import { connectToDatabase } from "../../../utils/mongo.helpers";
-import { toSmallKebabCase } from "../../../utils/string.helpers";
-import TitleInfoBar from "../../../components/gym/TitleInfoBar";
-import GymFeatures from "../../../components/gym/GymFeatures";
-import GymDescription from "../../../components/gym/GymDescription";
-import MeetTheTrainers from "../../../components/gym/MeetTheTrainers";
-import GymAmenities from "../../../components/gym/GymAmenities";
-import AvailabilityCalendar from "../../../components/gym/AvailabilityCalendar";
-import GymReviews from "../../../components/gym/GymReviews";
-import GymSurroundings from "../../../components/gym/GymSurroundings";
-import OwnerDetails from "../../../components/gym/OwnerDetails";
-import GymDetails from "../../../components/gym/GymDetails";
-import NearbyGyms from "../../../components/gym/NearbyGyms";
-import BookGymBox from "../../../components/gym/BookGymBox";
+import Layout from "../../../../components/layout/Layout";
+import HeroImageGallery from "../../../../components/gym/HeroImageGallery";
+import { connectToDatabase } from "../../../../utils/mongo.helpers";
+import { toSmallKebabCase } from "../../../../utils/string.helpers";
+import TitleInfoBar from "../../../../components/gym/TitleInfoBar";
+import GymFeatures from "../../../../components/gym/GymFeatures";
+import GymDescription from "../../../../components/gym/GymDescription";
+import MeetTheTrainers from "../../../../components/gym/MeetTheTrainers";
+import GymAmenities from "../../../../components/gym/GymAmenities";
+import GymReviews from "../../../../components/gym/GymReviews";
+import OwnerDetails from "../../../../components/gym/OwnerDetails";
+import GymDetails from "../../../../components/gym/GymDetails";
+import NearbyGyms from "../../../../components/gym/NearbyGyms";
+import BookGymBox from "../../../../components/gym/BookGymBox";
 
 const SingleGymTemplate = ({ gym }) => {
   const {
