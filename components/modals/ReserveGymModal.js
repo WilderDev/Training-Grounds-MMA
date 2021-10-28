@@ -8,7 +8,7 @@ import { v4 } from "uuid";
 import { locationsToString } from "../../utils/location.helpers";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 import { useReservationTotal } from "../../contexts/ReservationTotal.context";
-import { getTimeScale } from "../../utils/time.helpers";
+import { getTimeScale, getTimeScaleNum } from "../../utils/time.helpers";
 
 const ReserveGymModal = ({ open, setOpen, gym }) => {
   const {
@@ -23,8 +23,6 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
   } = gym;
   const { total } = useReservationTotal();
   const selectedOptions = useSelectedOptions();
-
-  console.log(selectedOptions);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -113,17 +111,13 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                         </p>
                         <p className="text-gray-600 font-light text-sm">
                           (total for{" "}
-                          {selectedOptions.stayDurationLength +
-                            " " +
-                            getTimeScale(selectedOptions.stayDurationLength)}
+                          {`${getTimeScaleNum(
+                            selectedOptions.stayDurationLength
+                          )} ${getTimeScale(
+                            selectedOptions.stayDurationLength
+                          )}`}
                           )
                         </p>
-                        {/* <p className="text-lg text-gray-900 pb-1 lg:text-2xl mr-1">
-                          ${perUnit?.amount}{" "}
-                        </p>
-                        <p className="text-gray-600 font-light text-sm">
-                          / {perUnit?.unit}
-                        </p> */}
                       </div>
 
                       {/* Reviews */}

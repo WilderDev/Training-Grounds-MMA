@@ -32,9 +32,20 @@ export function getTimeScale(days) {
   let timeScale;
 
   if (isDailyRate(days)) timeScale = days === 1 ? "day" : "days";
-  if (isWeeklyRate(days)) timeScale = days % 7 === 0 ? "week" : "weeks";
-  if (isMonthlyRate(days)) timeScale = days % 29 === 0 ? "month" : "months";
-  if (isYearlyRate(days)) timeScale = days % 349 === 0 ? "year" : "years";
+  if (isWeeklyRate(days)) timeScale = days === 7 ? "week" : "weeks";
+  if (isMonthlyRate(days)) timeScale = days === 29 ? "month" : "months";
+  if (isYearlyRate(days)) timeScale = days === 349 ? "year" : "years";
 
   return timeScale;
+}
+
+export function getTimeScaleNum(days) {
+  let timeScaleNum;
+
+  if (isDailyRate(days)) timeScaleNum = days;
+  if (isWeeklyRate(days)) timeScaleNum = Math.ceil(days / 7);
+  if (isMonthlyRate(days)) timeScaleNum = Math.ceil(days / 29);
+  if (isYearlyRate(days)) timeScaleNum = Math.ceil(days / 349);
+
+  return timeScaleNum;
 }
