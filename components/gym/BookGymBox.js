@@ -4,10 +4,12 @@ import { StarIcon } from "@heroicons/react/solid";
 import ReserveGymModal from "../modals/ReserveGymModal";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 import { useReservationTotal } from "../../contexts/ReservationTotal.context";
+import SelectDatesModal from "../modals/SelectDatesModal";
 
 const BookGymBox = ({ gym }) => {
   const router = useRouter();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [datePickerIsOpen, setDatePickerIsOpen] = useState(false);
+  const [optionPickerIsOpen, setOptionPickerIsOpen] = useState(false);
 
   const { numFighters, startDate, endDate } = router.query; // ... !!startDate && !!endDate
 
@@ -74,7 +76,7 @@ const BookGymBox = ({ gym }) => {
 
       {/* Submit Btn */}
       <button
-        onClick={() => setModalIsOpen(true)}
+        onClick={() => setDatePickerIsOpen(true)}
         className="w-full py-3 px-6 bg-gradient-to-br from-red-500 to-red-700 hover:bg-gradient-to-tr hover:to-red-600 transition-all text-white font-bold rounded-lg text-lg shadow-xs hover:shadow-md active:shadow-sm active:bg-red-600"
       >
         Reserve my spot!
@@ -83,7 +85,16 @@ const BookGymBox = ({ gym }) => {
         *Clicking here does not lock you in to a purchase.
       </p>
 
-      <ReserveGymModal open={modalIsOpen} setOpen={setModalIsOpen} gym={gym} />
+      <SelectDatesModal
+        open={datePickerIsOpen}
+        setOpen={setDatePickerIsOpen}
+        setOptionPickerIsOpen={setOptionPickerIsOpen}
+      />
+      <ReserveGymModal
+        open={optionPickerIsOpen}
+        setOpen={setOptionPickerIsOpen}
+        gym={gym}
+      />
     </section>
   );
 };

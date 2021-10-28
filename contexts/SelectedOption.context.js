@@ -31,7 +31,7 @@ function SelectedOptionsProvider({ children }) {
   const [stayDurationOption, setStayDurationOption] = useState("perDay");
 
   //   TSK: Set this up in all components that use the calendar
-  const [stayDurationLength, setStayDurationLength] = useState(7);
+  const [stayDurationLength, setStayDurationLength] = useState(1);
 
   useEffect(() => {
     // Staying less than a week ~ (in days)
