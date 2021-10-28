@@ -22,3 +22,19 @@ export function getMonthAndYear(date) {
     year: "numeric",
   });
 }
+
+export const isDailyRate = (days) => days < 7;
+export const isWeeklyRate = (days) => days >= 7 && days < 29;
+export const isMonthlyRate = (days) => days >= 29 && days < 349;
+export const isYearlyRate = (days) => days >= 349;
+
+export function getTimeScale(days) {
+  let timeScale;
+
+  if (isDailyRate(days)) timeScale = days === 1 ? "day" : "days";
+  if (isWeeklyRate(days)) timeScale = days % 7 === 0 ? "week" : "weeks";
+  if (isMonthlyRate(days)) timeScale = days % 29 === 0 ? "month" : "months";
+  if (isYearlyRate(days)) timeScale = days % 349 === 0 ? "year" : "years";
+
+  return timeScale;
+}

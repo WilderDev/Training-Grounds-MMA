@@ -1,4 +1,10 @@
 import { createContext, useContext, useMemo, useState } from "react";
+import {
+  isDailyRate,
+  isMonthlyRate,
+  isWeeklyRate,
+  isYearlyRate,
+} from "../utils/time.helpers";
 import { useSelectedOptions } from "./SelectedOption.context";
 
 const ReservationTotalCtx = createContext();
@@ -6,6 +12,9 @@ const ReservationTotalCtx = createContext();
 function ReservationTotalProvider({ children }) {
   const [total, setResTotal] = useState();
   const [perUnit, setPerUnitObj] = useState({ amount: 0, unit: "day" });
+  const [packagePrice, setPackagePrice] = useState(0);
+  const [trainingPrice, setTrainingPrice] = useState(0);
+  const [accommodationPrice, setAccommodationPrice] = useState(0);
 
   const {
     packageOption,
@@ -16,43 +25,79 @@ function ReservationTotalProvider({ children }) {
   } = useSelectedOptions();
 
   const setPerUnit = () => {
+    const unit = stayDurationOption.split("per")[1];
+    let amount;
+
+    // PACKAGE OPTION
     if (packageOption) {
-      setPerUnitObj({
-        amount: packageOption.prices[stayDurationOption],
-        unit: stayDurationOption.split("per")[1],
-      });
+      amount = packageOption.prices[stayDurationOption];
+      return setPerUnitObj({ amount, unit });
     }
 
+    // TRAINING OPTION & ACCOMMODATION OPTION
     if (trainingOption && accommodationOption) {
-      setPerUnitObj({
-        amount: trainingOption.prices[stayDurationOption],
-        unit: stayDurationOption.split("per")[1],
-      });
+      amount =
+        trainingOption.prices[stayDurationOption] +
+        accommodationOption.prices[stayDurationOption];
+      return setPerUnitObj({ amount, unit });
+    }
+
+    // ONLY TRAINING OPTION
+    if (trainingOption) {
+      amount = trainingOption.prices[stayDurationOption];
+      return setPerUnitObj({ amount, unit });
+    }
+
+    // ONLY ACCOMMODATION OPTION
+    if (accommodationOption) {
+      amount = accommodationOption.prices[stayDurationOption];
+      return setPerUnitObj({ amount, unit });
     }
   };
 
   const setTotal = () => {
-    //     TSK: This will not work for longer than a week.
-    // TSK: Create a helper function that takes in the amount of days...
-    // and returns the correct number for stayDurationLength depending on the stayDurationOptions...
-    // eg: 6days === 6; 12days === 2; 33days === 1;
+    let multiplyer = 1;
+
+    // Staying less than a week ~ (in days)
+    if (isDailyRate(stayDurationLength)) multiplyer = stayDurationLength;
+    // Staying one week or more . . . but less than a month ~ (in weeks)
+    if (isWeeklyRate(stayDurationLength))
+      multiplyer = Math.ceil(stayDurationLength / 7);
+    // Staying one month or more . . . but less than a year ~ (in months)
+    if (isMonthlyRate(stayDurationLength))
+      multiplyer = Math.ceil(stayDurationLength / 29);
+    // Staying one year or longer ~ (in years)
+    if (isYearlyRate(stayDurationLength))
+      multiplyer = Math.ceil(stayDurationLength / 349);
+
+    // PACKAGE OPTION
     if (packageOption) {
-      setResTotal(
-        packageOption.prices[stayDurationOption] * stayDurationLength
+      return setResTotal(packageOption.prices[stayDurationOption] * multiplyer);
+    }
+
+    // TRAINING OPTION & ACCOMMODATION OPTION
+    if (trainingOption && accommodationOption) {
+      return setResTotal(
+        trainingOption.prices[stayDurationOption] * multiplyer +
+          accommodationOption.prices[stayDurationOption] * multiplyer
       );
     }
 
-    if (trainingOption && accommodationOption) {
-      const trainingPrice =
-        trainingOption.prices[stayDurationOption] * stayDurationLength;
-      const accommPrice =
-        accommodationOption.prices[stayDurationOption] * stayDurationLength;
+    // ONLY TRAINING OPTION
+    if (trainingOption) {
+      return setResTotal(
+        trainingOption.prices[stayDurationOption] * multiplyer
+      );
+    }
 
-      setResTotal(trainingPrice + accommPrice);
+    // ONLY ACCOMMODATION OPTION
+    if (accommodationOption) {
+      return setResTotal(
+        accommodationOption.prices[stayDurationOption] * multiplyer
+      );
     }
   };
 
-  // IX_TSK: Memoize this?
   const value = useMemo(() => ({
     total,
     setTotal,

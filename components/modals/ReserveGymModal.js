@@ -7,12 +7,13 @@ import { classNames } from "../../utils/misc.helpers";
 import { v4 } from "uuid";
 import { locationsToString } from "../../utils/location.helpers";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
+import { useReservationTotal } from "../../contexts/ReservationTotal.context";
+import { getTimeScale } from "../../utils/time.helpers";
 
 const ReserveGymModal = ({ open, setOpen, gym }) => {
   const {
     name,
     reviews,
-    total,
     rating,
     main_image_url,
     location,
@@ -20,6 +21,7 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
     training_options,
     package_options,
   } = gym;
+  const { total } = useReservationTotal();
   const selectedOptions = useSelectedOptions();
 
   console.log(selectedOptions);
@@ -105,8 +107,24 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                         Gym information
                       </h3>
 
-                      {/* IX_TSK */}
-                      <p className="text-2xl text-gray-900">${total}</p>
+                      <div className="flex items-center">
+                        <p className="text-lg text-gray-900 pb-1 lg:text-2xl mr-2">
+                          ${total}
+                        </p>
+                        <p className="text-gray-600 font-light text-sm">
+                          (total for{" "}
+                          {selectedOptions.stayDurationLength +
+                            " " +
+                            getTimeScale(selectedOptions.stayDurationLength)}
+                          )
+                        </p>
+                        {/* <p className="text-lg text-gray-900 pb-1 lg:text-2xl mr-1">
+                          ${perUnit?.amount}{" "}
+                        </p>
+                        <p className="text-gray-600 font-light text-sm">
+                          / {perUnit?.unit}
+                        </p> */}
+                      </div>
 
                       {/* Reviews */}
                       <div className="mt-6">
@@ -268,8 +286,12 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                         </div>
 
                         <button
+                          disabled={
+                            !selectedOptions.packageOption &&
+                            !selectedOptions.trainingOption
+                          }
                           type="submit"
-                          className="mt-6 w-full bg-red-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                          className="mt-6 disabled:bg-red-900 disabled:cursor-not-allowed w-full bg-red-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                         >
                           Reserve My Spot
                         </button>

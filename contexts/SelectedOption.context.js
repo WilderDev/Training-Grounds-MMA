@@ -1,4 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import {
+  isDailyRate,
+  isMonthlyRate,
+  isWeeklyRate,
+  isYearlyRate,
+} from "../utils/time.helpers";
 
 const SelectedOptionsCtx = createContext();
 
@@ -16,7 +22,7 @@ function SelectedOptionsProvider({ children }) {
   }, [packageOption]);
 
   useEffect(() => {
-    if ((packageOption && trainingOption) || accommodationOption) {
+    if (packageOption && (trainingOption || accommodationOption)) {
       setPackageOption();
     }
   }, [trainingOption, accommodationOption]);
@@ -25,7 +31,18 @@ function SelectedOptionsProvider({ children }) {
   const [stayDurationOption, setStayDurationOption] = useState("perDay");
 
   //   TSK: Set this up in all components that use the calendar
-  const [stayDurationLength, setStayDurationLength] = useState(3);
+  const [stayDurationLength, setStayDurationLength] = useState(1);
+
+  useEffect(() => {
+    // Staying less than a week ~ (in days)
+    if (isDailyRate(stayDurationLength)) setStayDurationOption("perDay");
+    // Staying one week or more . . . but less than a month ~ (in weeks)
+    if (isWeeklyRate(stayDurationLength)) setStayDurationOption("perWeek");
+    // Staying one month or more . . . but less than a year ~ (in months)
+    if (isMonthlyRate(stayDurationLength)) setStayDurationOption("perMonth");
+    // Staying one year or longer ~ (in years)
+    if (isYearlyRate(stayDurationLength)) setStayDurationOption("perYear");
+  }, [stayDurationLength]);
 
   // IX_TSK: Memoize this?
   const value = {
