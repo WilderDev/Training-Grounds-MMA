@@ -13,8 +13,6 @@ const ResultsMap = ({ searchResults }) => {
     latitude: item.location.latitude,
   }));
 
-  console.log("coordinates:", coordinates);
-
   //   Geolib finding center of all our searchResults coordinates
   const center = getCenter(coordinates);
 

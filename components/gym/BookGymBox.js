@@ -46,7 +46,7 @@ const BookGymBox = ({ gym }) => {
         </p>
       </div>
 
-      {/* Middle */}
+      {/* Middle - Options & Dates */}
       <div className="mb-8 space-y-2">
         {selectedOptions?.trainingOption && (
           <p>
@@ -73,24 +73,27 @@ const BookGymBox = ({ gym }) => {
           </p>
         )}
 
-        <div className="pt-8">
-          {startDate && (
-            <p>
-              Start Date:{" "}
-              <span className="text-gray-700 font-light">
-                {getLocalDateString(startDate)}
-              </span>
-            </p>
-          )}
-          {endDate && (
-            <p>
-              End Date:{" "}
-              <span className="text-gray-700 font-light">
-                {getLocalDateString(endDate)}
-              </span>
-            </p>
-          )}
-        </div>
+        {/* Dates */}
+        {startDate.getDay() !== endDate.getDay() && (
+          <div className="pt-8">
+            {startDate && (
+              <p>
+                Start Date:{" "}
+                <span className="text-gray-700 font-light">
+                  {getLocalDateString(startDate)}
+                </span>
+              </p>
+            )}
+            {endDate && (
+              <p>
+                End Date:{" "}
+                <span className="text-gray-700 font-light">
+                  {getLocalDateString(endDate)}
+                </span>
+              </p>
+            )}
+          </div>
+        )}
       </div>
 
       {/* TSK: Up there . . . put dates if we gotz any */}

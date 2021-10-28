@@ -49,12 +49,6 @@ const staticRangeHandler = {
 };
 
 export function createStaticRanges(ranges) {
-  console.log(
-    "ranges:",
-    ranges.map((range) => {
-      console.log("range.startDate:", range.range());
-    })
-  );
   return ranges.map((range) => ({ ...staticRangeHandler, ...range }));
 }
 

@@ -4,8 +4,6 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const SurroundingsMap = ({ latitude, longitude, name }) => {
-  console.log("latitude, longitude:", latitude, longitude);
-
   const center = getCenter([{ longitude: longitude, latitude: latitude }]);
   const [viewport, setViewport] = useState({
     width: "100%",
