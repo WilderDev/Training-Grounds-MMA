@@ -2,15 +2,10 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import DateRangeCalendar from "../minor/DateRangeCalendar";
+import { useSelectedDates } from "../../contexts/SelectedDates.context";
 
 const SelectDatesModal = ({ open, setOpen, setOptionPickerIsOpen }) => {
-  // IX_TSK: These should be gotten in context or router Query
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const handleSelectDates = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  };
+  const { startDate, endDate, handleSelectDates } = useSelectedDates();
 
   return (
     <Transition.Root show={open} as={Fragment}>

@@ -5,6 +5,7 @@ import {
   isWeeklyRate,
   isYearlyRate,
 } from "../utils/time.helpers";
+import { useSelectedDates } from "./SelectedDates.context";
 import { useSelectedOptions } from "./SelectedOption.context";
 
 const ReservationTotalCtx = createContext();
@@ -12,17 +13,10 @@ const ReservationTotalCtx = createContext();
 function ReservationTotalProvider({ children }) {
   const [total, setResTotal] = useState();
   const [perUnit, setPerUnitObj] = useState({ amount: 0, unit: "day" });
-  const [packagePrice, setPackagePrice] = useState(0);
-  const [trainingPrice, setTrainingPrice] = useState(0);
-  const [accommodationPrice, setAccommodationPrice] = useState(0);
 
-  const {
-    packageOption,
-    accommodationOption,
-    trainingOption,
-    stayDurationOption,
-    stayDurationLength,
-  } = useSelectedOptions();
+  const { packageOption, accommodationOption, trainingOption } =
+    useSelectedOptions();
+  const { stayDurationLength, stayDurationOption } = useSelectedDates();
 
   const setPerUnit = () => {
     const unit = stayDurationOption.split("per")[1];

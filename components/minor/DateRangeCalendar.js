@@ -6,11 +6,7 @@ import {
   defaultStaticRanges,
 } from "../../utils/calendar.helpers";
 
-const DateRangeCalendar = ({
-  handleSelectDates,
-  startDate = new Date(),
-  endDate = new Date(),
-}) => {
+const DateRangeCalendar = ({ handleSelectDates, startDate, endDate }) => {
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,

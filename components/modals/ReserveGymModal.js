@@ -9,6 +9,7 @@ import { locationsToString } from "../../utils/location.helpers";
 import { useSelectedOptions } from "../../contexts/SelectedOption.context";
 import { useReservationTotal } from "../../contexts/ReservationTotal.context";
 import { getTimeScale, getTimeScaleNum } from "../../utils/time.helpers";
+import { useSelectedDates } from "../../contexts/SelectedDates.context";
 
 const ReserveGymModal = ({ open, setOpen, gym }) => {
   const {
@@ -23,6 +24,7 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
   } = gym;
   const { total } = useReservationTotal();
   const selectedOptions = useSelectedOptions();
+  const { stayDurationLength } = useSelectedDates();
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -112,10 +114,8 @@ const ReserveGymModal = ({ open, setOpen, gym }) => {
                         <p className="text-gray-600 font-light text-sm">
                           (total for{" "}
                           {`${getTimeScaleNum(
-                            selectedOptions.stayDurationLength
-                          )} ${getTimeScale(
-                            selectedOptions.stayDurationLength
-                          )}`}
+                            stayDurationLength
+                          )} ${getTimeScale(stayDurationLength)}`}
                           )
                         </p>
                       </div>
