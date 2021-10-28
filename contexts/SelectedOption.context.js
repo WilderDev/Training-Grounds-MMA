@@ -1,8 +1,13 @@
+import { useRouter } from "next/router";
 import { createContext, useContext, useState, useEffect, useMemo } from "react";
+import { toLowerCaseHyphenated } from "../utils/string.helpers";
 
 const SelectedOptionsCtx = createContext();
 
 function SelectedOptionsProvider({ children }) {
+  // * ROUTER
+  const router = useRouter();
+
   // * TRAINING OPTIONS
   const [trainingOption, setTrainingOption] = useState();
   const [accommodationOption, setAccommodationOption] = useState();
@@ -12,7 +17,11 @@ function SelectedOptionsProvider({ children }) {
     if (packageOption) {
       setTrainingOption();
       setAccommodationOption();
+      router.query.packageOption = toLowerCaseHyphenated(packageOption.name);
+    } else {
+      delete router.query.packageOption;
     }
+    router.push(router, undefined, { shallow: true });
   }, [packageOption]);
 
   useEffect(() => {
@@ -20,6 +29,26 @@ function SelectedOptionsProvider({ children }) {
       setPackageOption();
     }
   }, [trainingOption, accommodationOption]);
+
+  useEffect(() => {
+    if (trainingOption) {
+      router.query.trainingOption = toLowerCaseHyphenated(trainingOption.name);
+    } else {
+      delete router.query.trainingOption;
+    }
+    router.push(router, undefined, { shallow: true });
+  }, [trainingOption]);
+
+  useEffect(() => {
+    if (accommodationOption) {
+      router.query.accommodationOption = toLowerCaseHyphenated(
+        accommodationOption.name
+      );
+    } else {
+      delete router.query.accommodationOption;
+    }
+    router.push(router, undefined, { shallow: true });
+  }, [accommodationOption]);
 
   const value = useMemo(() => ({
     trainingOption,
