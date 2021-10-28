@@ -46,6 +46,7 @@ const Header = ({ placeholder, isSticky }) => {
   const onSearch = () => {
     router.push({
       pathname: "/search",
+      // TSK: this should be handled by context and local storage
       query: {
         location: searchInput,
         startDate: startDate.toISOString(),

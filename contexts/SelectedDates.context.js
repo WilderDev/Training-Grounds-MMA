@@ -1,5 +1,5 @@
 // IX_TSK: This should set the url bar to have the dates if we have dates. . . else remove them
-
+import { useRouter } from "next/router";
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import {
   getDaysBetweenDates,
@@ -8,10 +8,12 @@ import {
   isWeeklyRate,
   isYearlyRate,
 } from "../utils/time.helpers";
+import { toLowerCaseHyphenated } from "../utils/string.helpers";
 
 const SelectedDatesCtx = createContext();
 
 function SelectedDatesProvider({ children }) {
+  const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [stayDurationOption, setStayDurationOption] = useState("perDay");
@@ -37,6 +39,26 @@ function SelectedDatesProvider({ children }) {
     );
     setStayDurationLength(days);
   };
+
+  // Save in local sto
+
+  useEffect(() => {
+    if (startDate) {
+      router.query.startDate = toLowerCaseHyphenated(startDate.toISOString());
+    } else {
+      delete router.query.startDate;
+    }
+    router.push(router, undefined, { shallow: true });
+  }, [startDate]);
+
+  useEffect(() => {
+    if (endDate) {
+      router.query.endDate = toLowerCaseHyphenated(endDate.toISOString());
+    } else {
+      delete router.query.endDate;
+    }
+    router.push(router, undefined, { shallow: true });
+  }, [endDate]);
 
   const value = useMemo(() => ({
     startDate,
