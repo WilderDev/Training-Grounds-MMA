@@ -23,11 +23,12 @@ const defineds = {
   startOfTomorrow: startOfDay(addDays(new Date(), +1)),
   endOfTomorrow: endOfDay(addDays(new Date(), +1)),
   startOfMonth: startOfMonth(new Date()),
+  // IX_TSK: Might have to change this ugly ass thang
   endOfMonth:
     differenceInCalendarDays(
       sub(endOfMonth(new Date()), { days: 2 }),
       endOfMonth(new Date())
-    ) > 29
+    ) > 28
       ? sub(endOfMonth(new Date()), { days: 2 })
       : endOfMonth(new Date()),
   startOfNextMonth: startOfMonth(addMonths(new Date(), +1)),

@@ -16,15 +16,21 @@ const DateRangeCalendar = () => {
   };
 
   return (
-    <DateRangePicker
-      ranges={[selectionRange]}
-      minDate={new Date()}
-      disabledDates={[new Date().getDate() - 1]}
-      rangeColors={["#ef4444"]}
-      onChange={handleSelectDates}
-      staticRanges={defaultStaticRanges}
-      inputRanges={defaultInputRanges}
-    />
+    <>
+      <DateRangePicker
+        ranges={[selectionRange]}
+        minDate={new Date()}
+        disabledDates={[new Date().getDate() - 1]}
+        rangeColors={["#ef4444"]}
+        onChange={handleSelectDates}
+        staticRanges={defaultStaticRanges}
+        inputRanges={defaultInputRanges}
+      />
+
+      <p className="text-right text-xs -mt-2 font-light text-gray-600">
+        *Months are 29 days.
+      </p>
+    </>
   );
 };
 
