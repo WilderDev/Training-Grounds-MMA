@@ -1,3 +1,4 @@
+import { ExtraDetailsProvider } from "../../contexts/ExtraDetails.context";
 import { ReservationTotalProvider } from "../../contexts/ReservationTotal.context";
 import { SelectedDatesProvider } from "../../contexts/SelectedDates.context";
 import { SelectedOptionsProvider } from "../../contexts/SelectedOption.context";
@@ -9,9 +10,11 @@ const Layout = ({ children, placeholder, isSticky = true }) => {
     <SelectedDatesProvider>
       <SelectedOptionsProvider>
         <ReservationTotalProvider>
-          <Header placeholder={placeholder} isSticky={isSticky} />
-          <main>{children}</main>
-          <Footer />
+          <ExtraDetailsProvider>
+            <Header placeholder={placeholder} isSticky={isSticky} />
+            <main>{children}</main>
+            <Footer />
+          </ExtraDetailsProvider>
         </ReservationTotalProvider>
       </SelectedOptionsProvider>
     </SelectedDatesProvider>
