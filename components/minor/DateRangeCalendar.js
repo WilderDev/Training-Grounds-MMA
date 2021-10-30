@@ -10,8 +10,8 @@ import {
 const DateRangeCalendar = () => {
   const { startDate, endDate, handleSelectDates } = useSelectedDates();
   const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
+    startDate,
+    endDate,
     key: "selection",
   };
 

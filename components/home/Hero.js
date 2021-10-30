@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import HeroBg from "../../public/images/hero-bg.png";
+import { useExtraDetails } from "../../contexts/ExtraDetails.context";
 
 const Hero = () => {
   const router = useRouter();
+  const { numFighters } = useExtraDetails();
 
   return (
     <section className="relative h-[50vh] flex items-center justify-center">
@@ -35,7 +37,7 @@ const Hero = () => {
         </p>
         {/* TSK: If we have the users location, use that as a query param */}
         <button
-          onClick={() => router.push("search/?numFighters=1")}
+          onClick={() => router.push(`search/?numFighters=${numFighters}`)}
           className="text-red-600 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl hover:scale-105 active:scale-90 transition duration-150"
         >
           Let&apos;s Go

@@ -20,6 +20,22 @@ function SelectedDatesProvider({ children }) {
   const [stayDurationLength, setStayDurationLength] = useState(1);
 
   useEffect(() => {
+    if (window !== undefined) {
+      const getSavedDates = async () => {
+        const savedDates = JSON.parse(
+          localStorage.getItem("Training-Grounds_dates")
+        );
+
+        if (savedDates) {
+          setStartDate(new Date(savedDates.startDate));
+          setEndDate(new Date(savedDates.endDate));
+        }
+      };
+      getSavedDates();
+    }
+  }, []);
+
+  useEffect(() => {
     // Staying less than a week ~ (in days)
     if (isDailyRate(stayDurationLength)) setStayDurationOption("perDay");
     // Staying one week or more . . . but less than a month ~ (in weeks)
@@ -40,7 +56,14 @@ function SelectedDatesProvider({ children }) {
     setStayDurationLength(days);
   };
 
-  // Save in local sto
+  useEffect(() => {
+    if (window !== undefined) {
+      localStorage.setItem(
+        "Training-Grounds_dates",
+        JSON.stringify({ startDate, endDate })
+      );
+    }
+  }, [startDate, endDate]);
 
   useEffect(() => {
     if (startDate) {

@@ -7,6 +7,7 @@ import DateRangeCalendar from "../minor/DateRangeCalendar";
 
 const AvailabilityCalendar = ({ city, state, country }) => {
   const { startDate, endDate } = useSelectedDates();
+
   return (
     <section className="responsive">
       <h2 className="dynamicPageHeading mb-2">

@@ -36,4 +36,5 @@ function useGymFilters() {
 export { GymFiltersProvider, useGymFilters };
 
 // IX_TSK
-// 1. When you add more filters. . . Make sure to add them here!
+// 1. When you add more filters. . . Make sure to add them here! 	// isFeatured, isNew, amenitites, rating . . .
+// 2, Does this need to be global?

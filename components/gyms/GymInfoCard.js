@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 
-const GymInfoCard = ({ info, numFighters, startDate, endDate }) => {
+const GymInfoCard = ({ info }) => {
   const {
     title,
     name,
@@ -21,7 +21,6 @@ const GymInfoCard = ({ info, numFighters, startDate, endDate }) => {
       <Link
         href={{
           pathname: `/training-camps/${href}`,
-          query: { numFighters, startDate, endDate },
         }}
       >
         <a

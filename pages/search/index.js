@@ -20,8 +20,6 @@ const LocationSearch = ({ searchResults }) => {
     priceRange,
     skillLevels,
     numFighters,
-    startDate,
-    endDate,
     accommodations,
   } = router.query;
   // TSK:    location: GEOLOCATION array? + Radius // Country // City
@@ -120,15 +118,7 @@ const LocationSearch = ({ searchResults }) => {
           {/* Results (Cards) */}
           <div className="flex flex-col">
             {filteredGyms?.length > 0 ? (
-              filteredGyms.map((gym) => (
-                <GymInfoCard
-                  key={v4()}
-                  info={gym}
-                  numFighters={numFighters}
-                  startDate={startDate}
-                  endDate={endDate}
-                />
-              ))
+              filteredGyms.map((gym) => <GymInfoCard key={v4()} info={gym} />)
             ) : (
               <p>No camps found matching that description.</p>
             )}
