@@ -110,7 +110,3 @@ function useSelectedDates() {
 }
 
 export { SelectedDatesProvider, useSelectedDates };
-
-// IX_TSK
-// 1. Store dates in local storage object
-// 2.

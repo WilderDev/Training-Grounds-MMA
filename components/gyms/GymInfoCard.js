@@ -18,11 +18,7 @@ const GymInfoCard = ({ info }) => {
 
   return (
     <div className="flex flex-col relative md:flex-row z-10 py-7 pl-2 pr-4 border-b cursor-pointer group hover:bg-gray-800 hover:text-white hover:shadow-lg transition duration-200 ease-out first:border-t">
-      <Link
-        href={{
-          pathname: `/training-camps/${href}`,
-        }}
-      >
+      <Link href={`/training-camps/${href}`}>
         <a
           target={href}
           rel="noopener noreferrer"

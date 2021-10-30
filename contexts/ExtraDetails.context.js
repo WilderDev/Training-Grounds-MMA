@@ -1,9 +1,33 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const ExtraDetailsCtx = createContext();
 
 function ExtraDetailsProvider({ children }) {
   const [numFighters, setNumFighters] = useState(1);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      const getSavedNumFighters = async () => {
+        const savedNum = localStorage.getItem("Training-Grounds_num-fighters");
+        if (savedNum) setNumFighters(JSON.stringify(savedNum));
+      };
+      getSavedNumFighters();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      console.log("numFighters SETTIGN :>> ", numFighters);
+      if (numFighters) {
+        setNumFighters(
+          localStorage.setItem(
+            "Training-Grounds_num-fighters",
+            numFighters || 1
+          )
+        );
+      }
+    }
+  }, [numFighters]);
 
   const value = useMemo(() => ({
     numFighters,
@@ -27,3 +51,6 @@ function useExtraDetails() {
 }
 
 export { ExtraDetailsProvider, useExtraDetails };
+
+// IX_TSK
+// 1. Figure this out!

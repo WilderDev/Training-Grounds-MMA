@@ -8,7 +8,7 @@ import { SearchIcon, UserCircleIcon, UsersIcon } from "@heroicons/react/solid";
 import { v4 } from "uuid";
 import { classNames } from "../../utils/misc.helpers";
 import DateRangeCalendar from "../minor/DateRangeCalendar";
-import { useSelectedDates } from "../../contexts/SelectedDates.context";
+import { useExtraDetails } from "../../contexts/ExtraDetails.context";
 
 const dropdownLinks = [
   {
@@ -37,19 +37,13 @@ const dropdownLinks = [
 
 const Header = ({ placeholder, isSticky }) => {
   const router = useRouter();
-
-  const [searchInput, setSearchInput] = useState("");
+  // IX_TSK
+  // const { numFighters, setNumFighters } = useExtraDetails();
   const [numFighters, setNumFighters] = useState(1);
+  const [searchInput, setSearchInput] = useState("");
 
   const onSearch = () => {
-    router.push({
-      pathname: "/search",
-      // TSK: this should be handled by context and local storage
-      query: {
-        location: searchInput,
-        numFighters: numFighters,
-      },
-    });
+    router.push("/search");
     setSearchInput("");
   };
 
@@ -162,7 +156,7 @@ const Header = ({ placeholder, isSticky }) => {
               type="number"
               className="w-12 pl-2 text-lg outline-none border-none text-red-400"
               min={1}
-              value={numFighters}
+              value={numFighters || 1}
               onChange={(e) => setNumFighters(e.target.value)}
             />
           </div>

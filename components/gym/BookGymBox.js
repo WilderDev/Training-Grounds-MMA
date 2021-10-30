@@ -32,8 +32,6 @@ const BookGymBox = ({ gym }) => {
 
     console.log("router:", router);
     router.push(`${router.asPath}/confirmation`);
-    // https://nextjs.org/docs/api-reference/next/router
-    // getStaticProps?
   };
 
   return (
