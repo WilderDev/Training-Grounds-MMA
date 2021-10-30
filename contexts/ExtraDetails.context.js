@@ -4,7 +4,6 @@ const ExtraDetailsCtx = createContext();
 
 function ExtraDetailsProvider({ children }) {
   const [numFighters, setNumFighters] = useState(1);
-  // TSK: More Dtails
 
   const value = useMemo(() => ({
     numFighters,
