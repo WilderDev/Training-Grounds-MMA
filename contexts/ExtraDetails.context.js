@@ -51,6 +51,3 @@ function useExtraDetails() {
 }
 
 export { ExtraDetailsProvider, useExtraDetails };
-
-// IX_TSK
-// 1. Figure this out!

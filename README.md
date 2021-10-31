@@ -6,8 +6,8 @@
 
 ## MVP TODO
 
-1. [Single Page](https://www.airbnb.com/rooms/23147354?translate_ugc=false&federated_search_id=8d4c21c6-f2fc-423b-aff6-879bd5a00dc7&source_impression_id=p3_1633248502_njqR2sDEFxbVWXyr&guests=1&adults=1)
-2. User Authentication
+1. User Authentication
+2. Gym Owner Add Gym Details Form
 3. Footer Links & Pages
 4. Responsive every page
 
@@ -34,8 +34,6 @@
 - useMemo
 
 - Loading Spinner or state
-
-- [Internationalization](https://www.npmjs.com/package/talkr)
 
 ### MINOR
 
@@ -71,7 +69,7 @@
 
 - More in depth filters on search page
 
-- Internationalization
+- Internationalization [Internationalization](https://www.npmjs.com/package/talkr)
 
 - Get insurance for payments... vet all gym owners to make sure they aren't scammer bo jammers
 
