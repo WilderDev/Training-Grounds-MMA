@@ -8,5 +8,6 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
+    //     IX_TSK: Add more providers here: https://next-auth.js.org/getting-started/example
   ],
 });
