@@ -1,21 +1,18 @@
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import { Popover, Transition } from "@headlessui/react";
 import { classNames } from "../../utils/misc.helpers";
 import { ChevronDownIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { v4 } from "uuid";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 
 const ownerLinks = [
   {
     name: "Dashboard",
     description: "Create an account as a fighter or gym owner.",
     href: "/sign-up",
-  },
-  {
-    name: "TSK",
-    description: "Log in to your account to access all site features.",
-    href: "/sign-in",
   },
   {
     name: "Add your gym",
@@ -32,11 +29,6 @@ const ownerLinks = [
 ];
 
 const fighterLinks = [
-  {
-    name: "TSK",
-    description: "Create an account as a fighter or gym owner.",
-    href: "/sign-up",
-  },
   {
     name: "Saved Camps",
     description: "Log in to your account to access all site features.",
@@ -58,16 +50,6 @@ const fighterLinks = [
 
 const dropdownLinks = [
   {
-    name: "Sign up",
-    description: "Create an account as a fighter or gym owner.",
-    href: "/sign-up",
-  },
-  {
-    name: "Sign in",
-    description: "Log in to your account to access all site features.",
-    href: "/sign-in",
-  },
-  {
     name: "Add your gym",
     description:
       "Are you a gym owner? Make your training camp known to the world!",
@@ -85,11 +67,6 @@ const NavDropdown = () => {
   const [session, loading] = useSession();
   const [isFighter, setIsFighter] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
-
-  //   LOADING
-  if (loading) {
-    return <div>TSK LOADING</div>;
-  }
 
   //    NOT AUTHORIZED
   if (!session) {
@@ -121,6 +98,14 @@ const NavDropdown = () => {
               <Popover.Panel className="absolute z-10 left-full transform -translate-x-full mt-3 px-2 w-screen max-w-xs sm:px-0">
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                    <SignIn
+                      name="Sign Up"
+                      desc="Create an account as a fighter or gym owner"
+                    />
+                    <SignIn
+                      name="Sign In"
+                      desc="Log in to our account to access all site features"
+                    />
                     {dropdownLinks.map((link) => (
                       <Link href={link.href} key={v4()}>
                         <a className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -186,6 +171,7 @@ const NavDropdown = () => {
                         </a>
                       </Link>
                     ))}
+                    <SignOut />
                   </div>
                 </div>
               </Popover.Panel>
@@ -239,6 +225,7 @@ const NavDropdown = () => {
                         </a>
                       </Link>
                     ))}
+                    <SignOut />
                   </div>
                 </div>
               </Popover.Panel>
@@ -247,6 +234,11 @@ const NavDropdown = () => {
         )}
       </Popover>
     );
+  }
+
+  //   LOADING
+  if (loading) {
+    return <div>TSK LOADING</div>;
   }
 };
 

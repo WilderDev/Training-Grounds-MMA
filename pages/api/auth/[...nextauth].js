@@ -1,13 +1,19 @@
 import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-// import EmailProvider from "next-auth/providers/email";
+import EmailProvider from "next-auth/providers/email";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import { connectToDatabase } from "../../../utils/mongo.helpers";
 
 export default NextAuth({
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
     }),
     //     IX_TSK: Add more providers here: https://next-auth.js.org/getting-started/example
   ],
+  database: process.env.DATABASE_URL,
+  adapter: MongoDBAdapter({
+    db: connectToDatabase().db("Users"),
+  }),
+  secret: process.env.AUTH_SECRET,
 });
