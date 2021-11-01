@@ -33,6 +33,8 @@
 
 - useMemo
 
+- OAuth Support
+
 - Loading Spinner or state
 
 ### MINOR
