@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import { Popover, Transition } from "@headlessui/react";
 import { classNames } from "../../utils/misc.helpers";
 import { ChevronDownIcon, UserCircleIcon } from "@heroicons/react/solid";
@@ -64,9 +64,14 @@ const dropdownLinks = [
 ];
 
 const NavDropdown = () => {
-  const [session, loading] = useSession();
+  // const [session, loading] = useSession();
+  const { data: session, status } = useSession();
+  const isLoading = status === "loading";
+
   const [isFighter, setIsFighter] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+
+  console.log("session:", session);
 
   //    NOT AUTHORIZED
   if (!session) {
