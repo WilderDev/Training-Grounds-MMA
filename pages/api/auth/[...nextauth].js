@@ -13,7 +13,7 @@ export default NextAuth({
   ],
   database: process.env.DATABASE_URL,
   adapter: MongoDBAdapter({
-    db: connectToDatabase().db("Users"),
+    db: connectToDatabase(),
   }),
   secret: process.env.AUTH_SECRET,
 });
