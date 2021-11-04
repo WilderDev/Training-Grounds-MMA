@@ -5,7 +5,6 @@ import { Popover, Transition } from "@headlessui/react";
 import { classNames } from "../../utils/misc.helpers";
 import { ChevronDownIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { v4 } from "uuid";
-import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 
 const ownerLinks = [
@@ -106,14 +105,26 @@ const NavDropdown = () => {
               <Popover.Panel className="absolute z-10 left-full transform -translate-x-full mt-3 px-2 w-screen max-w-xs sm:px-0">
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                    <SignIn
-                      name="Sign Up"
-                      desc="Create an account as a fighter or gym owner"
-                    />
-                    <SignIn
-                      name="Sign In"
-                      desc="Log in to our account to access all site features"
-                    />
+                    <Link href="/sign-up" key={v4()}>
+                      <a className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                        <p className="text-base font-medium text-gray-900">
+                          Sign Up
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          Create an account as a fighter or gym owner
+                        </p>
+                      </a>
+                    </Link>
+                    <Link href="/sign-in" key={v4()}>
+                      <a className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                        <p className="text-base font-medium text-gray-900">
+                          Sign In
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          Log in to our account to access all site features
+                        </p>
+                      </a>
+                    </Link>
                     {dropdownLinks.map((link) => (
                       <Link href={link.href} key={v4()}>
                         <a className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">

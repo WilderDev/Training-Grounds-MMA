@@ -1,16 +1,17 @@
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { classNames } from "../../utils/misc.helpers";
 
-const Auth = ({ type, onSignUp, onSignIn }) => {
+const Auth = ({ type }) => {
   const isSignIn = type === "sign-in";
 
   return (
     <div className="min-h-screen bg-white flex">
       <div
         className={classNames(
-          isSignIn && "order-2",
-          "flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 order-1"
+          isSignIn && "flex-col-reverse order-1",
+          "flex-1 flex justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 order-2"
         )}
       >
         <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -49,8 +50,13 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
                 <div className="mt-1 grid grid-cols-3 gap-3">
                   <div>
                     <button
+                      // TSK
                       onClick={() => {
-                        isSignIn ? onSignIn("facebook") : onSignUp("facebook");
+                        signIn("facebook", {
+                          email,
+                          password,
+                          isFighter: false,
+                        });
                       }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
@@ -74,8 +80,13 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
 
                   <div>
                     <button
+                      // TSK
                       onClick={() => {
-                        isSignIn ? onSignIn("twitter") : onSignUp("twitter");
+                        signIn("twitter", {
+                          email,
+                          password,
+                          isFighter: false,
+                        });
                       }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
@@ -95,8 +106,9 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
 
                   <div>
                     <button
+                      // TSK
                       onClick={() => {
-                        isSignIn ? onSignIn("github") : onSignUp("github");
+                        signIn("github", { email, password, isFighter: false });
                       }}
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
@@ -139,9 +151,7 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  isSignIn
-                    ? onSignIn("email", email.value, password.value)
-                    : onSignUp("email", email.value, password.value);
+                  signIn("email", { email, password, isFighter: false });
                 }}
                 method="POST"
                 className="space-y-6"
@@ -227,7 +237,12 @@ const Auth = ({ type, onSignUp, onSignIn }) => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block relative w-0 flex-1 order-1">
+      <div
+        className={classNames(
+          isSignIn && "order-2",
+          "hidden lg:block relative w-0 flex-1 order-1"
+        )}
+      >
         <div className="relative inset-0 h-full w-full">
           <Image
             src={isSignIn ? `/images/sign-in_bg.jpg` : "/images/sign-up_bg.jpg"}

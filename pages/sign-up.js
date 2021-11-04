@@ -1,12 +1,10 @@
+import { getCsrfToken } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import Auth from "../components/minor/authentication";
+import { signIn } from "next-auth/react";
 
-const SignUp = () => {
-  const handleSignUp = (method) => {
-    console.log("method:", method);
-  };
-
+const SignUp = ({ csrfToken }) => {
   return (
     <Layout>
       <Head>
@@ -17,9 +15,17 @@ const SignUp = () => {
         />
       </Head>
 
-      <Auth type="sign-up" onSignUp={handleSignUp} />
+      <Auth type="sign-up" />
     </Layout>
   );
 };
 
 export default SignUp;
+
+export async function getServerSideProps(ctx) {
+  const csrfToken = await getCsrfToken(ctx);
+
+  return {
+    props: { csrfToken },
+  };
+}
