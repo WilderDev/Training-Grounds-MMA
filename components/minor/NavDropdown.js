@@ -64,7 +64,6 @@ const dropdownLinks = [
 ];
 
 const NavDropdown = () => {
-  // const [session, loading] = useSession();
   const { data: session, status } = useSession();
   const isLoading = status === "loading";
 
