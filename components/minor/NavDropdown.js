@@ -67,10 +67,14 @@ const NavDropdown = () => {
   const { data: session, status } = useSession();
   const isLoading = status === "loading";
 
+  // TSK: Look in session object and dynamically update using useEffect!
   const [isFighter, setIsFighter] = useState(false);
-  const [isOwner, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
 
-  console.log("session:", session);
+  //   LOADING
+  if (isLoading) {
+    return <div>TSK LOADING</div>;
+  }
 
   //    NOT AUTHORIZED
   if (!session) {
@@ -238,11 +242,6 @@ const NavDropdown = () => {
         )}
       </Popover>
     );
-  }
-
-  //   LOADING
-  if (loading) {
-    return <div>TSK LOADING</div>;
   }
 };
 
