@@ -1,17 +1,21 @@
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { classNames } from "../../utils/misc.helpers";
 
 const Auth = ({ type }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const isSignIn = type === "sign-in";
 
   return (
     <div className="min-h-screen bg-white flex">
       <div
         className={classNames(
-          isSignIn && "flex-col-reverse order-1",
-          "flex-1 flex justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 order-2"
+          isSignIn ? "flex-col-reverse order-1 py-0" : "py-12",
+          "flex-1 flex justify-center px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24 order-2"
         )}
       >
         <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -151,7 +155,12 @@ const Auth = ({ type }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  signIn("email", { email, password, isFighter: false });
+                  console.log(email, password);
+                  signIn("email", {
+                    email,
+                    password,
+                    isFighter: false,
+                  });
                 }}
                 method="POST"
                 className="space-y-6"
@@ -169,6 +178,8 @@ const Auth = ({ type }) => {
                       name="email"
                       type="email"
                       autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
@@ -188,6 +199,8 @@ const Auth = ({ type }) => {
                       name="password"
                       type="password"
                       autoComplete="current-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />

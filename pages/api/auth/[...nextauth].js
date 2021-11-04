@@ -5,6 +5,9 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../utils/auth.helpers";
 
 export default async function auth(req, res) {
+  const { email, password, isFighter } = req.body;
+  console.log("email, password, isFighter:", email, password, isFighter);
+
   return await NextAuth(req, res, {
     adapter: MongoDBAdapter({
       db: (await clientPromise).db("Users"),

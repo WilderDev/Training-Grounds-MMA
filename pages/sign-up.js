@@ -2,9 +2,8 @@ import { getCsrfToken } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import Auth from "../components/minor/authentication";
-import { signIn } from "next-auth/react";
 
-const SignUp = ({ csrfToken }) => {
+const SignUp = () => {
   return (
     <Layout>
       <Head>
