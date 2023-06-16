@@ -1,15 +1,28 @@
 # Training Grounds
 
----
+Martial Art Training Camp Finder
 
----
+## Features
 
-## MVP TODO
+- Search for Training Camps around the world
+- Post training camps with price and options
+- Maps
+- ...
 
-1. User Authentication
-2. Gym Owner Add Gym Details Form
-3. Footer Links & Pages
-4. Responsive every page
+## Tech Stack
+
+**Client:** NextJS, TailwindCSS
+
+**Server:** NodeJS, Vercel
+
+## Screenshots
+
+![training-grounds](https://github.com/WilderDev/Training-Grounds-MMA/assets/76077183/c36a6d8a-dd6c-4949-84d0-a75df2d52781)
+
+
+## Authors
+
+- [@William Wilder](https://www.github.com/wilderdev)
 
 ---
 
